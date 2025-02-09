@@ -37,7 +37,7 @@ body {
     padding: 0 var(--input-padding);
 }
 
-/** Sign up form */
+/** Sign up/Sign in form */
 
 .signUpForm, .signInForm {
     padding: var(--padding-m) var(--padding-l);
