@@ -3,21 +3,25 @@
 //Funzione che ascolta l'evento click del bottone submit
 function checkFormInputs (event) { //event è passato di default come primo argomento dall'event listener
     const form = document.signUpForm;
-    const emailField = form.email
-    const email = emailField.value;
-    const passwordField = form.password;
-    const password = passwordField.value;
+    const emailField = form.email, email = emailField.value; 
+    const passwordField = form.password, password = passwordField.value;
     const privacyPolicyCheckbox = form.privacyPolicyCheckbox;
     
     const isPasswordValid = validatePassword(password);
     const isEmailValid = validateEmail(email);
     const isPrivacyPolicyValid = validatePrivacyPolicy(privacyPolicyCheckbox);
+
+    //Rimuove gli stati di errori dai campi prima di controllare se sono validi
+    emailField.classList.remove("error");
+    passwordField.classList.remove("error");
     
     if(!isPasswordValid) {
+        passwordField.classList.add("error");
         passwordField.focus();
         event.preventDefault();
     }
     if(!isEmailValid) {
+        emailField.classList.add("error");
         emailField.focus();
         event.preventDefault();
     }

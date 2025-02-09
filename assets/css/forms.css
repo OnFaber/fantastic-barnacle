@@ -5,6 +5,7 @@
     --background-color: #f8f8f8;
     --text-color: rgba(0, 0, 0, 0.8);
     --input-border-color: #ccc;
+    --input-border-error-color: rgb(255, 174, 174);
     --input-bg-color: transparent;
     --login-bg-color: white;
     --box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -78,6 +79,10 @@ body {
     border: 2px solid var(--input-border-color);
     border-radius: var(--form-border-radius);
     outline: none;
+}
+
+.signUpForm form input.error {
+    border: 2px solid var(--input-border-error-color);
 }
 
 .signUpForm form input:not(input[type="submit"]), .signInForm form input:not(input[type="submit"]) {
