@@ -3,30 +3,19 @@
 //Funzione che ascolta l'evento click del bottone submit
 function checkFormInputs (event) { //event è passato di default come primo argomento dall'event listener
     const form = signUpForm;
-    const username = form.username.value;
     const email = form.email.value;
+    const password = form.password.value;
     const privacyPolicyCheckbox = form.privacyPolicyCheckbox;
 
-    const isUsernameValid = validateUsername(username);
-    const isPasswordValid = validatePassword(); //Questa funzione deve leggere nel DOM ogni volta perchè viene chiamata anche senza passare da qui
+    const isPasswordValid = validatePassword(password);
     const isEmailValid = validateEmail(email);
     const isPrivacyPolicyValid = validatePrivacyPolicy(privacyPolicyCheckbox);
     
-    if(!(isUsernameValid && isPasswordValid && isEmailValid && isPrivacyPolicyValid)) event.preventDefault();
-}
-
-//Funzione che controlla se l'username rispetta i requisiti stabiliti
-function validateUsername (username) {   
-    if (username == "") {
-        return false;
-    } else {
-        return true;
-    }
+    if(!(isPasswordValid && isEmailValid && isPrivacyPolicyValid)) event.preventDefault();
 }
 
 //Funzione che controlla se la password rispetta i requisiti stabiliti
-function validatePassword () {
-    const password = document.signUpForm.password.value;
+function validatePassword (password) {
     let hasValidLength = true, hasValidLower = true, hasValidUpper = true, hasValidSpecial = true, hasValidNumber = true;
     const validSpecialRegex = /[!"£$%&\/()=?'^*]/;
     
@@ -47,40 +36,26 @@ function validatePassword () {
     if (!/[A-Z]/.test(password)) { //Manca maiuscola
         hasValidUpper = false;
     }
-    passwordGuidesState ("passwordLengthDiv", hasValidLength);
-    passwordGuidesState ("passwordSpecialDiv", hasValidSpecial);
-    passwordGuidesState ("passwordNumberDiv", hasValidNumber);
-    passwordGuidesState ("passwordLowerDiv", hasValidLower);
-    passwordGuidesState ("passwordUpperDiv", hasValidUpper);
-    
+    console.log("Formato password\nLunghezza "+hasValidLength+"\nSpeciale "+hasValidSpecial+"\nNumero "+hasValidNumber+"\nMaiuscola "+hasValidUpper+"\nMinuscola "+hasValidLower) //Debug
     return (hasValidLength && hasValidSpecial && hasValidNumber && hasValidLower && hasValidUpper);
     
-}
-//Funzione che decide il colore delle linee guida della password in base alla validità dell'input
-function passwordGuidesState (guide, isValid) {
-    if (isValid) {
-        document.getElementById(guide).style.color = "green";
-    } else {
-        document.getElementById(guide).style.color = "red";
-    }
 }
 
 //Funzione che controlla se l'email rispetta i requisiti stabiliti
 function validateEmail (email) {
-    const invalidDomains = ["gmail.com", "hotmail.com"];
+    const invalidDomains = [];
     const emailPattern = /[^@.+]+@[a-zA-Z]+\.[a-zA-Z]+/ //Formato di una mail valida
     
     if (!emailPattern.test(email)) { //Controllo che il formato sia corretto
-        document.getElementById("emailDiv").innerHTML = "Inserisci una mail valida";
+        console.log("Formato mail non valido") //Debug
         return false;
     } else { //Controllo che il dominio non sia tra quelli non ammessi
         const emailAtPosition = email.indexOf("@")
         emailDomain = email.substring(emailAtPosition+1);
         if (invalidDomains.includes(emailDomain)) {
-            document.getElementById("emailDiv").innerHTML = "Il dominio "+emailDomain+" non è ammesso";
+            console.log("Dominio "+emailDomain+" non ammesso") //Debug
             return false;
         } else {
-            document.getElementById("emailDiv").innerHTML = "";
             return true;
         }
     }
@@ -88,16 +63,15 @@ function validateEmail (email) {
 
 //Funzione che controlla che la Privacy Policy sia stata letta ed accettata
 function validatePrivacyPolicy (privacyPolicyCheckbox) {
-    //Il checkbox viene attivato all'evento onClick sull'anchor alla privacy policy
+    //Il checkbox viene attivato dall'event listener sul click al link alla privacy policy
     //quindi se il suo stato è disabled=true non è stata aperta 
     if (privacyPolicyCheckbox.disabled) {
-        document.getElementById("privacyPolicyDiv").innerHTML = "Per procedere leggi e accetta la privacy policy"
+        console.log("Privacy policy non letta") //Debug
         return false;
     } else if (!privacyPolicyCheckbox.checked) {
-        document.getElementById("privacyPolicyDiv").innerHTML = "Per procedere accetta la privacy policy";
+        console.log("Privacy policy non accettata") //Debug
         return false;
     } else {
-        document.getElementById("privacyPolicyDiv").innerHTML = "";
         return true;
     }
 }
