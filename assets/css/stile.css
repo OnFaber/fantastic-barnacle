@@ -1,0 +1,128 @@
+/** variabili */
+
+:root {
+  --primary-color: #222;
+  --background-color: #f8f8f8;
+  --text-color: rgba(0, 0, 0, 0.8);
+  --input-border-color: #ccc;
+  --input-bg-color: transparent;
+  --login-bg-color: white;
+  --box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  --border-radius: 4px;
+  --font-family: sans-serif;
+  --font-size: 1.5rem;
+  --input-font-size: 1.25rem;
+  --padding-l: 1.5rem;
+  --padding-m: 1rem;
+  --input-padding: 0.75rem;
+  --input-margin: 0.5rem;
+  --space-s: 0.5rem;
+  --space-l: 1rem;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--background-color);
+  font-family: var(--font-family);
+  padding: 0 var(--input-padding);
+}
+
+/** login form */
+
+.login {
+  padding: var(--padding-m) var(--padding-l);
+  max-width: 30rem;
+  width: 25rem;
+  height: auto;
+  font-size: var(--font-size);
+  font-weight: bold;
+  box-shadow: var(--box-shadow);
+  border-radius: var(--border-radius);
+  color: var(--text-color);
+  background-color: var(--login-bg-color);
+}
+
+.login p {
+  margin: var(--input-padding) 0;
+}
+
+.login p::first-letter {
+  text-transform: capitalize;
+}
+
+.login form {
+  display: flex;
+  height: 13rem;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: stretch;
+}
+
+.login form input {
+  padding: var(--input-padding);
+  margin-top: var(--input-margin);
+  height: 5rem;
+  font-size: var(--input-font-size);
+  font-weight: bold;
+  background-color: var(--input-bg-color);
+  border: 2px solid var(--input-border-color);
+  border-radius: var(--border-radius);
+  outline: none;
+}
+
+.login form input:not(input[type="submit"]) {
+  margin-bottom: var(--input-margin);
+}
+
+.login form input:focus {
+  border-color: var(--primary-color);
+}
+
+.login form input[type="submit"] {
+  border: none;
+  background: var(--primary-color);
+  color: white;
+  text-transform: capitalize;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.login form input[type="submit"]:hover {
+  background: #444;
+}
+
+.login ul {
+  margin-top: var(--space-l);
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  list-style-type: none;
+  font-size: 0.875rem;
+}
+
+.login ul li a {
+  display: inline-block;
+}
+
+.login ul li a::first-letter {
+  text-transform: capitalize;
+}
+
+/** local variables */
+/*
+   Local Variables:
+   outline-regexp: "^/\\*\\*+"
+   eval: (outline-minor-mode 1)
+   eval: (outline-hide-sublevels 3)
+   End:
+ */
