@@ -39,7 +39,7 @@ body {
 
 /** Sign up form */
 
-.signUpForm {
+.signUpForm, .signInForm {
     padding: var(--padding-m) var(--padding-l);
     max-width: 30rem;
     width: 25rem;
@@ -52,7 +52,7 @@ body {
     background-color: var(--login-bg-color);
 }
 
-.signUpForm p {
+.signUpForm p, .signInForm p {
     margin: var(--input-padding) 0;
 }
 
@@ -60,7 +60,7 @@ body {
     text-transform: capitalize;
 }
 
-.signUpForm form {
+.signUpForm form, .signInForm form {
     display: flex;
     /*height: 13rem;*/
     flex-direction: column;
@@ -68,7 +68,7 @@ body {
     align-items: stretch;
 }
 
-.signUpForm form input {
+.signUpForm form input, .signInForm form input {
     padding: var(--input-padding);
     margin-top: var(--input-margin);
     height: 5rem;
@@ -80,15 +80,15 @@ body {
     outline: none;
 }
 
-.signUpForm form input:not(input[type="submit"]) {
+.signUpForm form input:not(input[type="submit"]), .signInForm form input:not(input[type="submit"]) {
     margin-bottom: var(--input-margin);
 }
 
-.signUpForm form input:focus {
+.signUpForm form input:focus, .signInForm form input:focus {
     border-color: var(--primary-color);
 }
 
-.signUpForm form input[type="submit"] {
+.signUpForm form input[type="submit"], .signInForm form input[type="submit"] {
     border: none;
     background: var(--primary-color);
     color: white;
@@ -97,11 +97,11 @@ body {
     transition: background 0.3s;
 }
 
-.signUpForm form input[type="submit"]:hover {
+.signUpForm form input[type="submit"]:hover, .signInForm form input[type="submit"]:hover {
     background: #444;
 }
 
-.signUpForm form input[type="checkbox"] {
+.signUpForm form input[type="checkbox"], .signInForm form input[type="checkbox"] {
     height: auto;
 }
 
@@ -110,7 +110,7 @@ body {
     font-size:large;
 }
 
-.signUpForm ul {
+.signUpForm ul, .signInForm ul {
     margin-top: var(--space-l);
     width: 100%;
     display: flex;
@@ -120,11 +120,11 @@ body {
     font-size: 0.875rem;
 }
 
-.signUpForm ul li a {
+.signUpForm ul li a, .signInForm ul li a {
     display: inline-block;
 }
 
-.signUpForm ul li a::first-letter {
+.signUpForm ul li a::first-letter, .signUpForm ul li a::first-letter {
     text-transform: capitalize;
 }
 
