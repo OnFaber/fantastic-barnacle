@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Sign up</title>
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <!-- /static/stile.css -->
+    <link href="assets/css/forms.css" rel="stylesheet" />
+    <!-- Importazione script -->
+    <!--L'attributo defer indica di eseguire lo script dopo il caricamento del documento. 
+    Necessario per far trovare allo script gli elementi-->
+    <script
+      type="text/javascript"
+      src="assets/js/sign-up-form.js"
+      defer
+    ></script>
+    <script
+      type="text/javascript"
+      src="assets/js/event-listeners.js"
+      defer
+    ></script>
+  </head>
+
+  <body>
+    <div class="form__box form__box--signup">
+      <p>Sign up</p>
+
+      <form name="signUpForm">
+        <input
+          id="signUpFormEmail"
+          name="email"
+          type="email"
+          value=""
+          placeholder="E-Mail"
+        />
+
+        <input
+          id="signUpFormPassword"
+          name="password"
+          type="password"
+          value=""
+          placeholder="Password"
+        />
+
+        <input
+          id="signUpFormCheckbox"
+          name="privacyPolicyCheckbox"
+          type="checkbox"
+          disabled="true"
+        />
+
+        <div style="display: flex; align-items: center">
+          <span class="customCheckbox"></span>
+          <label class="customCheckboxContainer">
+            I accept the
+            <a
+              style="display: inline-block; margin-left: 0.25rem"
+              id="privacyPolicyHref"
+              href="./privacy-policy.html"
+              target="_blank"
+              >Privacy Policy</a
+            >
+          </label>
+        </div>
+        <input
+          id="submit"
+          name=""
+          type="submit"
+          value="Sign up"
+          class="capitalize"
+        />
+      </form>
+
+      <ul>
+        <li>Already have an account? <a href="./sign-in.html">Sign in</a></li>
+      </ul>
+    </div>
+    <!-- <script src="assets/js/index.js"></script> -->
+  </body>
+</html>
