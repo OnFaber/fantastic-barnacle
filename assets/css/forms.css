@@ -7,17 +7,24 @@
   --error-color-accent: rgb(255, 68, 68);
   --background-color: rgb(248, 248, 248);
   --text-color: rgba(0, 0, 0, 0.8);
+
+  /* input */
   --input-border-color: var(--secondary-color);
-  --input-border-focused-color: #222;
+  --input-border-focused-color: var(--primary-color);
   --input-border-error-color: var(--error-color);
   --input-border-error-focused-color: var(--error-color-accent);
   --input-bg-color: transparent;
+
   --login-bg-color: white;
   --box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   --border-radius: 5px;
+
+  /* tipografia */
   --font-family: sans-serif;
   --font-size: 1.5rem;
   --input-font-size: 1.25rem;
+
+  /* spaziatura */
   --space-s: 0.5rem;
   --space-m: 0.75rem;
   --space-l: 1rem;
