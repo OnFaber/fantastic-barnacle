@@ -16,30 +16,30 @@ function checkFormInputs (event) { //event è passato di default come primo argo
     const passwordField = form.password, password = passwordField.value;
     const privacyPolicyCheckbox = form.privacyPolicyCheckbox;
     const privacyPolicyCustomCheckbox = document.getElementById("signUpFormCustomCheckbox");
-    
-    const isPasswordValid = validatePassword(password);
-    const isEmailValid = validateEmail(email);
-    const isPrivacyPolicyValid = validatePrivacyPolicy(privacyPolicyCheckbox);
 
-    //Rimuove gli stati di errori dai campi prima di controllare se sono validi
-    emailField.classList.remove("error");
-    passwordField.classList.remove("error");
-    privacyPolicyCustomCheckbox.classList.remove("error");
-    
-    if(!isPasswordValid) {
+    //Validazione password
+    if(!validatePassword(password)) {
         passwordField.classList.add("error");
         passwordField.focus();
         event.preventDefault();
+    } else {
+        passwordField.classList.remove("error");
     }
-    if(!isEmailValid) {
+    //Validazione email
+    if(!validateEmail(email)) {
         emailField.classList.add("error");
         emailField.focus();
         event.preventDefault();
+    } else {
+        emailField.classList.remove("error");
     }
-    if(!isPrivacyPolicyValid) {
+    //Validazione checkbox
+    if(!validatePrivacyPolicy(privacyPolicyCheckbox)) {
         privacyPolicyCustomCheckbox.classList.add("error");
         privacyPolicyCheckbox.focus();
         event.preventDefault();
+    } else {
+        privacyPolicyCustomCheckbox.classList.remove("error");
     }
 }
 
