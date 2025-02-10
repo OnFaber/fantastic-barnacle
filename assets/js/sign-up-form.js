@@ -1,5 +1,14 @@
-//--Funzioni relative al form di iscrizione
+//--Script relativi al form di iscrizione
 
+//--Event listener
+ //Ascolta per l'evento di submit del form e di default passa event come primo argomento al checkFormInputs
+ document.signUpForm.addEventListener("submit", checkFormInputs);
+ //Ascolta per l'evento di click sul link alla privacy policy
+ document.getElementById("privacyPolicyHref").addEventListener("click", function enableCheckbox() {
+     document.signUpForm.privacyPolicyCheckbox.disabled = false;
+ })
+
+ //--Funzioni
 //Funzione che ascolta l'evento click del bottone submit
 function checkFormInputs (event) { //event è passato di default come primo argomento dall'event listener
     const form = document.signUpForm;
