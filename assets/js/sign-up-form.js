@@ -15,6 +15,7 @@ function checkFormInputs (event) { //event è passato di default come primo argo
     const emailField = form.email, email = emailField.value; 
     const passwordField = form.password, password = passwordField.value;
     const privacyPolicyCheckbox = form.privacyPolicyCheckbox;
+    const privacyPolicyCustomCheckbox = document.getElementById("signUpFormCustomCheckbox");
     
     const isPasswordValid = validatePassword(password);
     const isEmailValid = validateEmail(email);
@@ -23,6 +24,7 @@ function checkFormInputs (event) { //event è passato di default come primo argo
     //Rimuove gli stati di errori dai campi prima di controllare se sono validi
     emailField.classList.remove("error");
     passwordField.classList.remove("error");
+    privacyPolicyCustomCheckbox.classList.remove("error");
     
     if(!isPasswordValid) {
         passwordField.classList.add("error");
@@ -35,6 +37,7 @@ function checkFormInputs (event) { //event è passato di default come primo argo
         event.preventDefault();
     }
     if(!isPrivacyPolicyValid) {
+        privacyPolicyCustomCheckbox.classList.add("error");
         privacyPolicyCheckbox.focus();
         event.preventDefault();
     }
