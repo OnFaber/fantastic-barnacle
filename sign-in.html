@@ -9,12 +9,20 @@
     />
     <!-- /static/stile.css -->
     <link href="assets/css/forms.css" rel="stylesheet" />
+    <!-- Importazione script -->
+    <!--L'attributo defer indica di eseguire lo script dopo il caricamento del documento. 
+    Necessario per far trovare allo script gli elementi-->
+    <script
+      type="text/javascript"
+      src="assets/js/sign-in-form.js"
+      defer
+    ></script>
   </head>
 
   <body>
     <div class="form__box form__signin">
-      <p class="capitalize">sign in</p>
-      <form id="signInForm">
+      <p>Sign in</p>
+      <form id="signInForm" name="signInForm">
         <input
           id="signInFormEmail"
           name="email"
