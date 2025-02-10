@@ -1,176 +1,168 @@
 /** variabili */
 
 :root {
-    --primary-color: #222;
-    --background-color: #f8f8f8;
-    --text-color: rgba(0, 0, 0, 0.8);
-    --input-border-color: #ccc;
-    --input-border-error-color: rgb(255, 174, 174);
-    --input-bg-color: transparent;
-    --login-bg-color: white;
-    --box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    --box-border-radius: 40px;
-    --form-border-radius: 10px;
-    --font-family: sans-serif;
-    --font-size: 1.5rem;
-    --input-font-size: 1.25rem;
-    --padding-l: 1.5rem;
-    --padding-m: 1rem;
-    --input-padding: 0.75rem;
-    --input-margin: 0.5rem;
-    --space-s: 0.5rem;
-    --space-l: 1rem;
+  --primary-color: rgb(34, 34, 34);
+  --background-color: rgb(248, 248, 248);
+  --text-color: rgba(0, 0, 0, 0.8);
+  --input-border-color: rgb(204, 204, 204);
+  --input-border-error-color: rgb(255, 174, 174);
+  --input-bg-color: transparent;
+  --login-bg-color: white;
+  --box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  --border-radius: 5px;
+  --font-family: sans-serif;
+  --font-size: 1.5rem;
+  --input-font-size: 1.25rem;
+  --space-s: 0.5rem;
+  --space-m: 0.75rem;
+  --space-l: 1rem;
+  --space-xl: 1.5rem;
 }
 
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: var(--background-color);
-    font-family: var(--font-family);
-    padding: 0 var(--input-padding);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--background-color);
+  font-family: var(--font-family);
+  padding: 0 var(--space-l);
 }
 
 /** Sign up/Sign in form */
 
-.signUpForm, .signInForm {
-    padding: var(--padding-m) var(--padding-l);
-    max-width: 30rem;
-    width: 25rem;
-    height: auto;
-    font-size: var(--font-size);
-    font-weight: bold;
-    box-shadow: var(--box-shadow);
-    border-radius: var(--box-border-radius);
-    color: var(--text-color);
-    background-color: var(--login-bg-color);
+.form__box {
+  padding: var(--space-m) var(--space-l);
+  max-width: 30rem;
+  width: 25rem;
+  height: auto;
+  font-size: var(--font-size);
+  font-weight: bold;
+  box-shadow: var(--box-shadow);
+  border-radius: var(--border-radius);
+  color: var(--text-color);
+  background-color: var(--login-bg-color);
 }
 
-.signUpForm p, .signInForm p {
-    margin: var(--input-padding) 0;
+.form__box p {
+  margin: var(--space-s) 0;
 }
 
-.signUpForm p::first-letter {
-    text-transform: capitalize;
+.form__box form {
+  display: flex;
+  /* height: 13rem; */
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: stretch;
 }
 
-.signUpForm form, .signInForm form {
-    display: flex;
-    /*height: 13rem;*/
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: stretch;
+.form__box form input {
+  padding: var(--space-m);
+  margin-top: var(--space-s);
+  height: 3rem;
+  font-size: var(--input-font-size);
+  font-weight: bold;
+  background-color: var(--input-bg-color);
+  border: 2px solid var(--input-border-color);
+  border-radius: var(--border-radius);
+  outline: none;
 }
 
-.signUpForm form input, .signInForm form input {
-    padding: var(--input-padding);
-    margin-top: var(--input-margin);
-    height: 5rem;
-    font-size: var(--input-font-size);
-    font-weight: bold;
-    background-color: var(--input-bg-color);
-    border: 2px solid var(--input-border-color);
-    border-radius: var(--form-border-radius);
-    outline: none;
+.form__box form input.error {
+  border: 2px solid var(--input-border-error-color);
 }
 
-.signUpForm form input.error {
-    border: 2px solid var(--input-border-error-color);
+.form__box form input:not(input[type="submit"]) {
+  margin-bottom: var(--space-s);
 }
 
-.signUpForm form input:not(input[type="submit"]), .signInForm form input:not(input[type="submit"]) {
-    margin-bottom: var(--input-margin);
+.form__box form input:focus {
+  border-color: var(--primary-color);
 }
 
-.signUpForm form input:focus, .signInForm form input:focus {
-    border-color: var(--primary-color);
+.form__box form input[type="submit"] {
+  border: none;
+  background: var(--primary-color);
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s;
 }
 
-.signUpForm form input[type="submit"], .signInForm form input[type="submit"] {
-    border: none;
-    background: var(--primary-color);
-    color: white;
-    text-transform: capitalize;
-    cursor: pointer;
-    transition: background 0.3s;
-}
-
-.signUpForm form input[type="submit"]:hover, .signInForm form input[type="submit"]:hover {
-    background: #444;
+.form__box form input[type="submit"]:hover {
+  background: #444;
 }
 
 /*Creazione checkbox personalizzata*/
 /*Nasconde la checkbox originale*/
-.signUpForm form input[type="checkbox"], .signInForm form input[type="checkbox"] {
-    display: none;
+.form__box form input[type="checkbox"] {
+  display: none;
 }
 /*Allinea l'intera label che contiene la checkbox*/
 .customCheckboxContainer {
-    display: flex;
-    font-size: large;
-    align-self: center;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    position:relative;
+  position: relative;
+  margin: 5px 0;
+  display: flex;
+  font-size: 1rem;
+  /* align-self: right; */
+  justify-content: start;
+  align-items: center;
 }
 /*Visualizzazione dello span che simula la nuova checkbox*/
 /*Stile della checkbox attiva*/
 .customCheckbox {
-    width: 20px;
-    height: 20px;
-    background-color: var(--background-color);
-    border: 2px solid var(--input-border-color);
-    border-radius: 4px;
-    margin-right: 10px;
-    position: relative;
+  position: relative;
+  width: 20px;
+  height: 20px;
+  background-color: var(--background-color);
+  border: 2px solid var(--input-border-color);
+  border-radius: 4px;
+  margin-right: 10px;
 }
 /*Stile della checkbox disabilitata*/
 .customCheckboxContainer input:disabled + .customCheckbox {
-    background-color: #cccccc69;
-    border: 2px solid #ccccccd5;
+  background-color: #cccccc69;
+  border: 2px solid #ccccccd5;
 }
 /*Stile dello sfondo della checkbox selezionata*/
 .customCheckboxContainer input:checked + .customCheckbox {
-    background-color: var(--input-border-color);
-    border: 2px solid var(--input-border-color);
+  background-color: var(--input-border-color);
+  border: 2px solid var(--input-border-color);
 }
 /*Segno di spunta*/
 .customCheckboxContainer input:checked + .customCheckbox:after {
-    content: '';
-    position: absolute;
-    /*color: var(--background-color);*/
-    left: 4.5px;
-    top: 0px;
-    width: 5px;
-    height: 10px;
-    border: solid var(--background-color);
-    border-width: 0 2px 2px 0;
-    transform: rotate(45deg);
-}/*Fine checkbox personalizzata*/
+  content: "";
+  position: absolute;
+  /*color: var(--background-color);*/
+  left: 4.5px;
+  top: 0px;
+  width: 5px;
+  height: 10px;
+  border: solid var(--background-color);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+} /*Fine checkbox personalizzata*/
 
-.signUpForm ul, .signInForm ul {
-    margin-top: var(--space-l);
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    list-style-type: none;
-    font-size: 0.875rem;
+.form__box ul {
+  margin: var(--space-l) var(--space-s) var(--space-s) var(--space-s);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  list-style-type: none;
+  font-size: 0.875rem;
 }
 
-.signUpForm ul li a, .signInForm ul li a {
-    display: inline-block;
+.form__box ul li a {
+  display: inline-block;
 }
 
-.signUpForm ul li a::first-letter, .signUpForm ul li a::first-letter {
-    text-transform: capitalize;
+.capitalize {
+  text-transform: capitalize;
 }
 
 /** local variables */

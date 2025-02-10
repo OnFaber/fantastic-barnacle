@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Sign in</title>
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <!-- /static/stile.css -->
+    <link href="assets/css/forms.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <div class="form__box form__signin">
+      <p class="capitalize">sign in</p>
+      <form id="signInForm">
+        <input
+          id="signInFormEmail"
+          name="email"
+          type="email"
+          value=""
+          placeholder="E-Mail"
+        />
+
+        <input
+          id="signInFormPassword"
+          name="password"
+          type="password"
+          value=""
+          placeholder="Password"
+        />
+
+        <div class="customCheckboxContainer">
+          <input
+            id="signIpFormCheckbox"
+            name="rememberMeCheckbox"
+            type="checkbox"
+          />
+          <span class="customCheckbox"></span>
+          <label class="capitalize">remember me</label>
+        </div>
+
+        <input
+          id="submit"
+          name=""
+          type="submit"
+          value="Sign in"
+          class="capitalize"
+        />
+      </form>
+
+      <ul>
+        <li><a class="capitalize" href="sign-up.html">sign up</a></li>
+        <li><a class="capitalize" href="#">forgot password?</a></li>
+      </ul>
+    </div>
+    <!-- <script src="assets/js/index.js"></script> -->
+  </body>
+</html>
