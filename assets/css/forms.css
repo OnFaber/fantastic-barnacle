@@ -106,14 +106,54 @@ body {
     background: #444;
 }
 
+/*Creazione checkbox personalizzata*/
+/*Nasconde la checkbox originale*/
 .signUpForm form input[type="checkbox"], .signInForm form input[type="checkbox"] {
-    height: auto;
+    display: none;
 }
-
-.checkboxContainer {
-    display: inline-block;
-    font-size:large;
+/*Allinea l'intera label che contiene la checkbox*/
+.customCheckboxContainer {
+    display: flex;
+    font-size: large;
+    align-self: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    position:relative;
 }
+/*Visualizzazione dello span che simula la nuova checkbox*/
+/*Stile della checkbox attiva*/
+.customCheckbox {
+    width: 20px;
+    height: 20px;
+    background-color: var(--background-color);
+    border: 2px solid var(--input-border-color);
+    border-radius: 4px;
+    margin-right: 10px;
+    position: relative;
+}
+/*Stile della checkbox disabilitata*/
+.customCheckboxContainer input:disabled + .customCheckbox {
+    background-color: #cccccc69;
+    border: 2px solid #ccccccd5;
+}
+/*Stile dello sfondo della checkbox selezionata*/
+.customCheckboxContainer input:checked + .customCheckbox {
+    background-color: var(--input-border-color);
+    border: 2px solid var(--input-border-color);
+}
+/*Segno di spunta*/
+.customCheckboxContainer input:checked + .customCheckbox:after {
+    content: '';
+    position: absolute;
+    /*color: var(--background-color);*/
+    left: 4.5px;
+    top: 0px;
+    width: 5px;
+    height: 10px;
+    border: solid var(--background-color);
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}/*Fine checkbox personalizzata*/
 
 .signUpForm ul, .signInForm ul {
     margin-top: var(--space-l);

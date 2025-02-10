@@ -38,16 +38,17 @@
             placeholder="Password"
             />
             
-            <div class="checkboxContainer">
+            <label class="customCheckboxContainer">
                 <input
                 id="signUpFormCheckbox"
                 name="privacyPolicyCheckbox"
                 type="checkbox"
                 disabled = "true"
                 />
-                <label for="signUpFormCheckbox">I accept the <a id="privacyPolicyHref" href="./privacy-policy.html" target="_blank">Privacy Policy</a></label>
-            </div>
-            
+                <span class="customCheckbox"></span>
+                <div>I accept the <a id="privacyPolicyHref" href="./privacy-policy.html" target="_blank">Privacy Policy</a></div>
+            </label>
+
             <input id="submit" name="" type="submit" value="Sign up" />
         </form>
         
