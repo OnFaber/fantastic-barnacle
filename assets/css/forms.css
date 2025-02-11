@@ -199,6 +199,13 @@ body {
   text-transform: capitalize;
 }
 
+.error-message {
+  display: block;
+  margin: var(--space-s) 0;
+  color: var(--error-color-accent);
+  font-size: 0.75rem;
+}
+
 /** local variables */
 /*
 Local Variables:
