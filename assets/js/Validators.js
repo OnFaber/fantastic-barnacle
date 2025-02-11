@@ -40,8 +40,8 @@ class Validators {
       return "Formato mail non valido";
     } else {
       const emailDomain = email.split("@")[1];
-      if(invalidDomains.includes(emailDomain)) {
-        return "Dominio "+emaildomain+" non ammesso";
+      if (invalidDomains.includes(emailDomain)) {
+        return `Dominio ${emailDomain} non ammesso`;
       } else {
         return "";
       }
