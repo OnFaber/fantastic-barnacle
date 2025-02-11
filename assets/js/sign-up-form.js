@@ -49,9 +49,10 @@ function checkFormInputs(event) {
   }
 
   //Validazione email
-  const emailError = Validators.validateEmail(email);
-  if (emailError) {
-    ErrorHandler.showError(emailField, emailError);
+  const isEmailValid = Validators.validateEmail(email);
+  if (!isEmailValid) {
+    event.preventDefault();
+    ErrorHandler.showError(emailField, "Email non valida");
   }
 
   //Validazione checkbox
