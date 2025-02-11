@@ -36,10 +36,16 @@ class Validators {
     const invalidDomains = [];
     const emailPattern = /^[^\s@]+@[a-zA-Z]+\.[a-zA-Z]+$/;
 
-    if (!emailPattern.test(email)) return false;
-
-    const emailDomain = email.split("@")[1];
-    return !invalidDomains.includes(emailDomain);
+    if (!emailPattern.test(email)) {
+      return "Formato mail non valido";
+    } else {
+      const emailDomain = email.split("@")[1];
+      if(invalidDomains.includes(emailDomain)) {
+        return "Dominio "+emaildomain+" non ammesso";
+      } else {
+        return "";
+      }
+    }
   }
 
   static clearMessages() {
