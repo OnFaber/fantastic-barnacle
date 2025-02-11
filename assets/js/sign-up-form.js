@@ -38,6 +38,7 @@ function checkFormInputs(event) {
   const privacyPolicyCustomCheckbox = document.getElementById(
     "signUpFormCustomCheckbox",
   );
+  console.log(email);
 
   //Validazione password
   const passwordMessages = Validators.validatePassword(password);
@@ -50,7 +51,7 @@ function checkFormInputs(event) {
 
   //Validazione email
   const emailError = Validators.validateEmail(email);
-  if (emailError) {
+  if (emailError != "") {
     ErrorHandler.showError(emailField, emailError);
   }
 
