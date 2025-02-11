@@ -28,6 +28,7 @@ document
  *
  */
 function checkFormInputs(event) {
+  event.preventDefault();
   //event è passato di default come primo argomento dall'event listener
   const form = document.signUpForm;
   const emailField = form.email,
@@ -45,7 +46,6 @@ function checkFormInputs(event) {
   const passwordMessages = Validators.validatePassword(password);
   if (passwordMessages.length > 0) {
     isValid = false;
-    event.preventDefault();
     passwordMessages.forEach((message) => {
       ErrorHandler.showError(passwordField, message);
     });
@@ -56,7 +56,6 @@ function checkFormInputs(event) {
   const emailError = Validators.validateEmail(email);
   if (emailError != "") {
     isValid = false;
-    event.preventDefault();
     ErrorHandler.showError(emailField, emailError);
   }
 
@@ -70,8 +69,9 @@ function checkFormInputs(event) {
     privacyPolicyCustomCheckbox.classList.remove("error");
   }
 
-  event.preventDefault();
   if (isValid) {
+    const user = { email, password };
+    localStorage.setItem("user", JSON.stringify(user));
     redirect(`/index.html`);
   }
 }
