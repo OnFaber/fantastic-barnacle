@@ -49,10 +49,11 @@ function checkFormInputs(event) {
   }
 
   //Validazione email
-  const isEmailValid = Validators.validateEmail(email);
-  if (!isEmailValid) {
+
+  const emailError = Validators.validateEmail(email);
+  if (emailError != "") {
     event.preventDefault();
-    ErrorHandler.showError(emailField, "Email non valida");
+    ErrorHandler.showError(emailField, emailError);
   }
 
   //Validazione checkbox
@@ -69,10 +70,8 @@ function validatePrivacyPolicy(privacyPolicyCheckbox) {
   // Il checkbox viene attivato dall'event listener sul click al link alla privacy policy
   // quindi se il suo stato è disabled=true non è stata aperta
   if (privacyPolicyCheckbox.disabled) {
-    console.log("Privacy policy non letta"); // Debug
     return false;
   } else if (!privacyPolicyCheckbox.checked) {
-    console.log("Privacy policy non accettata"); // Debug
     return false;
   } else {
     return true;
