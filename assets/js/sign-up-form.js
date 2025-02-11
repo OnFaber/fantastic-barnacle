@@ -1,106 +1,79 @@
+import ErrorHandler from "./ErrorHandler.js";
+import Validators from "./Validators.js";
+
 //--Script relativi al form di iscrizione
 
 //--Event listener
- //Ascolta per l'evento di submit del form e di default passa event come primo argomento al checkFormInputs
- document.signUpForm.addEventListener("submit", checkFormInputs);
- //Ascolta per l'evento di click sul link alla privacy policy
- document.getElementById("privacyPolicyHref").addEventListener("click", function enableCheckbox() {
-     document.signUpForm.privacyPolicyCheckbox.disabled = false;
- })
+//Ascolta per l'evento di submit del form e di default passa event come primo argomento al checkFormInputs
+document.signUpForm.addEventListener("submit", checkFormInputs);
+//Ascolta per l'evento di click sul link alla privacy policy
+document
+  .getElementById("privacyPolicyHref")
+  .addEventListener("click", function enableCheckbox() {
+    document.signUpForm.privacyPolicyCheckbox.disabled = false;
+  });
 
- //--Funzioni
-//Funzione che ascolta l'evento click del bottone submit
-function checkFormInputs (event) { //event è passato di default come primo argomento dall'event listener
-    const form = document.signUpForm;
-    const emailField = form.email, email = emailField.value; 
-    const passwordField = form.password, password = passwordField.value;
-    const privacyPolicyCheckbox = form.privacyPolicyCheckbox;
-    const privacyPolicyCustomCheckbox = document.getElementById("signUpFormCustomCheckbox");
+/**
+ * Funzione che gestisce l'evento di submit del form di registrazione.
+ * Esegue la validazione dei campi di input (password, email e privacy policy) e
+ * mostra i messaggi di errore appropriati utilizzando la classe `ErrorHandler`.
+ * Se uno dei campi non è valido, impedisce l'invio del form.
+ *
+ * @param {Event} event - L'evento di submit del form. È passato di default dal listener dell'evento.
+ *
+ * @returns {void} Non restituisce nulla, ma previene l'invio del form in caso di errori di validazione.
+ *
+ * @see {@link Validators} per la validazione della password e dell'email.
+ * @see {@link ErrorHandler} per la gestione della visualizzazione degli errori.
+ *
+ */
+function checkFormInputs(event) {
+  //event è passato di default come primo argomento dall'event listener
+  const form = document.signUpForm;
+  const emailField = form.email,
+    email = emailField.value;
+  const passwordField = form.password,
+    password = passwordField.value;
+  const privacyPolicyCheckbox = form.privacyPolicyCheckbox;
+  const privacyPolicyCustomCheckbox = document.getElementById(
+    "signUpFormCustomCheckbox",
+  );
 
-    //Validazione password
-    if(!validatePassword(password)) {
-        passwordField.classList.add("error");
-        passwordField.focus();
-        event.preventDefault();
-    } else {
-        passwordField.classList.remove("error");
-    }
-    //Validazione email
-    if(!validateEmail(email)) {
-        emailField.classList.add("error");
-        emailField.focus();
-        event.preventDefault();
-    } else {
-        emailField.classList.remove("error");
-    }
-    //Validazione checkbox
-    if(!validatePrivacyPolicy(privacyPolicyCheckbox)) {
-        privacyPolicyCustomCheckbox.classList.add("error");
-        privacyPolicyCheckbox.focus();
-        event.preventDefault();
-    } else {
-        privacyPolicyCustomCheckbox.classList.remove("error");
-    }
+  //Validazione password
+  const passwordMessages = Validators.validatePassword(password);
+  if (passwordMessages.length > 0) {
+    event.preventDefault();
+    passwordMessages.forEach((message) => {
+      ErrorHandler.showError(passwordField, message);
+    });
+  }
+
+  //Validazione email
+  const emailError = Validators.validateEmail(email);
+  if (emailError) {
+    ErrorHandler.showError(emailField, emailError);
+  }
+
+  //Validazione checkbox
+  if (!validatePrivacyPolicy(privacyPolicyCheckbox)) {
+    privacyPolicyCustomCheckbox.classList.add("error");
+    privacyPolicyCheckbox.focus();
+    event.preventDefault();
+  } else {
+    privacyPolicyCustomCheckbox.classList.remove("error");
+  }
 }
 
-//Funzione che controlla se la password rispetta i requisiti stabiliti
-function validatePassword (password) {
-    let hasValidLength = true, hasValidLower = true, hasValidUpper = true, hasValidSpecial = true, hasValidNumber = true;
-    const validSpecialRegex = /[!"£$%&\/()=?'^*]/;
-    
-    if (password.length < 16) { //Troppo corta
-        hasValidLength = false;
-    } else if (password.length > 128) { //Troppo lunga
-        hasValidLength = false;
-    }
-    if (!validSpecialRegex.test(password)) { //Manca speciale
-        hasValidSpecial = false;
-    }
-    if (!/\d/.test(password)) { //Manca numero
-        hasValidNumber = false;
-    }
-    if (!/[a-z]/.test(password)) { //Manca minuscola
-        hasValidLower = false;
-    }
-    if (!/[A-Z]/.test(password)) { //Manca maiuscola
-        hasValidUpper = false;
-    }
-    console.log("Formato password\nLunghezza "+hasValidLength+"\nSpeciale "+hasValidSpecial+"\nNumero "+hasValidNumber+"\nMaiuscola "+hasValidUpper+"\nMinuscola "+hasValidLower) //Debug
-    return (hasValidLength && hasValidSpecial && hasValidNumber && hasValidLower && hasValidUpper);
-    
-}
-
-//Funzione che controlla se l'email rispetta i requisiti stabiliti
-function validateEmail (email) {
-    const invalidDomains = [];
-    const emailPattern = /[^@.+]+@[a-zA-Z]+\.[a-zA-Z]+/ //Formato di una mail valida
-    
-    if (!emailPattern.test(email)) { //Controllo che il formato sia corretto
-        console.log("Formato mail non valido") //Debug
-        return false;
-    } else { //Controllo che il dominio non sia tra quelli non ammessi
-        const emailAtPosition = email.indexOf("@")
-        emailDomain = email.substring(emailAtPosition+1);
-        if (invalidDomains.includes(emailDomain)) {
-            console.log("Dominio "+emailDomain+" non ammesso") //Debug
-            return false;
-        } else {
-            return true;
-        }
-    }
-}
-
-//Funzione che controlla che la Privacy Policy sia stata letta ed accettata
-function validatePrivacyPolicy (privacyPolicyCheckbox) {
-    //Il checkbox viene attivato dall'event listener sul click al link alla privacy policy
-    //quindi se il suo stato è disabled=true non è stata aperta 
-    if (privacyPolicyCheckbox.disabled) {
-        console.log("Privacy policy non letta") //Debug
-        return false;
-    } else if (!privacyPolicyCheckbox.checked) {
-        console.log("Privacy policy non accettata") //Debug
-        return false;
-    } else {
-        return true;
-    }
+function validatePrivacyPolicy(privacyPolicyCheckbox) {
+  // Il checkbox viene attivato dall'event listener sul click al link alla privacy policy
+  // quindi se il suo stato è disabled=true non è stata aperta
+  if (privacyPolicyCheckbox.disabled) {
+    console.log("Privacy policy non letta"); // Debug
+    return false;
+  } else if (!privacyPolicyCheckbox.checked) {
+    console.log("Privacy policy non accettata"); // Debug
+    return false;
+  } else {
+    return true;
+  }
 }
