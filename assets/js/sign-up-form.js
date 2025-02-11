@@ -39,9 +39,12 @@ function checkFormInputs(event) {
     "signUpFormCustomCheckbox",
   );
 
+  let isValid = true;
+
   //Validazione password
   const passwordMessages = Validators.validatePassword(password);
   if (passwordMessages.length > 0) {
+    isValid = false;
     event.preventDefault();
     passwordMessages.forEach((message) => {
       ErrorHandler.showError(passwordField, message);
@@ -52,17 +55,24 @@ function checkFormInputs(event) {
 
   const emailError = Validators.validateEmail(email);
   if (emailError != "") {
+    isValid = false;
     event.preventDefault();
     ErrorHandler.showError(emailField, emailError);
   }
 
   //Validazione checkbox
   if (!validatePrivacyPolicy(privacyPolicyCheckbox)) {
+    isValid = false;
     privacyPolicyCustomCheckbox.classList.add("error");
     privacyPolicyCheckbox.focus();
     event.preventDefault();
   } else {
     privacyPolicyCustomCheckbox.classList.remove("error");
+  }
+
+  event.preventDefault();
+  if (isValid) {
+    redirect(`/index.html`);
   }
 }
 
@@ -76,4 +86,8 @@ function validatePrivacyPolicy(privacyPolicyCheckbox) {
   } else {
     return true;
   }
+}
+
+function redirect(url) {
+  window.location.href = url;
 }
