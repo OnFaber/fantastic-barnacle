@@ -38,7 +38,6 @@ function checkFormInputs(event) {
   const privacyPolicyCustomCheckbox = document.getElementById(
     "signUpFormCustomCheckbox",
   );
-  console.log(email);
 
   //Validazione password
   const passwordMessages = Validators.validatePassword(password);
@@ -69,10 +68,8 @@ function validatePrivacyPolicy(privacyPolicyCheckbox) {
   // Il checkbox viene attivato dall'event listener sul click al link alla privacy policy
   // quindi se il suo stato è disabled=true non è stata aperta
   if (privacyPolicyCheckbox.disabled) {
-    console.log("Privacy policy non letta"); // Debug
     return false;
   } else if (!privacyPolicyCheckbox.checked) {
-    console.log("Privacy policy non accettata"); // Debug
     return false;
   } else {
     return true;

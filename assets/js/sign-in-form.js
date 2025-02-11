@@ -33,7 +33,6 @@ function checkFormInputs (event) { //event è passato di default come primo argo
 function validatePassword (password) {
     const isPasswordEmpty = (password == "");
 
-    console.log("Password vuota:"+isPasswordEmpty) //Debug
     return (!isPasswordEmpty);
     
 }
@@ -43,7 +42,6 @@ function validateEmail (email) {
     const emailPattern = /[^@.+]+@[a-zA-Z]+\.[a-zA-Z]+/ //Formato di una mail valida
     
     if (!emailPattern.test(email)) { //Controllo che il formato sia corretto
-        console.log("Formato mail non valido") //Debug
         return false;
     } else {
         return true;
