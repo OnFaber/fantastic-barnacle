@@ -3,8 +3,8 @@
 
 * TODO
 
-salvare dati utente in localstorage
-homepage con link al signup e login
-responsiveness
-pagina con collezione libri
-salvare dati in localstorage dei libri
+- salvare dati utente in localstorage
+- homepage con link al signup e login
+- responsiveness
+- pagina con collezione libri
+- salvare dati in localstorage dei libri
