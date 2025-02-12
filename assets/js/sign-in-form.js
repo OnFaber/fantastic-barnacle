@@ -27,9 +27,7 @@ function checkFormInputs(event) {
         
         //Autenticazione (se la validazione password va a buon fine)
         if (isAuthenticated) {
-            user.isAuthenticated = true;
-            user.rememberMe = rememberMe;
-            localStorage.setItem(`user+${email}`, JSON.stringify(user));
+            localStorage.setItem(`authenticatedUser`, JSON.stringify(email));
             redirect(`/index.html`);
         }
     } else {

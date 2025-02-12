@@ -67,8 +67,6 @@ function checkFormInputs(event) {
         email: signUpForm.email.value,
         password: signUpForm.password.value,
       },
-      isAuthenticated: true,
-      rememberMe: false,
     };
     localStorage.setItem(`user+${user.credentials.email}`, JSON.stringify(user));
     redirect(`/sign-in.html`);
