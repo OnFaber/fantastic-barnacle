@@ -27,6 +27,7 @@ header {
 }
 
 nav {
+  position: relative;
   padding: 1rem;
   display: flex;
   flex-direction: column;
@@ -36,6 +37,13 @@ nav {
 }
 
 main {
+  position: relative;
   grid-area: c;
   background-color: blue;
+}
+
+main button {
+  position: absolute;
+  top: 0;
+  left: 0;
 }

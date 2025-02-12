@@ -1,4 +1,4 @@
-const button = document.getElementsByClassName("button")[0];
+const button = document.getElementById("button");
 const nav = document.getElementsByTagName("nav")[0];
 const main = document.getElementsByTagName("main")[0];
 const body = document.getElementsByTagName("body")[0];
