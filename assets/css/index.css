@@ -1,0 +1,41 @@
+body {
+  margin: 0;
+  padding: 0;
+  display: grid;
+  height: 100vh;
+  grid-template-areas:
+    "a a a"
+    "b c c"
+    "b c c";
+  grid-template-columns: 300px 1fr;
+  grid-template-rows: 3rem auto;
+}
+
+.body {
+  grid-template-areas:
+    "a a a"
+    "c c c"
+    "c c c";
+}
+
+header {
+  padding: 0 1rem;
+  grid-area: a;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+nav {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  grid-area: b;
+  background-color: aliceblue;
+}
+
+main {
+  grid-area: c;
+  background-color: blue;
+}
