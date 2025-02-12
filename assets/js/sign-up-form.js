@@ -1,6 +1,6 @@
 import ErrorHandler from "./ErrorHandler.js";
 import Validators from "./Validators.js";
-import { SignUpForm } from "./SignUpForm.js";
+import { SignUpForm } from "./Forms.js";
 
 const signUpForm = new SignUpForm(document.signUpForm);
 document.signUpForm.addEventListener("submit", checkFormInputs);
