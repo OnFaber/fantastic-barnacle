@@ -13,12 +13,6 @@ class SignUpForm extends Form {
     this.privacyPolicyCustomCheckbox = document.getElementById(
       "signUpFormCustomCheckbox",
     );
-
-    document
-      .getElementById("privacyPolicyHref")
-      .addEventListener("click", () => {
-        this.privacyPolicyCheckbox.disabled = false;
-      });
   }
 }
 

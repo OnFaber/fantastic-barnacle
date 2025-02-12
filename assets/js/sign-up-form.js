@@ -3,6 +3,12 @@ import Validators from "./Validators.js";
 import { SignUpForm } from "./SignUpForm.js";
 
 const signUpForm = new SignUpForm(document.signUpForm);
+document.signUpForm.addEventListener("submit", checkFormInputs);
+document
+      .getElementById("privacyPolicyHref")
+      .addEventListener("click", () => {
+        signUpForm.privacyPolicyCheckbox.disabled = false;
+      });
 
 function checkFormInputs(event) {
   event.preventDefault();
@@ -56,5 +62,3 @@ function checkFormInputs(event) {
 function redirect(url) {
   window.location.href = url;
 }
-
-document.signUpForm.addEventListener("submit", checkFormInputs);
