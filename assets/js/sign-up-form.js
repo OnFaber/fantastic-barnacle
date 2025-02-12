@@ -5,15 +5,15 @@ import { SignUpForm } from "./Forms.js";
 const signUpForm = new SignUpForm(document.signUpForm);
 document.signUpForm.addEventListener("submit", checkFormInputs);
 document
-      .getElementById("privacyPolicyHref")
-      .addEventListener("click", () => {
-        signUpForm.privacyPolicyCheckbox.disabled = false;
-      });
+.getElementById("privacyPolicyHref")
+.addEventListener("click", () => {
+  signUpForm.privacyPolicyCheckbox.disabled = false;
+});
 
 function checkFormInputs(event) {
   event.preventDefault();
   let isValid = true;
-
+  
   //Validazione password
   const passwordMessages = Validators.validatePassword(
     signUpForm.password.value,
@@ -24,14 +24,14 @@ function checkFormInputs(event) {
       ErrorHandler.showError(signUpForm.password, message);
     });
   }
-
+  
   //Validazione email
   const emailError = Validators.validateEmail(signUpForm.email.value);
   if (emailError != "") {
     isValid = false;
     ErrorHandler.showError(signUpForm.email, emailError);
   }
-
+  
   //Validazione checkbox
   const privacyPolicyError = Validators.validatePrivacyPolicy(
     signUpForm.privacyPolicyCheckbox,
@@ -48,11 +48,13 @@ function checkFormInputs(event) {
   } else {
     signUpForm.privacyPolicyCustomCheckbox.classList.remove("error");
   }
-
+  
   if (isValid) {
     const user = {
-      email: signUpForm.email.value,
-      password: signUpForm.password.value,
+      credentials: {
+        email: signUpForm.email.value,
+        password: signUpForm.password.value,
+      }
     };
     localStorage.setItem("user", JSON.stringify(user));
     redirect(`/index.html`);
