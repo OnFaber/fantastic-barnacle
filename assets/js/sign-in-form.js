@@ -7,15 +7,16 @@ document.signInForm.addEventListener("submit", checkFormInputs);
 function checkFormInputs(event) {
     event.preventDefault();
     let isAuthenticated = true;
-    let user = JSON.parse(localStorage.getItem(`user+${signInForm.email.value}`));
+    const email = signInForm.email.value;
+    let user = JSON.parse(localStorage.getItem(`user+${email}`));
     if (user != null) { //Questo fa anche da validazione della mail
         const savedPassword = user.credentials.password
-        console.log(savedPassword);
         
         //Validazione password
         //Validazione della corrispondenza
         if (savedPassword != signInForm.password.value) {
             isAuthenticated = false;
+            ErrorHandler.showError(signInForm.password, "Password errata", 3000);
         }
         
         //Controllo remember me
@@ -24,15 +25,15 @@ function checkFormInputs(event) {
             rememberMe = true;
         }
         
-        //Autenticazione
+        //Autenticazione (se la validazione password va a buon fine)
         if (isAuthenticated) {
             user.isAuthenticated = true;
             user.rememberMe = rememberMe;
-            localStorage.setItem("user", JSON.stringify(user));
+            localStorage.setItem(`user+${email}`, JSON.stringify(user));
             redirect(`/index.html`);
         }
     } else {
-        ErrorHandler.showError(signInForm.email, "Utente non registrato");
+        ErrorHandler.showError(signInForm.email, "Utente non registrato", 3000);
     }
 }
 
