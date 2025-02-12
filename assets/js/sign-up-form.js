@@ -54,9 +54,11 @@ function checkFormInputs(event) {
       credentials: {
         email: signUpForm.email.value,
         password: signUpForm.password.value,
-      }
+      },
+      isAuthenticated: true,
+      rememberMe: false,
     };
-    localStorage.setItem("user", JSON.stringify(user));
+    localStorage.setItem(`user+${user.credentials.email}`, JSON.stringify(user));
     redirect(`/index.html`);
   }
 }

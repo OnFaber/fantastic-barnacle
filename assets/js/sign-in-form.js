@@ -8,47 +8,32 @@ document.signInForm.addEventListener("submit", checkFormInputs);
 function checkFormInputs(event) {
     event.preventDefault();
     let isAuthenticated = true;
-    let user = JSON.parse(localStorage.getItem("user")); 
-    const savedCredentials = user.credentials
-    console.log(savedCredentials);
-    
-    //Validazione password
-    //Validazione della corrispondenza
-    if (savedCredentials.password != signInForm.password.value) {
-        console.log("Wrong password"); //Debug
-        isAuthenticated = false;
-    } else {
-        console.log("Right password"); //Debug
-    }
-    
-    //Validazione email
-    //Validazione del formato
-    const emailError = Validators.validateEmail(signInForm.email.value);
-    if (emailError != "") {
-        isAuthenticated = false;
-        ErrorHandler.showError(signInForm.email, emailError);
-    } else { 
-        if (savedCredentials.email != signInForm.email.value) {
-            console.log("Wrong email"); //Debug
+    let user = JSON.parse(localStorage.getItem(`user+${signInForm.email.value}`));
+    if (user != null) { //Questo fa anche da validazione della mail
+        const savedPassword = user.credentials.password
+        console.log(savedPassword);
+        
+        //Validazione password
+        //Validazione della corrispondenza
+        if (savedPassword != signInForm.password.value) {
             isAuthenticated = false;
-        } else {
-            console.log("Right email"); //Debug
         }
-    }
-    
-    //Controllo remember me
-    let rememberMe = false;
-    if (signInForm.rememberMeCheckbox.checked) {
-        rememberMe = true;
-    }
-    console.log(rememberMe); //Debug
-    
-    //Autenticazione
-    if (isAuthenticated) {
-        user.isAuthenticated = true;
-        user.rememberMe = rememberMe;
-        localStorage.setItem("user", JSON.stringify(user));
-        redirect(`/index.html`);
+        
+        //Controllo remember me
+        let rememberMe = false;
+        if (signInForm.rememberMeCheckbox.checked) {
+            rememberMe = true;
+        }
+        
+        //Autenticazione
+        if (isAuthenticated) {
+            user.isAuthenticated = true;
+            user.rememberMe = rememberMe;
+            localStorage.setItem("user", JSON.stringify(user));
+            redirect(`/index.html`);
+        }
+    } else {
+        ErrorHandler.showError(signInForm.email, "Utente non registrato");
     }
 }
 
