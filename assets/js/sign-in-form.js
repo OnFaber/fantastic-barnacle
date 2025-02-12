@@ -1,5 +1,4 @@
 import ErrorHandler from "./ErrorHandler.js";
-import Validators from "./Validators.js";
 import { SignInForm } from "./Forms.js";
 
 const signInForm = new SignInForm(document.signInForm);
