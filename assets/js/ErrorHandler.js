@@ -1,7 +1,7 @@
 class ErrorHandler {
   static showError(inputField, message, duration = 2000) {
-    this.clearError(inputField);
-    const errorMessage = document.createElement("span");
+    // this.clearError(inputField);
+    const errorMessage = document.createElement("div");
     errorMessage.classList.add("error-message");
     errorMessage.textContent = message;
     inputField.classList.add("error");

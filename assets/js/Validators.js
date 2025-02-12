@@ -37,7 +37,7 @@ class Validators {
     const emailPattern = /^[^\s@]+@[a-zA-Z]+\.[a-zA-Z]+$/;
 
     if (!emailPattern.test(email)) {
-      return "Formato mail non valido";
+      return "Inserisci una email valida";
     } else {
       const emailDomain = email.split("@")[1];
       if (invalidDomains.includes(emailDomain)) {
@@ -45,6 +45,18 @@ class Validators {
       } else {
         return "";
       }
+    }
+  }
+
+  static validatePrivacyPolicy(privacyPolicyCheckbox) {
+    // Il checkbox viene attivato dall'event listener sul click al link alla privacy policy
+    // quindi se il suo stato è disabled=true non è stata aperta
+    if (privacyPolicyCheckbox.disabled) {
+      return "Devi aprire e accettare la privacy policy.";
+    } else if (!privacyPolicyCheckbox.checked) {
+      return "Devi accettare la privacy policy.";
+    } else {
+      return "";
     }
   }
 
