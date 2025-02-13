@@ -11,7 +11,7 @@ body {
   grid-template-rows: 3rem auto;
 }
 
-.body {
+.close {
   grid-template-areas:
     "a a a"
     "c c c"
@@ -46,4 +46,10 @@ main button {
   position: absolute;
   top: 0;
   left: 0;
+}
+
+@media screen and (min-width: 500px) {
+  main button {
+    display: none;
+  }
 }

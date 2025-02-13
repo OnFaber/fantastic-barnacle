@@ -12,7 +12,7 @@ function show() {
 }
 
 button.addEventListener("click", function (e) {
-  body.classList.toggle("body");
+  body.classList.toggle("close");
   if (nav.style.display == "none") {
     nav.style.display = "flex";
   } else {
