@@ -25,7 +25,7 @@ function checkFormInputs(event) {
     }
   }
   
-  if (isValid) {
+  /*if (isValid) {
     //Validazione password
     const passwordError = Validators.validatePassword(passwordValue);
     if (passwordError.length > 0) {
@@ -52,16 +52,15 @@ function checkFormInputs(event) {
     } else {
       signUpForm.privacyPolicyCustomCheckbox.classList.remove("error");
     }
-  }
+  }*/
   //Se è tutto valido, registro l'utente
   if (isValid) {
     const date = new Date();
     const registrationTime = date.getTime();
-    const resetCode = "123";
+    const resetCode = Math.round(Math.random()* (10000 - 1000) + 1000);
     const user = new User (emailValue, passwordValue, resetCode, date);
-    console.log(date);
     localStorage.setItem(`user+${user.credentials.email}`, JSON.stringify(user));
-    redirect(`/sign-in.html`);
+    redirect(`/sign-in.html?newUser=${encodeURIComponent(emailValue)}`);
   }
 }
 

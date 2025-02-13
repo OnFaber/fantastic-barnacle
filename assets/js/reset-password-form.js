@@ -19,7 +19,7 @@ function checkFormInputs(event) {
         } else { //Reset della password
             user.credentials.password = "changeMe!";
             localStorage.setItem(`user+${emailValue}`, JSON.stringify(user));
-            window.alert(`Password resettata con successo.\nLa nuova password è "${user.credentials.password}"`);
+            window.alert(`Password reset successfully.\nYour new password is "${user.credentials.password}"`);
         }
 
     } else {

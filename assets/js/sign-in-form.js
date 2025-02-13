@@ -4,11 +4,20 @@ import { SignInForm } from "./Forms.js";
 const signInForm = new SignInForm(document.signInForm);
 document.signInForm.addEventListener("submit", checkFormInputs);
 
+const urlParams = new URLSearchParams(window.location.search)
+const redirectedSignUp = urlParams.has("newUser");
+if (redirectedSignUp) {
+    const email = urlParams.get("newUser");
+    const user = JSON.parse(localStorage.getItem(`user+${email}`));
+    const resetCode = user.credentials.resetCode;
+    window.alert(`Signed up.\nPassword reset code: ${resetCode}`)
+}
+
 function checkFormInputs(event) {
     event.preventDefault();
     let isAuthenticated = true;
     const emailValue = signInForm.emailField.value;
-    let user = JSON.parse(localStorage.getItem(`user+${emailValue}`));
+    const user = JSON.parse(localStorage.getItem(`user+${emailValue}`));
     if (user != null) { //Questo fa anche da validazione della mail per via del modo in cui è costruita la key
         const savedPassword = user.credentials.password
         
