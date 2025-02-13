@@ -100,6 +100,12 @@ nav ul li a:hover {
   transition: background 0.3s;
 }
 
+.bg-image {
+  background-image: url("../altro/hand-drawn-no-data-illustration_23-2150584271.avif");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
 main {
   position: relative;
   display: flex;
