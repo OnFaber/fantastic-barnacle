@@ -6,7 +6,7 @@ import User from "./User.js"
 const signUpForm = new SignUpForm(document.signUpForm);
 document.signUpForm.addEventListener("submit", checkFormInputs);
 document.getElementById("privacyPolicyHref").addEventListener("click", () => {
-    signUpForm.privacyPolicyCheckbox.disabled = false;
+  signUpForm.privacyPolicyCheckbox.disabled = false;
 });
 
 function checkFormInputs(event) {
@@ -20,38 +20,38 @@ function checkFormInputs(event) {
     ErrorHandler.showError(signUpForm.emailField, emailError, 3000);
   } else {
     if (localStorage.getItem(`user+${emailValue}`) != null) {
-        isValid = false;
-        ErrorHandler.showError(signUpForm.emailField, "E-Mail already used", 3000);
+      isValid = false;
+      ErrorHandler.showError(signUpForm.emailField, "E-Mail already used", 3000);
     }
   }
   
   /*if (isValid) {
-    //Validazione password
-    const passwordError = Validators.validatePassword(passwordValue);
-    if (passwordError.length > 0) {
-      isValid = false;
-      passwordError.forEach((message) => {
-        ErrorHandler.showError(signUpForm.passwordField, message, 3000);
-      });
-    }
+  //Validazione password
+  const passwordError = Validators.validatePassword(passwordValue);
+  if (passwordError.length > 0) {
+  isValid = false;
+  passwordError.forEach((message) => {
+    ErrorHandler.showError(signUpForm.passwordField, message, 3000);
+  });
+  }
   }
   if (isValid) { 
-    //Validazione checkbox
-    const privacyPolicyError = Validators.validatePrivacyPolicy(
-      signUpForm.privacyPolicyCheckbox,
-    );
-    if (privacyPolicyError !== "") {
-      isValid = false;
-      signUpForm.privacyPolicyCustomCheckbox.classList.add("error");
-      ErrorHandler.showError(
-        signUpForm.privacyPolicyCustomCheckbox.closest(
-          ".customCheckboxContainer",
-        ),
-        privacyPolicyError, 3000
-      );
-    } else {
-      signUpForm.privacyPolicyCustomCheckbox.classList.remove("error");
-    }
+  //Validazione checkbox
+  const privacyPolicyError = Validators.validatePrivacyPolicy(
+  signUpForm.privacyPolicyCheckbox,
+  );
+  if (privacyPolicyError !== "") {
+  isValid = false;
+  signUpForm.privacyPolicyCustomCheckbox.classList.add("error");
+  ErrorHandler.showError(
+  signUpForm.privacyPolicyCustomCheckbox.closest(
+  ".customCheckboxContainer",
+  ),
+  privacyPolicyError, 3000
+  );
+  } else {
+  signUpForm.privacyPolicyCustomCheckbox.classList.remove("error");
+  }
   }*/
   //Se è tutto valido, registro l'utente
   if (isValid) {

@@ -6,18 +6,18 @@ class ErrorHandler {
     errorMessage.textContent = message;
     inputField.classList.add("error");
     inputField.insertAdjacentElement("afterend", errorMessage);
-
+    
     inputField.focus();
-
+    
     setTimeout(() => {
       this.clearError(inputField);
     }, duration);
   }
-
+  
   static clearError(inputField) {
     inputField.classList.remove("error");
     const existingError =
-      inputField.parentElement.querySelector(".error-message");
+    inputField.parentElement.querySelector(".error-message");
     if (existingError) existingError.remove();
   }
 }
