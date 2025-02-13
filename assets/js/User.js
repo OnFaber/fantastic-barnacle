@@ -1,9 +1,11 @@
 class User {
-    constructor (email, password) {
+    constructor (email, password, registrationDate, library = []) {
         this.credentials = {
             email: email,
-            password: password
+            password: password,
         }
+        this.registrationDate = registrationDate;
+        this.library = library;
     }
 }
 

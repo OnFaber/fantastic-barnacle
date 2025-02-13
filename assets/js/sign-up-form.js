@@ -14,22 +14,21 @@ document
 function checkFormInputs(event) {
   event.preventDefault();
   let isValid = true;
-  
+  const email = signUpForm.email.value, password = signUpForm.password.value;
   //Validazione email
-  const email = signUpForm.email.value;
   const emailError = Validators.validateEmail(email);
   if (emailError != "") {
     isValid = false;
     ErrorHandler.showError(signUpForm.email, emailError, 3000);
   } else {
     if (localStorage.getItem(`user+${email}`) != null) {
-      ErrorHandler.showError(signUpForm.email, "E-Mail already used", 3000);
+        isValid = false;
+        ErrorHandler.showError(signUpForm.email, "E-Mail already used", 3000);
     }
   }
   
   if (isValid) {
     //Validazione password
-    const password = signUpForm.password.value;
     const passwordError = Validators.validatePassword(password);
     if (passwordError.length > 0) {
       isValid = false;
@@ -56,9 +55,12 @@ function checkFormInputs(event) {
       signUpForm.privacyPolicyCustomCheckbox.classList.remove("error");
     }
   }
-  
+  //Se è tutto valido, registro l'utente
   if (isValid) {
-    const user = new User (signUpForm.email.value, signUpForm.password.value);
+    const date = new Date();
+    const registrationTime = date.getTime();
+    const user = new User (email, password, date);
+    console.log(date);
     localStorage.setItem(`user+${user.credentials.email}`, JSON.stringify(user));
     redirect(`/sign-in.html`);
   }
