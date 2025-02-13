@@ -10,14 +10,25 @@
     />
     <!-- /static/stile.css -->
     <link href="assets/css/forms.css" rel="stylesheet" />
+    <!-- Script per impedire di visualizzare questa pagina se già loggato -->
+    <script>
+    // Controllo se l'utente è già loggato
+      let authenticatedUserLocal = JSON.parse(localStorage.getItem("authenticatedUser"));
+      let authenticatedUserSession = JSON.parse(sessionStorage.getItem("authenticatedUser"));
+      if (authenticatedUserSession != null) {
+          window.location.href = "./index.html" //Se è loggato lo reindirizzo alla homepage
+      } else if (authenticatedUserLocal != null) {
+        window.location.href = "./index.html" //Se è loggato lo reindirizzo alla homepage
+      }
+      </script>
     <!-- Importazione script -->
     <!--L'attributo defer indica di eseguire lo script dopo il caricamento del documento. 
     Necessario per far trovare allo script gli elementi-->
     <script
-      type="module"
-      src="assets/js/sign-in-form.js"
-      defer
-    ></script>
+    type="module"
+    src="assets/js/sign-in-form.js"
+    defer
+  ></script>
   </head>
 
   <body>
