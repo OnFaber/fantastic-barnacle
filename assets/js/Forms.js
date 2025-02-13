@@ -29,6 +29,7 @@ class ResetPasswordForm extends Form {
     super(formElement);
     this.emailField = this.form.email;
     this.resetCodeField = this.form.resetCode;
+    this.passwordField = this.form.password;
   }
 }
 export { Form, SignUpForm, SignInForm, ResetPasswordForm };

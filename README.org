@@ -1,10 +1,6 @@
 #+TITLE: Progetto programmazione web Itslaziodigital 24-26
 
 
-* TODO
+* TODO per il branch user-account
 
-- salvare dati utente in localstorage
-- homepage con link al signup e login
-- responsiveness
-- pagina con collezione libri
-- salvare dati in localstorage dei libri
+- migliorare il messaggio usato per comunicare il codice di reset password (non usare alert)
