@@ -28,25 +28,37 @@
       <a href="./account.html">Your account</a>
     </header>
 
-    <div class="sidebar">
-      <nav>
-        <a href="#">utenti</a>
-        <a href="#">utenti</a>
-        <a href="#">utenti</a>
-        <a href="#">utenti</a>
-      </nav>
-    </div>
-    <main>
-      <h1>hello</h1>
-      <button id="button">
+    <div class="container">
+      <div class="sidebar hidden">
+        <button id="close_sidebar" class="btn">
+          <img
+            src="assets/altro/arrow-left-from-line-svgrepo-com.svg"
+            width="25px"
+            height="25px"
+          />
+        </button>
+        <nav>
+          <ul>
+            <li><a href="#">utenti</a></li>
+            <li><a href="#">utenti</a></li>
+            <li><a href="#">utenti</a></li>
+          </ul>
+        </nav>
+      </div>
+      <main>
+        <button id="toggle_sidebar" class="btn">
+          <img
+            src="assets/altro/arrow-right-from-bracket-svgrepo-com.svg"
+            width="25px"
+            height="25px"
+          />
+        </button>
         <img
-          src="assets/altro/arrow-right-from-bracket-svgrepo-com.svg"
-          width="15px"
-          height="15px"
+          alt=""
+          src="assets/altro/hand-drawn-no-data-illustration_23-2150584271.avif"
         />
-      </button>
-    </main>
-
+      </main>
+    </div>
     <script type="text/javascript" src="assets/js/index.js"></script>
   </body>
 </html>
