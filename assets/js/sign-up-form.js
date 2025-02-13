@@ -1,6 +1,7 @@
 import ErrorHandler from "./ErrorHandler.js";
 import Validators from "./Validators.js";
 import { SignUpForm } from "./Forms.js";
+import User from "./User.js"
 
 const signUpForm = new SignUpForm(document.signUpForm);
 document.signUpForm.addEventListener("submit", checkFormInputs);
@@ -28,12 +29,11 @@ function checkFormInputs(event) {
   
   if (isValid) {
     //Validazione password
-    const passwordMessages = Validators.validatePassword(
-      signUpForm.password.value,
-    );
-    if (passwordMessages.length > 0) {
+    const password = signUpForm.password.value;
+    const passwordError = Validators.validatePassword(password);
+    if (passwordError.length > 0) {
       isValid = false;
-      passwordMessages.forEach((message) => {
+      passwordError.forEach((message) => {
         ErrorHandler.showError(signUpForm.password, message, 3000);
       });
     }
@@ -45,9 +45,7 @@ function checkFormInputs(event) {
     );
     if (privacyPolicyError !== "") {
       isValid = false;
-      /* Se usato così la classe error non scompare nello stesso tempo del messaggio dell'ErrorHandler */
-      /* Ma integrare questa class list add all'error handler crea problemi */
-      //signUpForm.privacyPolicyCustomCheckbox.classList.add("error");
+      signUpForm.privacyPolicyCustomCheckbox.classList.add("error");
       ErrorHandler.showError(
         signUpForm.privacyPolicyCustomCheckbox.closest(
           ".customCheckboxContainer",
@@ -55,19 +53,12 @@ function checkFormInputs(event) {
         privacyPolicyError, 3000
       );
     } else {
-      /* Se usato così la classe error non scompare nello stesso tempo del messaggio dell'ErrorHandler */
-      /* Ma integrare questa class list add all'error handler crea problemi */
-      //signUpForm.privacyPolicyCustomCheckbox.classList.remove("error");
+      signUpForm.privacyPolicyCustomCheckbox.classList.remove("error");
     }
   }
   
   if (isValid) {
-    const user = {
-      credentials: {
-        email: signUpForm.email.value,
-        password: signUpForm.password.value,
-      },
-    };
+    const user = new User (signUpForm.email.value, signUpForm.password.value);
     localStorage.setItem(`user+${user.credentials.email}`, JSON.stringify(user));
     redirect(`/sign-in.html`);
   }
