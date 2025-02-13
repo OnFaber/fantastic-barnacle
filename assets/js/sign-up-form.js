@@ -27,7 +27,7 @@ function checkFormInputs(event) {
     }
   }
   
-  if (isValid) {
+  /*if (isValid) {
     //Validazione password
     const passwordError = Validators.validatePassword(password);
     if (passwordError.length > 0) {
@@ -54,7 +54,7 @@ function checkFormInputs(event) {
     } else {
       signUpForm.privacyPolicyCustomCheckbox.classList.remove("error");
     }
-  }
+  }*/
   //Se è tutto valido, registro l'utente
   if (isValid) {
     const date = new Date();
