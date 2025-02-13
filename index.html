@@ -1,52 +1,64 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <link
-  rel="icon"
-  type="image/xicon"
-  href="./assets/altro/Graphicloads-Colorful-Long-Shadow-Book.ico"
-  />
-  <meta charset="UTF-8" />
-  <link href="assets/css/index.css" rel="stylesheet" />
-  <meta
-  name="viewport"
-  content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
-  />
-  <title>Homepage - website.com</title>
-  <!-- Importazione script -->
-  <!--L'attributo defer indica di eseguire lo script dopo il caricamento del documento. 
-  Necessario per far trovare allo script gli elementi-->
-  <script
-  type="module"
-  src="assets/js/account-handler.js"
-  defer
-  ></script>
-</head>
-<body>
-  <header>
-    <a href="./sign-in.html">Sign in</a>
-    <a href="./account.html">Your account</a>
-  </header>
-  
-  <div class="sidebar">
-    <nav>
-      <a href="#">utenti</a>
-      <a href="#">utenti</a>
-      <a href="#">utenti</a>
-      <a href="#">utenti</a>
-    </nav>
-  </div>
-  <main>
-    <h1>hello</h1>
-    <button id="button">
-      <img
-      src="assets/altro/arrow-right-from-bracket-svgrepo-com.svg"
-      width="15px"
-      height="15px"
-      />
-    </button>
-  </main>
-  
-  <script type="text/javascript" src="assets/js/index.js"></script>
-</body>
+  <head>
+    <link
+      rel="icon"
+      type="image/xicon"
+      href="./assets/altro/Graphicloads-Colorful-Long-Shadow-Book.ico"
+    />
+    <meta charset="UTF-8" />
+    <link href="assets/css/index.css" rel="stylesheet" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <title>Homepage - website.com</title>
+    <!-- Importazione script -->
+    <!--L'attributo defer indica di eseguire lo script dopo il caricamento del documento. 
+    Necessario per far trovare allo script gli elementi-->
+    <script
+      type="module"
+      src="assets/js/authentication-handler.js"
+      defer
+    ></script>
+  </head>
+  <body>
+    <header>
+      <a href="./sign-in.html">Sign in</a>
+      <a href="./account.html">Your account</a>
+    </header>
+
+    <div class="container">
+      <div class="sidebar hidden">
+        <button id="close_sidebar" class="btn">
+          <img
+            src="assets/altro/arrow-left-from-line-svgrepo-com.svg"
+            width="25px"
+            height="25px"
+          />
+        </button>
+        <nav>
+          <ul>
+            <li><a href="#">utenti</a></li>
+            <li><a href="#">utenti</a></li>
+            <li><a href="#">utenti</a></li>
+          </ul>
+        </nav>
+      </div>
+      <main>
+        <button id="toggle_sidebar" class="btn">
+          <img
+            src="assets/altro/arrow-right-from-bracket-svgrepo-com.svg"
+            width="25px"
+            height="25px"
+          />
+        </button>
+        <img
+          alt=""
+          src="assets/altro/hand-drawn-no-data-illustration_23-2150584271.avif"
+        />
+      </main>
+    </div>
+    <script type="text/javascript" src="assets/js/index.js"></script>
+  </body>
 </html>

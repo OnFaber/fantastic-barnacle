@@ -1,69 +1,119 @@
-body {
-  margin: 0;
-  padding: 0;
-  display: grid;
-  height: 100vh;
-  grid-template-areas:
-    "a a a"
-    "b c c"
-    "b c c";
-  grid-template-columns: 300px 1fr;
-  grid-template-rows: 3rem auto;
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
 }
 
-.close {
-  grid-template-areas:
-    "a a a"
-    "c c c"
-    "c c c";
+html {
+  height: 100vh;
+  padding-bottom: 0.25rem;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  margin-top: 0;
+  height: 100%;
+  font-family: sans-serif;
 }
 
 header {
-  padding: 0 1rem;
-  grid-area: a;
   display: flex;
+  height: 3rem;
+  padding: 1rem;
   justify-content: flex-end;
   align-items: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+header a {
+  margin-left: 0.5rem;
+  margin-right: 1rem;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
 }
 
 .sidebar {
-  width: 100%;
+  display: flex;
+  flex-direction: column;
+  width: 400px;
   height: 100%;
-  grid-area: b;
+  background-color: #444;
+}
+
+.btn {
+  background-color: transparent;
+  border: 1px solid white;
+}
+
+.sidebar .btn {
+  margin: 1rem;
+  align-self: end;
+  background-color: transparent;
+  border: 1px solid white;
+}
+
+#toggle_sidebar {
+  position: absolute;
+  top: 10px;
+  left: 10px;
 }
 
 nav {
-  position: relative;
   display: flex;
   flex-direction: column;
-  padding: 1rem;
-  background-color: aliceblue;
+  justify-content: center;
+  height: 100%;
+}
+
+nav ul {
+  padding: 0;
+  font-size: 2rem;
+  text-align: center;
+  list-style: none;
+}
+
+nav ul li {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  transition: transform 0.2s ease-in-out;
+}
+
+nav ul li:hover {
+  transform: scale(1.1);
+  background: rgba(255, 255, 255, 0.2);
+}
+
+nav ul li a {
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  color: white;
+}
+
+nav ul li a:hover {
+  color: white;
+  display: block;
+  transition: background 0.3s;
 }
 
 main {
   position: relative;
-  padding: 2rem;
-  grid-area: c;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
-main button {
+toggle_sidebar {
   position: absolute;
-  top: 15px;
-  left: 0;
-  background-color: transparent;
-  border: 2px solid black;
-  border-radius: 5px;
-  cursor: pointer;
+  top: 20px;
+  left: 10px;
 }
 
-@media screen and (min-width: 500px) {
-  main button {
-    display: none;
-  }
-}
-
-@media screen and (max-width: 350px) {
-  nav {
-    width: 100vw;
-  }
+.hidden {
+  display: none;
 }
