@@ -12,36 +12,36 @@ class Validators {
 
     if (!hasValidLength)
       this.messages.push(
-        "La password deve essere lunga tra 16 e 128 caratteri.",
+        "Between 16 to 128 characters",
       );
     if (!hasValidSpecial)
       this.messages.push(
-        "La password deve contenere almeno un carattere speciale.",
+        "At least one special character",
       );
     if (!hasValidNumber)
-      this.messages.push("La password deve contenere almeno un numero.");
+      this.messages.push("At least one number");
     if (!hasValidLower)
       this.messages.push(
-        "La password deve contenere almeno una lettera minuscola.",
+        "At least one lowercase letter",
       );
     if (!hasValidUpper)
       this.messages.push(
-        "La password deve contenere almeno una lettera maiuscola.",
+        "At least one uppercase letter",
       );
 
     return this.messages;
   }
 
   static validateEmail(email) {
-    const invalidDomains = [];
+    const invalidDomains = ["duck.com"];
     const emailPattern = /^[^\s@]+@[a-zA-Z]+\.[a-zA-Z]+$/;
 
     if (!emailPattern.test(email)) {
-      return "Inserisci una email valida";
+      return "Invalid E-Mail address";
     } else {
       const emailDomain = email.split("@")[1];
       if (invalidDomains.includes(emailDomain)) {
-        return `Dominio ${emailDomain} non ammesso`;
+        return `Domain ${emailDomain} is not allowed`;
       } else {
         return "";
       }
