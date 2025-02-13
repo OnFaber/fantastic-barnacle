@@ -7,16 +7,16 @@ document.signInForm.addEventListener("submit", checkFormInputs);
 function checkFormInputs(event) {
     event.preventDefault();
     let isAuthenticated = true;
-    const email = signInForm.email.value;
-    let user = JSON.parse(localStorage.getItem(`user+${email}`));
-    if (user != null) { //Questo fa anche da validazione della mail
+    const emailValue = signInForm.emailField.value;
+    let user = JSON.parse(localStorage.getItem(`user+${emailValue}`));
+    if (user != null) { //Questo fa anche da validazione della mail per via del modo in cui è costruita la key
         const savedPassword = user.credentials.password
         
         //Validazione password
         //Validazione della corrispondenza
-        if (savedPassword != signInForm.password.value) {
+        if (savedPassword != signInForm.passwordField.value) {
             isAuthenticated = false;
-            ErrorHandler.showError(signInForm.password, "Password errata", 3000);
+            ErrorHandler.showError(signInForm.passwordField, "Wrong password", 3000);
         }
         
         //Controllo remember me
@@ -27,11 +27,11 @@ function checkFormInputs(event) {
         
         //Autenticazione (se la validazione password va a buon fine)
         if (isAuthenticated) {
-            localStorage.setItem(`authenticatedUser`, JSON.stringify(email));
+            localStorage.setItem(`authenticatedUser`, JSON.stringify(emailValue));
             redirect(`/index.html`);
         }
     } else {
-        ErrorHandler.showError(signInForm.email, "Utente non registrato", 3000);
+        ErrorHandler.showError(signInForm.emailField, "User not found", 3000);
     }
 }
 

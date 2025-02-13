@@ -5,35 +5,33 @@ import User from "./User.js"
 
 const signUpForm = new SignUpForm(document.signUpForm);
 document.signUpForm.addEventListener("submit", checkFormInputs);
-document
-.getElementById("privacyPolicyHref")
-.addEventListener("click", () => {
-  signUpForm.privacyPolicyCheckbox.disabled = false;
+document.getElementById("privacyPolicyHref").addEventListener("click", () => {
+    signUpForm.privacyPolicyCheckbox.disabled = false;
 });
 
 function checkFormInputs(event) {
   event.preventDefault();
   let isValid = true;
-  const email = signUpForm.email.value, password = signUpForm.password.value;
+  const emailValue = signUpForm.emailField.value, passwordValue = signUpForm.passwordField.value;
   //Validazione email
-  const emailError = Validators.validateEmail(email);
+  const emailError = Validators.validateEmail(emailValue);
   if (emailError != "") {
     isValid = false;
-    ErrorHandler.showError(signUpForm.email, emailError, 3000);
+    ErrorHandler.showError(signUpForm.emailField, emailError, 3000);
   } else {
-    if (localStorage.getItem(`user+${email}`) != null) {
+    if (localStorage.getItem(`user+${emailValue}`) != null) {
         isValid = false;
-        ErrorHandler.showError(signUpForm.email, "E-Mail already used", 3000);
+        ErrorHandler.showError(signUpForm.emailField, "E-Mail already used", 3000);
     }
   }
   
-  /*if (isValid) {
+  if (isValid) {
     //Validazione password
-    const passwordError = Validators.validatePassword(password);
+    const passwordError = Validators.validatePassword(passwordValue);
     if (passwordError.length > 0) {
       isValid = false;
       passwordError.forEach((message) => {
-        ErrorHandler.showError(signUpForm.password, message, 3000);
+        ErrorHandler.showError(signUpForm.passwordField, message, 3000);
       });
     }
   }
@@ -54,12 +52,12 @@ function checkFormInputs(event) {
     } else {
       signUpForm.privacyPolicyCustomCheckbox.classList.remove("error");
     }
-  }*/
+  }
   //Se è tutto valido, registro l'utente
   if (isValid) {
     const date = new Date();
     const registrationTime = date.getTime();
-    const user = new User (email, password, date);
+    const user = new User (emailValue, passwordValue, date);
     console.log(date);
     localStorage.setItem(`user+${user.credentials.email}`, JSON.stringify(user));
     redirect(`/sign-in.html`);

@@ -1,27 +1,26 @@
 class Form {
   constructor(formElement) {
     this.form = formElement;
-    this.email = this.form.email;
-    this.password = this.form.password;
   }
 }
 
 class SignUpForm extends Form {
   constructor(formElement) {
     super(formElement);
+    this.emailField = this.form.email;
+    this.passwordField = this.form.password;
     this.privacyPolicyCheckbox = this.form.privacyPolicyCheckbox;
-    this.privacyPolicyCustomCheckbox = document.getElementById(
-      "signUpFormCustomCheckbox",
-    );
+    this.privacyPolicyCustomCheckbox = document.getElementById("signUpFormCustomCheckbox");
   }
 }
 
 class SignInForm extends Form {
   constructor(formElement) {
     super(formElement);
+    this.emailField = this.form.email;
+    this.passwordField = this.form.password;
     this.rememberMeCheckbox = this.form.rememberMeCheckbox;
-    this.rememberMeCustomCheckbox = document.getElementById("signUpFormCustomCheckbox",
-    );
+    this.rememberMeCustomCheckbox = document.getElementById("signUpFormCustomCheckbox");
   }
 }
 export { Form, SignUpForm, SignInForm };

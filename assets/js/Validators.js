@@ -52,9 +52,9 @@ class Validators {
     // Il checkbox viene attivato dall'event listener sul click al link alla privacy policy
     // quindi se il suo stato è disabled=true non è stata aperta
     if (privacyPolicyCheckbox.disabled) {
-      return "Devi aprire e accettare la privacy policy.";
+      return "You have to read and accept our privacy policy";
     } else if (!privacyPolicyCheckbox.checked) {
-      return "Devi accettare la privacy policy.";
+      return "You have to accept our privacy policy";
     } else {
       return "";
     }
