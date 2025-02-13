@@ -1,21 +1,21 @@
 const button = document.getElementById("button");
-const nav = document.getElementsByTagName("nav")[0];
+const sidebar = document.getElementsByClassName("sidebar")[0];
 const main = document.getElementsByTagName("main")[0];
 const body = document.getElementsByTagName("body")[0];
 
 function hide() {
-  nav.style.display = "none";
+  sidebar.style.display = "none";
 }
 
 function show() {
-  nav.style.display = "flex";
+  sidebar.style.display = "flex";
 }
 
 button.addEventListener("click", function (e) {
   body.classList.toggle("close");
-  if (nav.style.display == "none") {
-    nav.style.display = "flex";
+  if (sidebar.style.display == "none") {
+    sidebar.style.display = "flex";
   } else {
-    nav.style.display = "none";
+    sidebar.style.display = "none";
   }
 });

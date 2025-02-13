@@ -26,30 +26,44 @@ header {
   align-items: center;
 }
 
+.sidebar {
+  width: 100%;
+  height: 100%;
+  grid-area: b;
+}
+
 nav {
   position: relative;
-  padding: 1rem;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  grid-area: b;
+  padding: 1rem;
   background-color: aliceblue;
 }
 
 main {
   position: relative;
+  padding: 2rem;
   grid-area: c;
-  background-color: blue;
 }
 
 main button {
   position: absolute;
-  top: 0;
+  top: 15px;
   left: 0;
+  background-color: transparent;
+  border: 2px solid black;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 @media screen and (min-width: 500px) {
   main button {
     display: none;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  nav {
+    width: 100vw;
   }
 }
