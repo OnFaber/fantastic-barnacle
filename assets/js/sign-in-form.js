@@ -35,8 +35,13 @@ function checkFormInputs(event) {
         
         //Autenticazione (se la validazione password va a buon fine)
         if (isAuthenticated) {
-            localStorage.setItem(`authenticatedUser`, JSON.stringify(emailValue));
-            redirect(`/index.html`);
+            if (rememberMe) {
+                localStorage.setItem(`authenticatedUser`, JSON.stringify(emailValue));
+                redirect(`/index.html`);
+            } else {
+                sessionStorage.setItem(`authenticatedUser`, JSON.stringify(emailValue));
+                redirect(`/index.html`);
+            }
         }
     } else {
         ErrorHandler.showError(signInForm.emailField, "User not found", 3000);
