@@ -23,4 +23,12 @@ class SignInForm extends Form {
     this.rememberMeCustomCheckbox = document.getElementById("signUpFormCustomCheckbox");
   }
 }
-export { Form, SignUpForm, SignInForm };
+
+class ResetPasswordForm extends Form {
+  constructor (formElement) {
+    super(formElement);
+    this.emailField = this.form.email;
+    this.resetCodeField = this.form.resetCode;
+  }
+}
+export { Form, SignUpForm, SignInForm, ResetPasswordForm };

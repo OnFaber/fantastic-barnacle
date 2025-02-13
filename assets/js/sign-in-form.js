@@ -13,7 +13,6 @@ function checkFormInputs(event) {
         const savedPassword = user.credentials.password
         
         //Validazione password
-        //Validazione della corrispondenza
         if (savedPassword != signInForm.passwordField.value) {
             isAuthenticated = false;
             ErrorHandler.showError(signInForm.passwordField, "Wrong password", 3000);

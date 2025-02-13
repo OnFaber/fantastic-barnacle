@@ -57,7 +57,8 @@ function checkFormInputs(event) {
   if (isValid) {
     const date = new Date();
     const registrationTime = date.getTime();
-    const user = new User (emailValue, passwordValue, date);
+    const resetCode = "123";
+    const user = new User (emailValue, passwordValue, resetCode, date);
     console.log(date);
     localStorage.setItem(`user+${user.credentials.email}`, JSON.stringify(user));
     redirect(`/sign-in.html`);
