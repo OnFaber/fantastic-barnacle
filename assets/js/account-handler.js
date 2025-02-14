@@ -4,15 +4,17 @@ const logOutButton = document.getElementById("logOutButton");
 //Se c'è aggiunto un event listener per il click
 if (logOutButton != null) document.getElementById("logOutButton").addEventListener("click", logOut);
 
-//Controllo se l'utente è loggato
-let authenticatedUserLocal = JSON.parse(localStorage.getItem("authenticatedUser"));
-let authenticatedUserSession = JSON.parse(sessionStorage.getItem("authenticatedUser"));
-if (authenticatedUserSession != null) {
-    console.log("Ciao, sei loggato come "+authenticatedUserSession);
-} else if (authenticatedUserLocal != null) {
-    console.log("Ciao, sei loggato come "+authenticatedUserLocal);
-} else {
-    console.log("Non sei loggato");
+//Controllo che utente è loggato
+export function whoIsLoggedIn () {
+    let authenticatedUserSession = JSON.parse(localStorage.getItem("authenticatedUser"));
+    if (authenticatedUserSession != null) {
+        return authenticatedUserSession;
+    }
+    let authenticatedUserLocal = JSON.parse(sessionStorage.getItem("authenticatedUser")); 
+    if (authenticatedUserLocal != null) {
+        return authenticatedUserLocal;
+    }
+    return null;
 }
 
 //--Funzioni legate a eventi
