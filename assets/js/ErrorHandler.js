@@ -1,6 +1,6 @@
 class ErrorHandler {
   static showError(inputField, message, duration) {
-    // this.clearError(inputField);
+    this.clearError(inputField);
     const errorMessage = document.querySelector(".notice");
     errorMessage.classList.add("error");
     errorMessage.classList.add("fade_in");
@@ -11,8 +11,9 @@ class ErrorHandler {
     inputField.focus();
 
     setTimeout(() => {
-      this.clearError(inputField);
       errorMessage.classList.toggle("fade_in");
+      errorMessage.classList.toggle("error");
+      this.clearError(inputField);
     }, duration);
   }
 
