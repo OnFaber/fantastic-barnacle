@@ -30,34 +30,35 @@ function checkFormInputs(event) {
     }
   }
 
-  /*if (isValid) {
-  //Validazione password
-  const passwordError = Validators.validatePassword(passwordValue);
-  if (passwordError.length > 0) {
-  isValid = false;
-  passwordError.forEach((message) => {
-    ErrorHandler.showError(signUpForm.passwordField, message, 3000);
-  });
+  if (isValid) {
+    //Validazione password
+    const passwordError = Validators.validatePassword(passwordValue);
+    if (passwordError.length > 0) {
+      isValid = false;
+      passwordError.forEach((message) => {
+        ErrorHandler.showError(signUpForm.passwordField, message, 3000);
+      });
+    }
   }
+  if (isValid) {
+    //Validazione checkbox
+    const privacyPolicyError = Validators.validatePrivacyPolicy(
+      signUpForm.privacyPolicyCheckbox,
+    );
+    if (privacyPolicyError !== "") {
+      isValid = false;
+      signUpForm.privacyPolicyCustomCheckbox.classList.add("error");
+      ErrorHandler.showError(
+        signUpForm.privacyPolicyCustomCheckbox.closest(
+          ".customCheckboxContainer",
+        ),
+        privacyPolicyError,
+        3000,
+      );
+    } else {
+      signUpForm.privacyPolicyCustomCheckbox.classList.remove("error");
+    }
   }
-  if (isValid) { 
-  //Validazione checkbox
-  const privacyPolicyError = Validators.validatePrivacyPolicy(
-  signUpForm.privacyPolicyCheckbox,
-  );
-  if (privacyPolicyError !== "") {
-  isValid = false;
-  signUpForm.privacyPolicyCustomCheckbox.classList.add("error");
-  ErrorHandler.showError(
-  signUpForm.privacyPolicyCustomCheckbox.closest(
-  ".customCheckboxContainer",
-  ),
-  privacyPolicyError, 3000
-  );
-  } else {
-  signUpForm.privacyPolicyCustomCheckbox.classList.remove("error");
-  }
-  }*/
   //Se è tutto valido, registro l'utente
   if (isValid) {
     const date = new Date();
