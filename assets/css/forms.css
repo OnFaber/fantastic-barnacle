@@ -46,6 +46,7 @@ body {
   background-color: var(--background-color);
   font-family: var(--font-family);
   padding: 0 var(--space-l);
+  overflow-x: hidden;
 }
 
 /** Sign up/Sign in form */
@@ -214,17 +215,21 @@ body {
   padding: 0.5rem;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   width: 25rem;
   height: 3rem;
   background-color: #fff;
   color: #000;
-}
-
-.notice {
   border-style: solid;
   border-left-width: 0.75em;
+  transform: translateX(150%);
+  transition: transform, 0.3s, ease-in;
 }
+
+.notice p {
+  margin-right: 3rem;
+}
+
 .notice.success {
   border-color: green;
 }
@@ -241,6 +246,14 @@ body {
 .notice.notice.error::before {
   content: "❌";
   color: var(--error-color-accent);
+}
+/* 
+   .notice.fade_out {
+   transform: translateX(150%);
+   }
+ */
+.notice.fade_in {
+  transform: translateX(0);
 }
 
 /** local variables */

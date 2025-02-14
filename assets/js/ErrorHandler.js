@@ -1,23 +1,25 @@
 class ErrorHandler {
   static showError(inputField, message, duration) {
     // this.clearError(inputField);
-    const errorMessage = document.createElement("div");
-    errorMessage.classList.add("error-message");
+    const errorMessage = document.querySelector(".notice");
+    errorMessage.classList.add("error");
+    errorMessage.classList.add("fade_in");
     errorMessage.textContent = message;
     inputField.classList.add("error");
-    inputField.insertAdjacentElement("afterend", errorMessage);
-    
+    // inputField.insertAdjacentElement("afterend", errorMessage);
+
     inputField.focus();
-    
+
     setTimeout(() => {
       this.clearError(inputField);
+      errorMessage.classList.toggle("fade_in");
     }, duration);
   }
-  
+
   static clearError(inputField) {
     inputField.classList.remove("error");
     const existingError =
-    inputField.parentElement.querySelector(".error-message");
+      inputField.parentElement.querySelector(".error-message");
     if (existingError) existingError.remove();
   }
 }
