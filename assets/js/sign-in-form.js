@@ -1,25 +1,27 @@
 import ErrorHandler from "./ErrorHandler.js";
 import { SignInForm } from "./Forms.js";
 
-const signInForm = new SignInForm(document.signInForm);
-document.signInForm.addEventListener("submit", checkFormInputs);
-
+//--Parte dello script eseguita al caricamento
+//Controllo se l'utente si è appena registrato per mostrargli il messaggio di successo
 const urlParams = new URLSearchParams(window.location.search);
 const redirectedSignUp = urlParams.has("newUser");
 if (redirectedSignUp) {
   const email = urlParams.get("newUser");
   const user = JSON.parse(localStorage.getItem(`user+${email}`));
   const resetCode = user.credentials.resetCode;
-  window.alert(`Signed up.\nPassword reset code: ${resetCode}`);
+  ErrorHandler.showSuccess(null, `Signed up successfully.\nLog in now`, 5000);
 }
+
+//--Event listener
+const signInForm = new SignInForm(document.signInForm);
+document.signInForm.addEventListener("submit", checkFormInputs);
 
 function checkFormInputs(event) {
   event.preventDefault();
   let isAuthenticated = true;
   const emailValue = signInForm.emailField.value;
   const user = JSON.parse(localStorage.getItem(`user+${emailValue}`));
-  if (user != null) {
-    //Questo fa anche da validazione della mail per via del modo in cui è costruita la key
+  if (user != null) { //Questo fa anche da validazione della mail per via del modo in cui è costruita la key
     const savedPassword = user.credentials.password;
 
     //Validazione password
