@@ -61,10 +61,9 @@ function checkFormInputs(event) {
   //Se è tutto valido, registro l'utente
   if (isValid) {
     const date = new Date();
-    const registrationTime = date.getTime(); // sembra inutilizzato...
+    //Genero un numero casuale di 4 cifre come codice di reset password
     const resetCode = Math.round(Math.random() * (10000 - 1000) + 1000);
-    // registration time conviene inizializzarlo nella classe user direttamente?
-    const user = new User(emailValue, passwordValue, resetCode, date);
+    const user = new User(emailValue, passwordValue, resetCode);
     localStorage.setItem(
       `user+${user.credentials.email}`,
       JSON.stringify(user),
