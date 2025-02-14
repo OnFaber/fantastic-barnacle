@@ -38,6 +38,7 @@
 }
 
 body {
+  position: relative;
   min-height: 100vh;
   display: flex;
   justify-content: center;
@@ -206,11 +207,47 @@ body {
   font-size: 0.75rem;
 }
 
+.notice {
+  position: absolute;
+  top: 2rem;
+  right: 1rem;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 25rem;
+  height: 3rem;
+  background-color: #fff;
+  color: #000;
+}
+
+.notice {
+  border-style: solid;
+  border-left-width: 0.75em;
+}
+.notice.success {
+  border-color: green;
+}
+
+.notice.error {
+  border-color: var(--error-color-accent);
+}
+
+.notice.notice.success::before {
+  content: "✔";
+  color: green;
+}
+
+.notice.notice.error::before {
+  content: "❌";
+  color: var(--error-color-accent);
+}
+
 /** local variables */
 /*
-Local Variables:
-outline-regexp: "^/\\*\\*+"
-eval: (outline-minor-mode 1)
-eval: (outline-hide-sublevels 3)
-End:
-*/
+   Local Variables:
+   outline-regexp: "^/\\*\\*+"
+   eval: (outline-minor-mode 1)
+   eval: (outline-hide-sublevels 3)
+   End:
+ */
