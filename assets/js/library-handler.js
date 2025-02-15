@@ -5,14 +5,44 @@ import NoticeHandler from "./NoticeHandler.js";
 import { AddBookForm } from "./Forms.js";
 
 //--Parte di script che viene eseguita subito
-//Controllo se l'utente è loggato e con che account
-const loggedInUser = whoIsLoggedIn();
-if (loggedInUser != null) {
-    var user = new User();
-    user = JSON.parse(localStorage.getItem(`user+${loggedInUser}`));
-    updateBookList(0); //Se è loggato mostro la lista dei libri
-} else {
-    window.location.href = "./sign-in.html"; //Se non è loggato lo reindirizzo al login
+//Leggo dall'url quale libreria va mostrata
+const urlParams = new URLSearchParams(window.location.search);
+const hasUserParam = urlParams.has("user");
+var showingOwnLibrary = true;
+var loggedInUser = whoIsLoggedIn() //Restituisce la mail dell'utente loggato (null se nessuno)
+if (hasUserParam) { //Se l'url indica una libreria
+    const userParam = urlParams.get("user");
+    if (userParam == "me") { //user=me quando l'utente loggato va sulla sua libreria dalla homepage
+        if (loggedInUser == null) { //Se non c'è nessun utente loggato (inatteso in questa situazione)
+            window.location.href = "./index.html" //Reindirizzo alla homepage
+        } else { //Se è loggato carico i suoi dati
+            var user = new User();
+            user = JSON.parse(localStorage.getItem(`user+${loggedInUser}`));
+        }
+    } else { //Se user!=me devo controllare di quale utente devo mostrare la libreria
+        if ((loggedInUser != null) && (userParam == loggedInUser)) { //Anche se il parametro user!=me la libreria potrebbe comunque essere la sua
+            window.location.href = "./library.html?user=me" //In questo caso lo reindirizzo alla sua
+        } else { //Se la libreria non è dell'utente attuale
+            showingOwnLibrary = false; //Flag che indica che la libreria da mostrare non è dell'utente attuale
+            const email = userParam;
+            var user = new User();
+            user = JSON.parse(localStorage.getItem(`user+${email}`));
+            if (user == null) { //Se la libreria richiesta è di un utente che non esiste
+                window.location.href = "./library.html?user=me" //Lo reindirizzo alla sua (homepage se non loggato)
+            }
+        }
+    }
+} else { //Se l'url non indica nessuna libreria (inatteso) reindirizzo alla homepage
+    window.location.href = "./index.html";
+}
+
+//Mostro la libreria richiesta
+if (showingOwnLibrary) { //Se è la libreria dell'utente loggato
+    updateBookList(); //Carico la lista dei libri
+} else { //Se sta visualizzando la libreria di qualcun'altro
+    document.getElementById("addBookForm").classList.add("hidden"); //Nascondo il form di aggiunta libri
+    NoticeHandler.showMessage(null, "This is not your library", 3000);
+    updateBookList(); //Carico la lista dei libri
 }
 //Istanzio l'oggetto form
 const addBookForm = new AddBookForm(document.addBookForm);
@@ -33,7 +63,7 @@ function updateBookList () {
     booksList.innerHTML = '';
     //Ciclo su tutti i libri per creare ogni li
     for (let i=0; i<user.library.length; i++) {
-        //Controllo il libro ha un url per la copertina
+        //Controllo se il libro ha un url per la copertina
         //E in caso positivo creo l'html da inserire nel li
         if (user.library[i].coverImageSrc!="") {
             var img = `<div class="coverImageContainer">

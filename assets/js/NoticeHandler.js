@@ -33,7 +33,7 @@ class NoticeHandler {
     successMessage.classList.add("fade_in");
     successMessage.textContent = message;
     if (inputField != null) inputField.classList.add("success");
-    // inputField.insertAdjacentElement("afterend", errorMessage);
+    // inputField.insertAdjacentElement("afterend", successMessage);
 
     if (inputField != null) inputField.focus();
 
@@ -49,6 +49,32 @@ class NoticeHandler {
     const existingSuccess =
       inputField.parentElement.querySelector(".success-message");
     if (existingSuccess) existingSuccess.remove();
+  }
+
+  //Message
+  static showMessage(inputField, message, duration) {
+    if (inputField != null) this.clearMessage(inputField);
+    const messageMessage = document.querySelector(".notice");
+    messageMessage.classList.add("message");
+    messageMessage.classList.add("fade_in");
+    messageMessage.textContent = message;
+    if (inputField != null) inputField.classList.add("message");
+    // inputField.insertAdjacentElement("afterend", messageMessage);
+
+    if (inputField != null) inputField.focus();
+
+    setTimeout(() => {
+      messageMessage.classList.toggle("fade_in");
+      messageMessage.classList.toggle("message");
+      if (inputField != null) this.clearMessage(inputField);
+}, duration);
+  }
+
+  static clearMessage(inputField) {
+    inputField.classList.remove("message");
+    const existingMessage =
+      inputField.parentElement.querySelector(".message-message");
+    if (existingMessage) existingMessage.remove();
   }
 }
 

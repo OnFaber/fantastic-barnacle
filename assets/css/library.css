@@ -31,6 +31,12 @@
     --input-font-size: 1.25rem;
 }
 
+/* classe generica per nascondere elementi */
+
+.hidden {
+    display: none;
+}
+
 /* elementi del form */
 
 form input {

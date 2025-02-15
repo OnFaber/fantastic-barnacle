@@ -145,10 +145,6 @@ toggle_sidebar {
   left: 10px;
 }
 
-.hidden {
-  display: none;
-}
-
 @media screen and (max-width: 600px) {
   header {
     padding: 0.5rem;
@@ -177,4 +173,9 @@ toggle_sidebar {
   main {
     height: 100%;
   }
+}
+
+/* classe generica per nascondere elementi */
+.hidden {
+  display: none;
 }

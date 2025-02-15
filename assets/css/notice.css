@@ -2,6 +2,7 @@
     --success-color: rgb(19, 146, 19);
     --error-color-accent: rgb(255, 68, 68);
     --error-color: rgb(255, 174, 174);
+    --message-color: black;
 }
 
 .notice {
@@ -32,10 +33,19 @@
   .notice.error {
     border-color: var(--error-color-accent);
   }
+
+  .notice.message {
+    border-color: var(--message-color);
+  }
   
   .notice.success::before {
     content: "✔";
     color: var(--success-color);
+  }
+
+  .notice.success::message {
+    content: "!";
+    color: var(--message-color);
   }
   
   .notice.error::before {
