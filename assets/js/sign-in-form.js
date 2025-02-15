@@ -1,4 +1,4 @@
-import ErrorHandler from "./ErrorHandler.js";
+import NoticeHandler from "./NoticeHandler.js";
 import { SignInForm } from "./Forms.js";
 
 //--Parte dello script eseguita al caricamento
@@ -9,7 +9,7 @@ if (redirectedSignUp) {
   const email = urlParams.get("newUser");
   const user = JSON.parse(localStorage.getItem(`user+${email}`));
   const resetCode = user.credentials.resetCode;
-  ErrorHandler.showSuccess(null, `Signed up successfully.\nLog in now`, 5000);
+  NoticeHandler.showSuccess(null, `Signed up successfully.\nLog in now`, 5000);
 }
 
 //--Event listener
@@ -27,7 +27,7 @@ function checkFormInputs(event) {
     //Validazione password
     if (savedPassword != signInForm.passwordField.value) {
       isAuthenticated = false;
-      ErrorHandler.showError(signInForm.passwordField, "Wrong password", 3000);
+      NoticeHandler.showError(signInForm.passwordField, "Wrong password", 3000);
     }
 
     //Controllo remember me
@@ -47,7 +47,7 @@ function checkFormInputs(event) {
       }
     }
   } else {
-    ErrorHandler.showError(signInForm.emailField, "User not found", 3000);
+    NoticeHandler.showError(signInForm.emailField, "User not found", 3000);
   }
 }
 

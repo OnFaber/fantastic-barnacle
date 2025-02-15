@@ -1,4 +1,4 @@
-import ErrorHandler from "./ErrorHandler.js";
+import NoticeHandler from "./NoticeHandler.js";
 import Validators from "./Validators.js";
 import { SignUpForm } from "./Forms.js";
 import User from "./User.js";
@@ -18,11 +18,11 @@ function checkFormInputs(event) {
   const emailError = Validators.validateEmail(emailValue);
   if (emailError != "") {
     isValid = false;
-    ErrorHandler.showError(signUpForm.emailField, emailError, 3000);
+    NoticeHandler.showError(signUpForm.emailField, emailError, 3000);
   } else {
     if (localStorage.getItem(`user+${emailValue}`) != null) {
       isValid = false;
-      ErrorHandler.showError(
+      NoticeHandler.showError(
         signUpForm.emailField,
         "E-Mail already used",
         3000,
@@ -36,7 +36,7 @@ function checkFormInputs(event) {
     if (passwordError.length > 0) {
       isValid = false;
       passwordError.forEach((message) => {
-        ErrorHandler.showError(signUpForm.passwordField, message, 3000);
+        NoticeHandler.showError(signUpForm.passwordField, message, 3000);
       });
     }
   }
@@ -48,7 +48,7 @@ function checkFormInputs(event) {
     if (privacyPolicyError !== "") {
       isValid = false;
       signUpForm.privacyPolicyCustomCheckbox.classList.add("error");
-      ErrorHandler.showError(
+      NoticeHandler.showError(
         signUpForm.privacyPolicyCustomCheckbox.closest(
           ".customCheckboxContainer",
         ),

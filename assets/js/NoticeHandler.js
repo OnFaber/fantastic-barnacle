@@ -1,4 +1,4 @@
-class ErrorHandler {
+class NoticeHandler {
   //Error
   static showError(inputField, message, duration) {
     this.clearError(inputField);
@@ -52,4 +52,4 @@ class ErrorHandler {
   }
 }
 
-export default ErrorHandler;
+export default NoticeHandler;

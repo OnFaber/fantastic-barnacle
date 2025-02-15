@@ -1,4 +1,4 @@
-import ErrorHandler from "./ErrorHandler.js";
+import NoticeHandler from "./NoticeHandler.js";
 import Validators from "./Validators.js";
 import { ResetPasswordForm } from "./Forms.js";
 
@@ -18,7 +18,7 @@ function checkFormInputs(event) {
 
     //Validazione codice di reset
     if (savedResetCode != resetPasswordForm.resetCodeField.value) {
-      ErrorHandler.showError(
+      NoticeHandler.showError(
         resetPasswordForm.resetCodeField,
         "Wrong code",
         3000,
@@ -28,7 +28,7 @@ function checkFormInputs(event) {
       const passwordError = Validators.validatePassword(passwordValue);
       if (passwordError.length > 0) {
         passwordError.forEach((message) => {
-          ErrorHandler.showError(
+          NoticeHandler.showError(
             resetPasswordForm.passwordField,
             message,
             3000,
@@ -43,7 +43,7 @@ function checkFormInputs(event) {
       }
     }
   } else {
-    ErrorHandler.showError(
+    NoticeHandler.showError(
       resetPasswordForm.emailField,
       "User not found",
       3000,
