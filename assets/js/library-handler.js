@@ -53,17 +53,18 @@ function updateBookList () {
         <div class="bookInfoContainer">
         ${user.library[i].title} (${user.library[i].author})
         </div>
-        <button class="removeBookButton">
+        <button class="removeBookButton">Remove</button>
         </div>`;
         //Aggiunta del li alla lista
         booksList.appendChild(bookListEntry);
         //Aggiunta di un id univoco al li appena creato
-        document.querySelector("#booksList li:last-child").id = user.library[i].uniqueID;
+        
+        bookListEntry.id = user.library[i].uniqueID;
         
         //Assegno al bottone un id derivato da quello del li che indica il libro
         //In modo da poter recuperare l'id del li da event.target.id del bottone
         //In particolare lo recupero togliendo gli ultimi 7 caratteri (-button)
-        document.querySelector(`#${user.library[i].uniqueID} button`).id = `${user.library[i].uniqueID}-button`;
+        bookListEntry.querySelector("button").id = `${user.library[i].uniqueID}-button`;
         //--Event listener per rimuovere il libro quando viene cliccato il bottone
         document.getElementById(`${user.library[i].uniqueID}-button`).addEventListener("click", removeBook);
     }

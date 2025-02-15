@@ -75,30 +75,43 @@ form input[type="submit"]:hover {
 
 /* lista dei libri */
 #booksList {
+    list-style-type: none;
 }
 
 /* singolo elemento della lista dei libri (figlio #booksList) */
 .bookListEntry {
+    margin-bottom: 10px;
 }
 
-.bookContainer /* singolo elemento della lista dei libri (figlio .bookListEntry) */{
+.bookContainer /* singolo elemento contenuto nell'elemento della lista dei libri (figlio .bookListEntry) */{
     display: flex;
+    align-items: center;
 }
 
 /* immagine di copertina del singolo libro (primo figlio di .bookContainer) */
 
 .coverImageContainer {
     display: flex;
-    height: 250px;
-    align-self: center;
+    align-items: center;
+    max-width: 30%;
 }
 
 .coverImage /* figlio di .coverImageContainer */ {
-    aspect-ratio: 2/3;
+    aspect-ratio: 2/3 !important;
+    max-width: 250px;
+    width: 100%;
+    height: auto;
 }
 
 /* informazioni testuali del singolo libro (secondo figlio di .bookContainer) */
 .bookInfoContainer {
-    align-content: center;
-    
+    display: flex;
+    margin-left: 10px;
+    flex-shrink: 1;
+
+}
+
+/* bottone associato al singolo libro (terzo figlio di .bookContainer) */
+.removeBookButton {
+    margin-left: 10px;
 }
