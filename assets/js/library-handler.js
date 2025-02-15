@@ -21,25 +21,27 @@ if (isLoggedIn) {
 
 //--Dichiarazione funzioni
 function areBooksEqual (firstBook, secondBook) {
-    if ((firstBook.title == secondBook.title) && (firstBook.author == secondBook.author)) {
+    if (firstBook.uniqueID == secondBook.uniqueID) {
         return true;
     } else {
         return false;
     }
 }
 
-function updateBookList (startingIndex) {
+function updateBookList () {
     let library = user.library;
     var booksList = document.getElementById("booksList");
     var bookListEntry;
     var bookListEntryText;
-    
-    for (let i=startingIndex; i<library.length; i++) {
+    booksList.innerHTML = '';
+
+    for (let i=0; i<library.length; i++) {
         bookListEntry = document.createElement('li');
         bookListEntryText = document.createTextNode(`${library[i].title} (${library[i].author})`);
         bookListEntry.appendChild(bookListEntryText);
         booksList.appendChild(bookListEntry);
         document.querySelector("#booksList li:last-child").id = library[i].uniqueID;
+        document.getElementById(library[i].uniqueID).addEventListener("click", removeBook);
     }
 }
 //--Event listener
@@ -63,10 +65,20 @@ function addBook () { //Ascolta l'evento click su #addBookButton
     if (isNew) {
         user.library.push(newBook);
         localStorage.setItem(`user+${loggedInUser}`, JSON.stringify(user));
-        updateBookList(library.length-1);
+        updateBookList();
     }
 }
 
-function removeBook () {
+function removeBook (event) {  //Ascolta l'evento click -al momento- sulla scritta che indica il libro
+    const bookID = event.target.id;
+    let library = user.library;
 
+    for (let i=0; i<library.length; i++) {
+        if (library[i].uniqueID == bookID) {
+            user.library.splice(i, 1);
+            break
+        }
+    }
+    localStorage.setItem(`user+${loggedInUser}`, JSON.stringify(user));
+    updateBookList()
 }
