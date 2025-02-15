@@ -1,6 +1,7 @@
 import { whoIsLoggedIn } from "./account-handler.js";
 import User from "./User.js"
 import Book from "./Book.js"
+import NoticeHandler from "./NoticeHandler.js";
 
 //--Parte di script che viene eseguita subito
 const loggedInUser = whoIsLoggedIn();
@@ -31,7 +32,7 @@ function addBook () { //Ascolta l'evento click su #addBookButton
     
     for (let i=0; i<library.length; i++) {
         if (areBooksEqual(newBook, library[i])) {
-            console.log("Uguale");
+            NoticeHandler.showError(null, "Book already exists", 3000)
             isNew = false;
             break;
         }

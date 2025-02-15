@@ -1,0 +1,48 @@
+:root {
+    --success-color: rgb(19, 146, 19);
+    --error-color-accent: rgb(255, 68, 68);
+    --error-color: rgb(255, 174, 174);
+}
+
+.notice {
+    position: absolute;
+    top: 2rem;
+    right: 1rem;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 25rem;
+    height: 10%;
+    background-color: #fff;
+    color: #000;
+    border-style: solid;
+    border-left-width: 0.75em;
+    transform: translateX(150%);
+  }
+  
+  .notice p {
+    margin-right: 3rem;
+  }
+  
+  .notice.success {
+    border-color: var(--success-color);
+  }
+  
+  .notice.error {
+    border-color: var(--error-color-accent);
+  }
+  
+  .notice.success::before {
+    content: "✔";
+    color: var(--success-color);
+  }
+  
+  .notice.error::before {
+    content: "❌";
+    color: var(--error-color-accent);
+  }
+  
+  .notice.fade_in {
+    transform: translateX(0);
+  }
