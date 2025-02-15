@@ -41,7 +41,7 @@ if (showingOwnLibrary) { //Se è la libreria dell'utente loggato
     updateBookList(); //Carico la lista dei libri
 } else { //Se sta visualizzando la libreria di qualcun'altro
     document.getElementById("addBookForm").classList.add("hidden"); //Nascondo il form di aggiunta libri
-    NoticeHandler.showMessage(null, "This is not your library", 3000);
+    NoticeHandler.showMessage(null, "This is not your library", 0);
     updateBookList(); //Carico la lista dei libri
 }
 //Istanzio l'oggetto form
