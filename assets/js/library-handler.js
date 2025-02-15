@@ -32,11 +32,14 @@ function updateBookList (startingIndex) {
     let library = user.library;
     var booksList = document.getElementById("booksList");
     var bookListEntry;
+    var bookListEntryText;
     
     for (let i=startingIndex; i<library.length; i++) {
         bookListEntry = document.createElement('li');
-        bookListEntry.appendChild(document.createTextNode(`${library[i].title} (${library[i].author})`));
+        bookListEntryText = document.createTextNode(`${library[i].title} (${library[i].author})`);
+        bookListEntry.appendChild(bookListEntryText);
         booksList.appendChild(bookListEntry);
+        document.querySelector("#booksList li:last-child").id = library[i].uniqueID;
     }
 }
 //--Event listener
@@ -62,4 +65,8 @@ function addBook () { //Ascolta l'evento click su #addBookButton
         localStorage.setItem(`user+${loggedInUser}`, JSON.stringify(user));
         updateBookList(library.length-1);
     }
+}
+
+function removeBook () {
+
 }
