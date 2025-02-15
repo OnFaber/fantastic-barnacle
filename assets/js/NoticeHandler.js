@@ -1,10 +1,11 @@
 class NoticeHandler {
   //Error
-  static showError(inputField, message, duration) { //Se passato duration=0 il messaggio è permanente
+  static showError(inputField, message, duration, fixed = false) { //Se passato duration=0 il messaggio è permanente
     if (inputField != null) this.clearMessage(inputField, "error");
     const errorMessage = document.querySelector(".notice");
     errorMessage.classList.add("error");
     errorMessage.classList.add("fade_in");
+    if (fixed) messageMessage.classList.add("fixed");
     errorMessage.textContent = message;
     if (inputField != null) inputField.classList.add("error");
     
@@ -14,17 +15,19 @@ class NoticeHandler {
       setTimeout(() => {
         errorMessage.classList.toggle("fade_in");
         errorMessage.classList.toggle("error");
+        if (fixed) messageMessage.classList.toggle("fixed");
         if (inputField != null) this.clearMessage(inputField, "error");
       }, duration);
     }
   }
   
   //Success
-  static showSuccess(inputField, message, duration) {
+  static showSuccess(inputField, message, duration, fixed = false) {
     if (inputField != null) this.clearMessage(inputField, "success");
     const successMessage = document.querySelector(".notice");
     successMessage.classList.add("success");
     successMessage.classList.add("fade_in");
+    if (fixed) messageMessage.classList.add("fixed");
     successMessage.textContent = message;
     if (inputField != null) inputField.classList.add("success");
     // inputField.insertAdjacentElement("afterend", successMessage);
@@ -35,17 +38,19 @@ class NoticeHandler {
       setTimeout(() => {
         successMessage.classList.toggle("fade_in");
         successMessage.classList.toggle("success");
+        if (fixed) messageMessage.classList.toggle("fixed");
         if (inputField != null) this.clearMessage(inputField, "success");
       }, duration);
     }
   }
   
   //Message
-  static showMessage(inputField, message, duration) {
+  static showMessage(inputField, message, duration, fixed = false) {
     if (inputField != null) this.clearMessage(inputField, "message");
     const messageMessage = document.querySelector(".notice");
     messageMessage.classList.add("message");
     messageMessage.classList.add("fade_in");
+    if (fixed) messageMessage.classList.add("fixed");
     messageMessage.textContent = message;
     if (inputField != null) inputField.classList.add("message");
     // inputField.insertAdjacentElement("afterend", messageMessage);
@@ -56,6 +61,7 @@ class NoticeHandler {
       setTimeout(() => {
         messageMessage.classList.toggle("fade_in");
         messageMessage.classList.toggle("message");
+        if (fixed) messageMessage.classList.toggle("fixed");
         if (inputField != null) this.clearMessage(inputField, "message");
       }, duration);
     }
