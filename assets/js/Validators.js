@@ -1,6 +1,7 @@
 class Validators {
   static messages = [];
   
+  //Validatore password
   static validatePassword(password) {
     this.clearMessages();
     
@@ -32,6 +33,7 @@ class Validators {
     return this.messages;
   }
   
+  //Validatore email
   static validateEmail(email) {
     const invalidDomains = ["duck.com"];
     const emailPattern = /^[^\s@]+@[a-zA-Z]+\.[a-zA-Z]+$/;
@@ -43,11 +45,16 @@ class Validators {
       if (invalidDomains.includes(emailDomain)) {
         return `Domain ${emailDomain} is not allowed`;
       } else {
-        return "";
+        if (localStorage.getItem(`user+${email}`) != null) {
+          return "E-Mail already used";
+        } else {
+          return "";
+        }
       }
     }
   }
   
+  //Validatore privacy policy
   static validatePrivacyPolicy(privacyPolicyCheckbox) {
     // Il checkbox viene attivato dall'event listener sul click al link alla privacy policy
     // quindi se il suo stato è disabled=true non è stata aperta

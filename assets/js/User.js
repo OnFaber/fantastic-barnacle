@@ -1,8 +1,9 @@
 class User {
-  constructor(email, password, resetCode) {
+  constructor(email, password, username, resetCode) {
     this.credentials = {
       email: email,
       password: password,
+      username: username,
       resetCode: resetCode,
     };
     this.registrationTime = new Date();

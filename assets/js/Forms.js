@@ -7,6 +7,7 @@ class Form {
 class SignUpForm extends Form {
   constructor(formElement) {
     super(formElement);
+    this.usernameField = this.form.username;
     this.emailField = this.form.email;
     this.passwordField = this.form.password;
     this.privacyPolicyCheckbox = this.form.privacyPolicyCheckbox;

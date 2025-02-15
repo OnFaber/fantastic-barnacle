@@ -19,15 +19,6 @@ function checkFormInputs(event) {
   if (emailError != "") {
     isValid = false;
     NoticeHandler.showError(signUpForm.emailField, emailError, 3000);
-  } else {
-    if (localStorage.getItem(`user+${emailValue}`) != null) {
-      isValid = false;
-      NoticeHandler.showError(
-        signUpForm.emailField,
-        "E-Mail already used",
-        3000,
-      );
-    }
   }
 
   /*if (isValid) {
