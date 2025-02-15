@@ -41,7 +41,7 @@ header a {
 .sidebar {
   display: flex;
   flex-direction: column;
-  width: 400px;
+  width: 300px;
   height: 100%;
   background-color: #444;
 }
@@ -49,6 +49,7 @@ header a {
 .btn {
   background-color: transparent;
   border: 1px solid white;
+  cursor: pointer;
 }
 
 .sidebar .btn {
@@ -133,7 +134,7 @@ main h1 {
   color: #eee;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
   font-size: clamp(20px, 3vw, 48px);
-  z-index: 2;
+  z-index: 1;
 }
 
 toggle_sidebar {
@@ -144,4 +145,34 @@ toggle_sidebar {
 
 .hidden {
   display: none;
+}
+
+@media screen and (max-width: 600px) {
+  header {
+    padding: 0.5rem;
+  }
+
+  header a:last-of-type {
+    margin-right: 0;
+  }
+
+  .container {
+    position: relative;
+  }
+
+  .sidebar {
+    position: absolute;
+    width: 100%;
+    z-index: 2;
+  }
+
+  main {
+    height: 100%;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  main {
+    height: 100%;
+  }
 }
