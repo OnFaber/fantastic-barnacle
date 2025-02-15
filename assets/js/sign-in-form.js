@@ -6,8 +6,8 @@ import { SignInForm } from "./Forms.js";
 const urlParams = new URLSearchParams(window.location.search);
 const redirectedSignUp = urlParams.has("newUser");
 if (redirectedSignUp) {
-  const email = urlParams.get("newUser");
-  const user = JSON.parse(localStorage.getItem(`user+${email}`));
+  const username = urlParams.get("newUser");
+  const user = JSON.parse(localStorage.getItem(`user+${username}`));
   const resetCode = user.credentials.resetCode;
   NoticeHandler.showSuccess(null, `Signed up successfully.\nLog in now`, 5000);
 }
@@ -18,15 +18,15 @@ document.signInForm.addEventListener("submit", checkFormInputs);
 
 function checkFormInputs(event) {
   event.preventDefault();
-  let isAuthenticated = true;
-  const emailValue = signInForm.emailField.value;
-  const user = JSON.parse(localStorage.getItem(`user+${emailValue}`));
-  if (user != null) { //Questo fa anche da validazione della mail per via del modo in cui è costruita la key
+  let isValid = true;
+  const usernameValue = signInForm.usernameField.value;
+  const user = JSON.parse(localStorage.getItem(`user+${usernameValue}`));
+  if (user != null) { //Questo fa anche da validazione dell'username per via del modo in cui è costruita la key
     const savedPassword = user.credentials.password;
 
     //Validazione password
     if (savedPassword != signInForm.passwordField.value) {
-      isAuthenticated = false;
+      isValid = false;
       NoticeHandler.showError(signInForm.passwordField, "Wrong password", 3000);
     }
 
@@ -37,17 +37,17 @@ function checkFormInputs(event) {
     }
 
     //Autenticazione (se la validazione password va a buon fine)
-    if (isAuthenticated) {
+    if (isValid) {
       if (rememberMe) {
-        localStorage.setItem(`authenticatedUser`, JSON.stringify(emailValue));
+        localStorage.setItem(`authenticatedUser`, JSON.stringify(usernameValue));
         redirect(`/index.html`);
       } else {
-        sessionStorage.setItem(`authenticatedUser`, JSON.stringify(emailValue));
+        sessionStorage.setItem(`authenticatedUser`, JSON.stringify(usernameValue));
         redirect(`/index.html`);
       }
     }
   } else {
-    NoticeHandler.showError(signInForm.emailField, "User not found", 3000);
+    NoticeHandler.showError(signInForm.usernameField, "User not found", 3000);
   }
 }
 

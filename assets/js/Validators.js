@@ -1,9 +1,6 @@
 class Validators {
-  static messages = [];
-  
   //Validatore password
   static validatePassword(password) {
-    this.clearMessages();
     
     const hasValidLength = password.length >= 16 && password.length <= 128;
     const hasValidSpecial = /[!"£$%&\/()=?'^*]/.test(password);
@@ -11,47 +8,42 @@ class Validators {
     const hasValidLower = /[a-z]/.test(password);
     const hasValidUpper = /[A-Z]/.test(password);
     
-    if (!hasValidLength)
-      this.messages.push(
-      "Between 16 to 128 characters",
-    );
-    if (!hasValidSpecial)
-      this.messages.push(
-      "At least one special character",
-    );
-    if (!hasValidNumber)
-      this.messages.push("At least one number");
-    if (!hasValidLower)
-      this.messages.push(
-      "At least one lowercase letter",
-    );
-    if (!hasValidUpper)
-      this.messages.push(
-      "At least one uppercase letter",
-    );
-    
-    return this.messages;
+    if (!hasValidLower) return "At least one lowercase letter";
+    if (!hasValidUpper) return "At least one uppercase letter"
+    if (!hasValidSpecial) return "At least one special character";
+    if (!hasValidNumber) return "At least one number";
+    if (!hasValidLength) return "Between 16 and 128 characters";
+    return "";
   }
   
   //Validatore email
   static validateEmail(email) {
     const invalidDomains = ["duck.com"];
-    const emailPattern = /^[^\s@]+@[a-zA-Z]+\.[a-zA-Z]+$/;
+    const hasValidPattern = /^[^\s@]+@[a-zA-Z]+\.[a-zA-Z]+$/.test(email);
     
-    if (!emailPattern.test(email)) {
+    if (!hasValidPattern) {
       return "Invalid E-Mail address";
-    } else {
-      const emailDomain = email.split("@")[1];
-      if (invalidDomains.includes(emailDomain)) {
-        return `Domain ${emailDomain} is not allowed`;
-      } else {
-        if (localStorage.getItem(`user+${email}`) != null) {
-          return "E-Mail already used";
-        } else {
-          return "";
-        }
-      }
     }
+    const emailDomain = email.split("@")[1];
+    if (invalidDomains.includes(emailDomain)) {
+      return `Domain ${emailDomain} is not allowed`;
+    }
+    return "";
+  }
+  
+  //Validatore username
+  static validateUsername(username) {
+    const isValid = /^[A-Za-z0-9]+$/.test(username);
+    if (username == "") {
+      return "Username is empty";
+    }
+    if (!isValid) {
+      return "Spaces and special characters not allowed";
+    }
+    if (localStorage.getItem(`user+${username}`) != null) {
+      return "Username already used";
+    }
+    return "";
   }
   
   //Validatore privacy policy
@@ -65,10 +57,6 @@ class Validators {
     } else {
       return "";
     }
-  }
-  
-  static clearMessages() {
-    this.messages = [];
   }
 }
 

@@ -9,7 +9,7 @@ import { AddBookForm } from "./Forms.js";
 const urlParams = new URLSearchParams(window.location.search);
 const hasUserParam = urlParams.has("user");
 var showingOwnLibrary = true;
-var loggedInUser = whoIsLoggedIn() //Restituisce la mail dell'utente loggato (null se nessuno)
+var loggedInUser = whoIsLoggedIn() //Restituisce l'username dell'utente loggato (null se nessuno)
 if (hasUserParam) { //Se l'url indica una libreria
     const userParam = urlParams.get("user");
     if (userParam == "me") { //user=me quando l'utente loggato va sulla sua libreria dalla homepage
@@ -21,14 +21,14 @@ if (hasUserParam) { //Se l'url indica una libreria
         }
     } else { //Se user!=me devo controllare di quale utente devo mostrare la libreria
         if ((loggedInUser != null) && (userParam == loggedInUser)) { //Anche se il parametro user!=me la libreria potrebbe comunque essere la sua
-            window.location.href = "./library.html?user=me" //In questo caso lo reindirizzo alla sua
+            window.location.href = "./library.html?user=me" //In questo caso lo reindirizzo alla sua con user=me
         } else { //Se la libreria non è dell'utente attuale
             showingOwnLibrary = false; //Flag che indica che la libreria da mostrare non è dell'utente attuale
-            const email = userParam;
+            const username = userParam;
             var user = new User();
-            user = JSON.parse(localStorage.getItem(`user+${email}`));
+            user = JSON.parse(localStorage.getItem(`user+${username}`));
             if (user == null) { //Se la libreria richiesta è di un utente che non esiste
-                window.location.href = "./library.html?user=me" //Lo reindirizzo alla sua (homepage se non loggato)
+                window.location.href = "./library.html?user=me" //Lo reindirizzo alla sua libreria (questo lo riporta alla homepage se non loggato)
             }
         }
     }

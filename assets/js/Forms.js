@@ -18,7 +18,7 @@ class SignUpForm extends Form {
 class SignInForm extends Form {
   constructor(formElement) {
     super(formElement);
-    this.emailField = this.form.email;
+    this.usernameField = this.form.username;
     this.passwordField = this.form.password;
     this.rememberMeCheckbox = this.form.rememberMeCheckbox;
     this.rememberMeCustomCheckbox = document.getElementById("signUpFormCustomCheckbox");
@@ -28,7 +28,7 @@ class SignInForm extends Form {
 class ResetPasswordForm extends Form {
   constructor (formElement) {
     super(formElement);
-    this.emailField = this.form.email;
+    this.usernameField = this.form.username;
     this.resetCodeField = this.form.resetCode;
     this.passwordField = this.form.password;
   }

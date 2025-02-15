@@ -8,13 +8,13 @@ if (logOutButton != null) document.getElementById("logOutButton").addEventListen
 export function whoIsLoggedIn () {
     let authenticatedUserSession = JSON.parse(localStorage.getItem("authenticatedUser"));
     if (authenticatedUserSession != null) {
-        return authenticatedUserSession;
+        return authenticatedUserSession; //Ritorno l'username dell'utente loggato
     }
     let authenticatedUserLocal = JSON.parse(sessionStorage.getItem("authenticatedUser")); 
     if (authenticatedUserLocal != null) {
-        return authenticatedUserLocal;
+        return authenticatedUserLocal; //Ritorno l'username dell'utente loggato
     }
-    return null;
+    return null; //Ritorno null se non è loggato nessun utente
 }
 
 //--Funzioni legate a eventi

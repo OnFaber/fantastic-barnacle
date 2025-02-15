@@ -8,8 +8,8 @@ document.resetPasswordForm.addEventListener("submit", checkFormInputs);
 function checkFormInputs(event) {
   event.preventDefault();
 
-  const emailValue = resetPasswordForm.emailField.value;
-  let user = JSON.parse(localStorage.getItem(`user+${emailValue}`));
+  const usernameValue = resetPasswordForm.usernameField.value;
+  let user = JSON.parse(localStorage.getItem(`user+${usernameValue}`));
 
   if (user != null) {
     //Questo fa anche da validazione della mail per via del modo in cui è costruita la key
@@ -36,7 +36,7 @@ function checkFormInputs(event) {
         });
       } else {
         user.credentials.password = passwordValue;
-        localStorage.setItem(`user+${emailValue}`, JSON.stringify(user));
+        localStorage.setItem(`user+${usernameValue}`, JSON.stringify(user));
         window.alert(
           `Password reset successfully.\nYour new password is "${user.credentials.password}"`,
         );
@@ -44,7 +44,7 @@ function checkFormInputs(event) {
     }
   } else {
     NoticeHandler.showError(
-      resetPasswordForm.emailField,
+      resetPasswordForm.usernameField,
       "User not found",
       3000,
     );

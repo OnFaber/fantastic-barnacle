@@ -13,22 +13,30 @@ function checkFormInputs(event) {
   event.preventDefault();
   let isValid = true;
   const emailValue = signUpForm.emailField.value,
-    passwordValue = signUpForm.passwordField.value;
-  //Validazione email
-  const emailError = Validators.validateEmail(emailValue);
-  if (emailError != "") {
+  passwordValue = signUpForm.passwordField.value,
+  usernameValue = signUpForm.usernameField.value;
+  
+  //Validazione username
+  const usernameError = Validators.validateUsername(usernameValue);
+  if (usernameError != "") {
     isValid = false;
-    NoticeHandler.showError(signUpForm.emailField, emailError, 3000);
+    NoticeHandler.showError(signUpForm.usernameField, usernameError, 3000);
   }
-
-  /*if (isValid) {
+  //Validazione email
+  if (isValid) {
+    const emailError = Validators.validateEmail(emailValue);
+    if (emailError != "") {
+      isValid = false;
+      NoticeHandler.showError(signUpForm.emailField, emailError, 3000);
+    }
+  }
+  
+  if (isValid) {
     //Validazione password
     const passwordError = Validators.validatePassword(passwordValue);
-    if (passwordError.length > 0) {
+    if (passwordError != "") {
       isValid = false;
-      passwordError.forEach((message) => {
-        NoticeHandler.showError(signUpForm.passwordField, message, 3000);
-      });
+      NoticeHandler.showError(signUpForm.passwordField, passwordError, 3000);
     }
   }
   if (isValid) {
@@ -49,18 +57,15 @@ function checkFormInputs(event) {
     } else {
       signUpForm.privacyPolicyCustomCheckbox.classList.remove("error");
     }
-  }*/
+  }
   //Se è tutto valido, registro l'utente
   if (isValid) {
     const date = new Date();
     //Genero un numero casuale di 4 cifre come codice di reset password
     const resetCode = Math.round(Math.random() * (10000 - 1000) + 1000);
-    const user = new User(emailValue, passwordValue, resetCode);
-    localStorage.setItem(
-      `user+${user.credentials.email}`,
-      JSON.stringify(user),
-    );
-    redirect(`/sign-in.html?newUser=${encodeURIComponent(emailValue)}`);
+    const user = new User(usernameValue, emailValue, passwordValue, resetCode);
+    localStorage.setItem(`user+${usernameValue}`,JSON.stringify(user));
+    redirect(`/sign-in.html?newUser=${encodeURIComponent(usernameValue)}`);
   }
 }
 
