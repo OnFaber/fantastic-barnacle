@@ -27,15 +27,17 @@ function areBooksEqual (firstBookID, secondBookID) {
 }
 
 function updateBookList () {
-    var booksList = document.getElementById("booksList");
-    var bookListEntry;
-    var bookListEntryText;
+    let booksList = document.getElementById("booksList");
+    let bookListEntry;
+    let bookListEntryText;
+
     booksList.innerHTML = '';
     
     for (let i=0; i<user.library.length; i++) {
         bookListEntry = document.createElement('li');
-        bookListEntryText = document.createTextNode(`${user.library[i].title} (${user.library[i].author})`);
-        bookListEntry.appendChild(bookListEntryText);
+        //bookListEntryText = document.createTextNode(`${user.library[i].title} <strong>(${user.library[i].author})</strong>`);
+        //bookListEntry.appendChild(bookListEntryText);
+        bookListEntry.innerHTML = `<img src=${user.library[i].coverImageSrc}> ${user.library[i].title} (${user.library[i].author})`;
         booksList.appendChild(bookListEntry);
         document.querySelector("#booksList li:last-child").id = user.library[i].uniqueID;
         document.getElementById(user.library[i].uniqueID).addEventListener("click", removeBook); //--Event listener
@@ -47,10 +49,11 @@ document.addBookForm.addEventListener("submit", addBook);
 //--Funzioni legate a event listener
 function addBook (event) { //Ascolta l'evento submit del form addBookForm
     event.preventDefault();
-    let titleField = addBook.titleField, title = addBookForm.titleField.value;
+    let titleField = addBookForm.titleField, title = titleField.value;
     let authorField = addBookForm.authorField, author = authorField.value;
+    let coverImageSrcField = addBookForm.coverImageSrcField, coverImageSrc = coverImageSrcField.value;
     if (title != "" && author != "") {
-        let newBook = new Book (title, author);
+        let newBook = new Book (title, author, coverImageSrc);
         let isNew = true;
         
         for (let i=0; i<user.library.length; i++) {
@@ -64,6 +67,7 @@ function addBook (event) { //Ascolta l'evento submit del form addBookForm
             user.library.push(newBook);
             document.addBookForm.title.value = "";
             document.addBookForm.author.value = "";
+            document.addBookForm.coverImageSrc.value="";
             localStorage.setItem(`user+${loggedInUser}`, JSON.stringify(user));
             updateBookList();
         }

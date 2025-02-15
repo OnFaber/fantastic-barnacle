@@ -38,6 +38,7 @@ class AddBookForm extends Form {
     super(formElement)
     this.titleField = this.form.title;
     this.authorField = this.form.author;
+    this.coverImageSrcField = this.form.coverImageSrc;
   }
 }
 export { Form, SignUpForm, SignInForm, ResetPasswordForm, AddBookForm };
