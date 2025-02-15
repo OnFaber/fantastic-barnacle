@@ -5,35 +5,35 @@
     --secondary-color: rgb(204, 204, 204);
     --background-color: rgb(248, 248, 248);
     --text-color: rgba(0, 0, 0, 0.8);
-  
+    
     /* spaziatura */
     --space-s: 0.5rem;
     --space-m: 0.75rem;
     --space-l: 1rem;
     --space-xl: 1.5rem;
-  
+    
     /** elementi */
-  
+    
     /* input */
     --input-border-color: var(--secondary-color);
     --input-border-focused-color: var(--primary-color);
     --input-border-error-color: var(--error-color);
     --input-border-error-focused-color: var(--error-color-accent);
     --input-bg-color: transparent;
-  
+    
     --login-bg-color: white;
     --box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     --border-radius: 5px;
-  
+    
     /* tipografia */
     --font-family: sans-serif;
     --font-size: 1.5rem;
     --input-font-size: 1.25rem;
-  }
+}
 
-  /* elementi del form */
+/* elementi del form */
 
-  form input {
+form input {
     padding: var(--space-m);
     margin-top: var(--space-s);
     height: 3rem;
@@ -43,41 +43,62 @@
     border: 2px solid var(--input-border-color);
     border-radius: var(--border-radius);
     outline: none;
-  }
-  
-  form input.error {
+}
+
+form input.error {
     border: 2px solid var(--input-border-error-color);
-  }
-  
-  form input:not(input[type="submit"]) {
+}
+
+form input:not(input[type="submit"]) {
     margin-bottom: var(--space-s);
-  }
-  
-  form input:focus {
+}
+
+form input:focus {
     border-color: var(--input-border-focused-color);
-  }
-  
-  form input.error:focus {
+}
+
+form input.error:focus {
     border-color: var(--input-border-error-focused-color);
-  }
-  
-  form input[type="submit"] {
+}
+
+form input[type="submit"] {
     border: none;
     background: var(--primary-color);
     color: white;
     cursor: pointer;
     transition: background 0.3s;
-  }
-  
-  form input[type="submit"]:hover {
-    background: #444;
-  }
+}
 
-  /* immagine di copertina */
-  .coverImageContainer {
+form input[type="submit"]:hover {
+    background: #444;
+}
+
+/* lista dei libri */
+#booksList {
+}
+
+/* singolo elemento della lista dei libri (figlio #booksList) */
+.bookListEntry {
+}
+
+.bookContainer /* singolo elemento della lista dei libri (figlio .bookListEntry) */{
     display: flex;
+}
+
+/* immagine di copertina del singolo libro (primo figlio di .bookContainer) */
+
+.coverImageContainer {
+    display: flex;
+    height: 250px;
+    align-self: center;
+}
+
+.coverImage /* figlio di .coverImageContainer */ {
     aspect-ratio: 2/3;
-    width: 10%;
-  }
-  .coverImage {
-  }
+}
+
+/* informazioni testuali del singolo libro (secondo figlio di .bookContainer) */
+.bookInfoContainer {
+    align-content: center;
+    
+}

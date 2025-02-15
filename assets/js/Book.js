@@ -3,7 +3,7 @@ class Book {
         this.title = String(title);
         this.author = String(author);
         this.coverImageSrc = coverImageSrc;
-        this.uniqueID = this.title+"-"+this.author;
+        this.uniqueID = (this.title+"-"+this.author).split(" ").join("-");
     }
 }
 
