@@ -2,6 +2,7 @@ import { whoIsLoggedIn } from "./account-handler.js";
 import User from "./User.js"
 import Book from "./Book.js"
 import NoticeHandler from "./NoticeHandler.js";
+import { AddBookForm } from "./Forms.js";
 
 //--Parte di script che viene eseguita subito
 //Controllo se l'utente è loggato e con che account
@@ -13,6 +14,8 @@ if (loggedInUser != null) {
 } else {
     window.location.href = "./sign-in.html"; //Se non è loggato lo reindirizzo al login
 }
+//Istanzio l'oggetto form
+const addBookForm = new AddBookForm(document.addBookForm);
 
 //--Dichiarazione funzioni
 function areBooksEqual (firstBookID, secondBookID) {
@@ -44,8 +47,8 @@ document.addBookForm.addEventListener("submit", addBook);
 //--Funzioni legate a event listener
 function addBook (event) { //Ascolta l'evento submit del form addBookForm
     event.preventDefault();
-    let title = document.addBookForm.title.value;
-    let author = document.addBookForm.author.value;
+    let titleField = addBook.titleField, title = addBookForm.titleField.value;
+    let authorField = addBookForm.authorField, author = authorField.value;
     if (title != "" && author != "") {
         let newBook = new Book (title, author);
         let isNew = true;
@@ -59,15 +62,15 @@ function addBook (event) { //Ascolta l'evento submit del form addBookForm
         }
         if (isNew) {
             user.library.push(newBook);
+            document.addBookForm.title.value = "";
+            document.addBookForm.author.value = "";
             localStorage.setItem(`user+${loggedInUser}`, JSON.stringify(user));
             updateBookList();
         }
-    } else if (title == "" && author == "") {
-        NoticeHandler.showError(null, "Empty title and author", 3000)
+    } else if (title == "" ) {
+        NoticeHandler.showError(addBookForm.titleField, "Empty title", 3000);
     } else if (author == "") {
-        NoticeHandler.showError(null, "Empty author", 3000);
-    } else {
-        NoticeHandler.showError(null, "Empty title", 3000);
+        NoticeHandler.showError(addBookForm.authorField, "Empty author", 3000)
     }
 }
 
