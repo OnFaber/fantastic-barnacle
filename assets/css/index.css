@@ -24,6 +24,7 @@ header {
   justify-content: flex-end;
   align-items: center;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1;
 }
 
 header a {
@@ -104,6 +105,18 @@ nav ul li a:hover {
   background-image: url("../altro/hand-drawn-no-data-illustration_23-2150584271.avif");
   background-repeat: no-repeat;
   background-position: center;
+  background-size: contain;
+}
+
+.bg-image::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.5;
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
 main {
@@ -112,6 +125,15 @@ main {
   justify-content: center;
   align-items: center;
   width: 100%;
+}
+
+main h1 {
+  text-align: center;
+  text-wrap: stable;
+  color: #eee;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  font-size: clamp(20px, 3vw, 48px);
+  z-index: 2;
 }
 
 toggle_sidebar {
