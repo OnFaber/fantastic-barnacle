@@ -29,15 +29,22 @@ function areBooksEqual (firstBookID, secondBookID) {
 function updateBookList () {
     let booksList = document.getElementById("booksList");
     let bookListEntry;
-    let bookListEntryText;
 
     booksList.innerHTML = '';
     
     for (let i=0; i<user.library.length; i++) {
         bookListEntry = document.createElement('li');
-        //bookListEntryText = document.createTextNode(`${user.library[i].title} <strong>(${user.library[i].author})</strong>`);
-        //bookListEntry.appendChild(bookListEntryText);
-        bookListEntry.innerHTML = `<img src=${user.library[i].coverImageSrc}> ${user.library[i].title} (${user.library[i].author})`;
+        bookListEntry.classList.add("bookListEntry")
+        bookListEntry.innerHTML =
+        `<div class="bookContainer">
+        <div class="coverImageContainer">
+        <img src=${user.library[i].coverImageSrc} class="coverImage">
+        </div>
+        <div class="bookInfoContainer">
+        ${user.library[i].title} (${user.library[i].author})
+        </div>
+        </div>`;
+
         booksList.appendChild(bookListEntry);
         document.querySelector("#booksList li:last-child").id = user.library[i].uniqueID;
         document.getElementById(user.library[i].uniqueID).addEventListener("click", removeBook); //--Event listener
