@@ -4,12 +4,19 @@ import Book from "./Book.js"
 import NoticeHandler from "./NoticeHandler.js";
 
 //--Parte di script che viene eseguita subito
+//Controllo se l'utente è loggato e con che account
 const loggedInUser = whoIsLoggedIn();
+let isLoggedIn = true;
 if (loggedInUser != null) {
     var user = new User();
     user = JSON.parse(localStorage.getItem(`user+${loggedInUser}`));
 } else {
+    isLoggedIn = false;
     window.location.href = "./sign-in.html";
+}
+//Controllo i libri nella libreria per mostrarli
+if (isLoggedIn) {
+    updateBookList(0);
 }
 
 //--Dichiarazione funzioni
@@ -20,13 +27,26 @@ function areBooksEqual (firstBook, secondBook) {
         return false;
     }
 }
+
+function updateBookList (startingIndex) {
+    let library = user.library;
+    var booksList = document.getElementById("booksList");
+    var bookListEntry;
+    
+    for (let i=startingIndex; i<library.length; i++) {
+        bookListEntry = document.createElement('li');
+        bookListEntry.appendChild(document.createTextNode(`${library[i].title} (${library[i].author})`));
+        booksList.appendChild(bookListEntry);
+    }
+}
 //--Event listener
 document.getElementById("addBookButton").addEventListener("click", addBook);
 
 //--Funzioni legate a event listener
 function addBook () { //Ascolta l'evento click su #addBookButton
-    let newBook = new Book ("title", "author");
-    console.log(user.library);
+    let titolo = Math.random();
+    let autore = Math.random();
+    let newBook = new Book (titolo, autore);
     let library = user.library;
     let isNew = true;
     
@@ -40,5 +60,6 @@ function addBook () { //Ascolta l'evento click su #addBookButton
     if (isNew) {
         user.library.push(newBook);
         localStorage.setItem(`user+${loggedInUser}`, JSON.stringify(user));
+        updateBookList(library.length-1);
     }
 }
