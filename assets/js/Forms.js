@@ -32,4 +32,13 @@ class ResetPasswordForm extends Form {
     this.passwordField = this.form.password;
   }
 }
-export { Form, SignUpForm, SignInForm, ResetPasswordForm };
+
+class AddBookForm extends Form {
+  constructor (formElement) {
+    super(formElement)
+    this.titleField = this.form.title;
+    this.authorField = this.form.author;
+    this.coverImageSrcField = this.form.coverImageSrc;
+  }
+}
+export { Form, SignUpForm, SignInForm, ResetPasswordForm, AddBookForm };
