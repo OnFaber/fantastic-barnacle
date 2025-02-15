@@ -88,15 +88,17 @@ function updateBookList () {
         //Aggiunta del li alla lista
         booksList.appendChild(bookListEntry);
         //Aggiunta di un id univoco al li appena creato
-        
         bookListEntry.id = user.library[i].uniqueID;
-        
-        //Assegno al bottone un id derivato da quello del li che indica il libro
-        //In modo da poter recuperare l'id del li da event.target.id del bottone
-        //In particolare lo recupero togliendo gli ultimi 7 caratteri (-button)
-        bookListEntry.querySelector("button").id = `${user.library[i].uniqueID}-button`;
-        //--Event listener per rimuovere il libro quando viene cliccato il bottone
-        document.getElementById(`${user.library[i].uniqueID}-button`).addEventListener("click", removeBook);
+        if (showingOwnLibrary) { //Solo se la libreria visualizzata è quella dell'utente loggato
+            //Assegno al bottone un id derivato da quello del li che indica il libro
+            //In modo da poter recuperare l'id del li da event.target.id del bottone
+            //In particolare lo recupero togliendo gli ultimi 7 caratteri (-button)
+            bookListEntry.querySelector("button").id = `${user.library[i].uniqueID}-button`;
+            //--Aggiungo event listener per rimuovere il libro quando viene cliccato il bottone
+            document.getElementById(`${user.library[i].uniqueID}-button`).addEventListener("click", removeBook);
+        } else { //Altrimenti, se sto visualizzando la libreria di un altro utente, nascondo il bottone
+            bookListEntry.querySelector("button").classList.add("hidden");
+        }
     }
 }
 //--Event listener
