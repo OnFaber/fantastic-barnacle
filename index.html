@@ -16,11 +16,6 @@
     <!-- Importazione script -->
     <!--L'attributo defer indica di eseguire lo script dopo il caricamento del documento. 
     Necessario per far trovare allo script gli elementi-->
-    <script
-      type="module"
-      src="assets/js/account-handler.js"
-      defer
-    ></script>
     <script 
       type="module" 
       src="assets/js/index.js" 
@@ -39,15 +34,14 @@
       <div class="sidebar hidden">
         <button id="close_sidebar" class="btn">
           <img
-            src="assets/altro/arrow-left-from-line-svgrepo-com.svg"
-            width="25px"
-            height="25px"
+            src="assets/altro/arrow-left.svg"
+            class= "icon"
           />
         </button>
         <nav>
           <ul>
-            <li><a href="#">utenti</a></li>
-            <li><a href="#">utenti</a></li>
+            <li><a href="#">Placeholder</a></li>
+            <li><a href="#">Placeholder</a></li>
             <li id="indexYourLibraryListItem"><a href="./library.html?user=me">Your library</a></li>
           </ul>
         </nav>
@@ -55,12 +49,11 @@
       <!-- bg-image verrà tolta con js quando si avranno entries nella tabella
            per simulare la presenza di dati lato server -->
       <main class="bg-image">
-        <h1>sembra tu non abbia aggiunto niente, comincia ora!</h1>
+        <h1>There isn't any user yet...</h1>
         <button id="toggle_sidebar" class="btn">
           <img
-            src="assets/altro/arrow-right-from-bracket-svgrepo-com.svg"
-            width="25px"
-            height="25px"
+            src="assets/altro/arrow-right.svg"
+            class="icon"
           />
         </button>
       </main>

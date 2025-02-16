@@ -1,7 +1,7 @@
 //--Blocco eseguito al caricamento dello script
 //Controllo se sulla pagina corrente c'è il bottone di logout
 const logOutButton = document.getElementById("logOutButton");
-//Se c'è aggiunto un event listener per il click
+//Se c'è aggiungo un event listener per il click
 if (logOutButton != null) document.getElementById("logOutButton").addEventListener("click", logOut);
 
 //Controllo che utente è loggato
