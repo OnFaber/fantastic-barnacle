@@ -42,7 +42,7 @@ form input.error:focus {
 }
 
 form input[type="submit"],
-.removeBookButton, .logOutButton {
+.removeBookButton, .accountPageButton {
   border: none;
   background: var(--primary-color);
   color: white;
@@ -51,6 +51,6 @@ form input[type="submit"],
 }
 
 form input[type="submit"]:hover,
-.removeBookButton:hover, .logOutButton:hover {
+.removeBookButton:hover, .accountPageButton:hover {
   background: #444;
 }

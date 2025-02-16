@@ -4,7 +4,7 @@ class HTMLGenerator {
     //Metodo che genera un elemento HTML e lo inserisce
     //Come figlio di indice index del parent indicato (se non fornito, come ultimo)
     //E ne restituisce il riferimento
-    static generateChildAtPosition (parent, elementType="div", innerHTML="", elementID="", elementClass="", index=-1) {
+    static generateChildAtPosition (parent, elementType="div", innerHTML="", index=-1, elementID="", elementClass="") {
         //Creazione dell'elemento
         let element = document.createElement(elementType);
         //Aggiunta della classe
@@ -27,7 +27,25 @@ class HTMLGenerator {
     //Come ultimo figlio del parent indicato
     //E ne restituisce il riferimento
     static generateLastChild (parent, elementType="div", innerHTML="", elementID="", elementClass="") {
-        let element = this.generateChildAtPosition (parent, elementType, innerHTML, elementID, elementClass, -1);
+        let element = this.generateChildAtPosition (parent, elementType, innerHTML, -1, elementID, elementClass);
+        return element;
+    }
+
+    //Metodo che genera un elemento HTML e lo inserisce
+    //Subito dopo quello indicato come target
+    //E ne restituisce il riferimento
+    static generateAdjacentElement (target, elementType="div", innerHTML="", elementID="", elementClass="") {
+        //Creazione dell'elemento
+        let element = document.createElement(elementType);
+        //Aggiunta della classe
+        if (elementClass != "") element.classList.add(elementClass);
+        //Aggiunta dell'HTML interno
+        element.innerHTML = innerHTML;
+        //Aggiunta di un id univoco all'elemento
+        if (elementID != "") element.id = elementID;
+        //Aggiunta dell'elemento dopo il target
+        target.insertAdjacentElement("afterend", element);
+        //Restituisco il riferimento all'elemento creato
         return element;
     }
     

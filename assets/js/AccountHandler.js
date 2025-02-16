@@ -24,6 +24,18 @@ class AccountHandler {
         }
     }
     
+    //Elimina l'account loggato
+    static deleteAccount () {
+        const userKey = `user+${this.whoIsLoggedIn()}`;
+        for (let i=0; i<localStorage.length; i++) {
+            let key = localStorage.key(i);
+            if (key == userKey) {
+                this.logout();
+                localStorage.removeItem(key);
+            }
+        }
+    }
+    
     //Carica la lista di tutti gli utenti registrati
     static loadUsers () {
         let registeredUsers = [];
