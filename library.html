@@ -13,7 +13,7 @@
       name="viewport"
       content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
     />
-    <title>Your library</title>
+    <title id="libraryTitle">Your library</title>
     <!-- Importazione script -->
     <!--L'attributo defer indica di eseguire lo script dopo il caricamento del documento. 
     Necessario per far trovare allo script gli elementi-->
@@ -26,7 +26,7 @@
   </head>
   <body>
     <div class="notice"></div>
-    <h1 id="libraryIdentifierHeader">Your library</h1>
+    <h1 id="libraryIdentifierPrimaryHeader">Your library</h1>
 
     <form name="addBookForm" id="addBookForm">
       <input type="text" name="title" placeholder="Title">
@@ -35,7 +35,7 @@
       <input type="submit" value="Add a book">
     </form>
 
-    <div>Your books:</div>
+    <h2 id="libraryIdentifierSecondaryHeader">Your books:</h2>
     <ul id="booksList">
     </ul>
   </body>

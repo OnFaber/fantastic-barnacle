@@ -22,6 +22,14 @@
     transform: translateX(150%);
   }
 
+  .notice.message {
+    justify-content: flex-end;
+  }
+
+  .notice.message a {
+    padding-left: 0.5rem;
+  }
+
   .notice.fixed {
     position: fixed;
   }

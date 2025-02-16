@@ -43,12 +43,20 @@ if (showingOwnLibrary) { //Se è la libreria dell'utente loggato
     updateBookList(); //Carico la lista dei libri
 } else { //Se sta visualizzando la libreria di qualcun'altro
     document.getElementById("addBookForm").classList.add("hidden"); //Nascondo il form di aggiunta libri
-    //Modifico l'header per mostrare il nome dell'utente
-    document.getElementById("libraryIdentifierHeader").innerText = `${username}'s library`;
+    //Carico la lista dei libri e ne salvo la lunghezza
+    const libraryLenght = updateBookList();
+    //Modifico il titolo della pagina
+    document.getElementById("libraryTitle").innerText = `${username}'s library`;
+    //Modifico l'header primario per mostrare il nome dell'utente
+    document.getElementById("libraryIdentifierPrimaryHeader").innerText = `${username}'s library`;
+    //Modifico l'header secondario per mostrare il nome dell'utente o indicare che non ci sono libri
+    if (libraryLenght != 0) {
+        document.getElementById("libraryIdentifierSecondaryHeader").innerText = `${username}'s books:`;
+    } else {
+        document.getElementById("libraryIdentifierSecondaryHeader").innerText = `${username} has no books yet`;
+    }
     //Mostro un messaggio che indica che si sta visualizzando una libreria altrui
-    NoticeHandler.showMessage(null, "This is not your library", 0, true);
-    //Carico la lista dei libri
-    updateBookList();
+    NoticeHandler.showMessage(null, "This is not <a href='./library.html?user=me'>your library<a>", 0, true);
 }
 //Istanzio l'oggetto form
 const addBookForm = new AddBookForm(document.addBookForm);
@@ -62,7 +70,7 @@ function areBooksEqual (firstBookID, secondBookID) {
     }
 }
 
-function updateBookList () {
+function updateBookList () { //Mostra la lista dei libri e ne ritorna la lunghezza
     let booksList = document.getElementById("booksList");
     let bookListEntry;
     //Pulisco tutta la lista per poi riscriverla
@@ -106,6 +114,7 @@ function updateBookList () {
             bookListEntry.querySelector("button").classList.add("hidden");
         }
     }
+    return user.library.length;
 }
 //--Event listener
 document.addBookForm.addEventListener("submit", addBook);
