@@ -21,7 +21,7 @@ class SignInForm extends Form {
     this.usernameField = this.form.username;
     this.passwordField = this.form.password;
     this.rememberMeCheckbox = this.form.rememberMeCheckbox;
-    this.rememberMeCustomCheckbox = document.getElementById("signUpFormCustomCheckbox");
+    this.rememberMeCustomCheckbox = document.getElementById("signInFormCustomCheckbox");
   }
 }
 

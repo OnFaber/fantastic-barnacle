@@ -42,7 +42,7 @@ class NoticeHandler {
     if (duration != 0) { //Con duration=0 indico un messaggio permanente
       setTimeout(() => {
         this.#clearClasses(notice, messageType, fixed);;
-        if (inputField != null) this.clearMessage(inputField, messageType);
+        if (inputField != null) this.#clearMessage(inputField, messageType);
       }, duration);
     }
   }
