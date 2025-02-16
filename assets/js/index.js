@@ -1,5 +1,6 @@
 import AccountHandler from "./AccountHandler.js";
 import User from "./User.js";
+import HTMLGenerator from "./HTMLGenerator.js";
 
 //--Costanti
 const toggleBtn = document.getElementById("toggle_sidebar");
@@ -20,7 +21,19 @@ closeBtn.addEventListener("click", () => {
 //--Funzioni eseguite subito
 //Carico la lista di tutti gli utenti registrati
 let registeredUsers = AccountHandler.loadUsers();
-console.log(registeredUsers);
+if (registeredUsers.length == 0) { //--Se non sono utenti registrati
+  //-Prendo l'elemento main della homepage
+  let indexMain = document.getElementById("indexMain")
+  //-Mostro l'immagine di sfondo
+  indexMain.classList.remove("noImage");
+  //-E l'header che indica mancanza di utenti
+  HTMLGenerator.generateLastChild (indexMain, "h1", "There are no users yet...");
+} else { //--Se ci sono utenti registrati
+  //Ordino l'array degli utenti registrati
+  //Secondo l'ordine discendente del numero di libri nella loro libreria
+  registeredUsers.sort((a, b) => b.library.length - a.library.length);
+  console.log(registeredUsers);
+}
 
 //Controllo se l'utente è loggato e con che account
 const loggedInUser = AccountHandler.whoIsLoggedIn();
