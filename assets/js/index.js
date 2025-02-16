@@ -19,11 +19,11 @@ closeBtn.addEventListener("click", () => {
 });
 
 //--Funzioni eseguite subito
+//Prendo l'elemento main della homepage
+let indexMain = document.getElementById("indexMain")
 //Carico la lista di tutti gli utenti registrati
 let registeredUsers = AccountHandler.loadUsers();
 if (registeredUsers.length == 0) { //--Se non sono utenti registrati
-  //-Prendo l'elemento main della homepage
-  let indexMain = document.getElementById("indexMain")
   //-Mostro l'immagine di sfondo
   indexMain.classList.remove("noImage");
   //-E l'header che indica mancanza di utenti
@@ -32,7 +32,15 @@ if (registeredUsers.length == 0) { //--Se non sono utenti registrati
   //Ordino l'array degli utenti registrati
   //Secondo l'ordine discendente del numero di libri nella loro libreria
   registeredUsers.sort((a, b) => b.library.length - a.library.length);
-  console.log(registeredUsers);
+  //Genero una lista in cui mostrarli
+  const header = HTMLGenerator.generateLastChild (indexMain, "h1", "");
+  const usersList = HTMLGenerator.generateLastChild(header, "ul", `Top ${Math.min(10, registeredUsers.length)} users:`);
+  //Inserisco nella lista i primi 10
+  for (let i=0; i<Math.min(10, registeredUsers.length); i++) {
+    const userDisplayedInfo = `${registeredUsers[i].credentials.username} - ${registeredUsers[i].library.length} books`;
+    console.log (userDisplayedInfo);
+    HTMLGenerator.generateLastChild(usersList, "li", userDisplayedInfo);
+  }
 }
 
 //Controllo se l'utente è loggato e con che account
