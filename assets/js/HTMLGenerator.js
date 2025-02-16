@@ -27,12 +27,12 @@ class HTMLGenerator {
         const sidebarList = document.getElementById("sidebarList");
         
         if (currentPage == "library") {
-            this.generateLastChild(sidebarList, "li", "<a href='./index.html'>Homepage<a>");
-            if (isLoggedIn && !showingOwnLibrary) this.generateLastChild(sidebarList, "li", "<a href='./library.html?user=me'>Library<a>");
+            this.generateLastChild(sidebarList, "li", "<a href='./index.html'>Homepage</a>");
+            if (isLoggedIn && !showingOwnLibrary) this.generateLastChild(sidebarList, "li", "<a href='./library.html?user=me'>Library</a>");
             this.#showAccountLink(isLoggedIn);
         }
         if (currentPage == "homepage") {
-            if (isLoggedIn) this.generateLastChild(sidebarList, "li", "<a href='./library.html?user=me'>Library<a>");
+            if (isLoggedIn) this.generateLastChild(sidebarList, "li", "<a href='./library.html?user=me'>Library</a>");
             this.#showAccountLink(isLoggedIn);
         }
     }
@@ -40,10 +40,10 @@ class HTMLGenerator {
     //Genera html per link a sign in e sign up oppure your account
     static #showAccountLink (isLoggedIn) {
         if (!isLoggedIn) {
-            this.generateLastChild(sidebarList, "li", "<a href='./sign-in.html'>Sign in<a>");
-            this.generateLastChild(sidebarList, "li", "<a href='./sign-up.html'>Sign up<a>");
+            this.generateLastChild(sidebarList, "li", "<a href='./sign-in.html'>Sign in</a>");
+            this.generateLastChild(sidebarList, "li", "<a href='./sign-up.html'>Sign up</a>");
         } else {
-            this.generateLastChild(sidebarList, "li", "<a href='./account.html'>Account<a>");
+            this.generateLastChild(sidebarList, "li", "<a href='./account.html'>Account</a>");
         }
     }
 }

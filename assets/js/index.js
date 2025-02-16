@@ -12,7 +12,7 @@ var isLoggedIn = (loggedInUser != null) //Se è loggato ho true
 let indexMain = document.getElementById("indexMain")
 //Carico la lista di tutti gli utenti registrati
 let registeredUsers = AccountHandler.loadUsers();
-if (registeredUsers.length == 0) { //--Se non sono utenti registrati
+if (registeredUsers.length == 0) { //--Se non ci sono utenti registrati
   //Mostro l'header che indica mancanza di utenti
   HTMLGenerator.generateLastChild (indexMain, "h1", "There are no users yet...");
 } else { //--Se ci sono utenti registrati
