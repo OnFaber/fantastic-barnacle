@@ -54,7 +54,7 @@ if (showingOwnLibrary) { //Se è la libreria dell'utente loggato
     if (libraryLenght != 0) {
         document.getElementById("libraryIdentifierSecondaryHeader").innerText = `${username}'s books:`;
     } else {
-        document.getElementById("libraryIdentifierSecondaryHeader").innerText = `${username} has no books yet`;
+        document.getElementById("libraryIdentifierSecondaryHeader").innerText = `${username} doesn't have any book yet`;
     }
     //Mostro un messaggio che indica che si sta visualizzando una libreria altrui
     NoticeHandler.showMessage(null, "This is not <a href='./library.html?user=me'>your library<a>", 0, true);
