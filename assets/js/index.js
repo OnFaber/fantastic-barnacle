@@ -21,9 +21,9 @@ if (registeredUsers.length == 0) { //--Se non ci sono utenti registrati
   registeredUsers.sort((a, b) => b.library.length - a.library.length);
   //Genero una lista in cui mostrarli
   const header = HTMLGenerator.generateLastChild (indexMain, "h2");
-  const usersList = HTMLGenerator.generateLastChild(header, "ul", `Top ${Math.min(10, registeredUsers.length)} users:`, "homepageUserList");
+  const usersList = HTMLGenerator.generateLastChild(header, "ul", `Top ${Math.min(10, AccountHandler.countUsers())} users:`, "homepageUserList");
   //Inserisco nella lista i primi 10
-  for (let i=0; i<Math.min(10, registeredUsers.length); i++) {
+  for (let i=0; i<Math.min(10, AccountHandler.countUsers()); i++) {
     //Carico username e numero di libri in libreria di ogni utente
     let thisUserUsername = registeredUsers[i].credentials.username;
     const thisUserLibraryLength = registeredUsers[i].library.length
