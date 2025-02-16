@@ -22,14 +22,28 @@
   <!-- Importazione script -->
   <!--L'attributo defer indica di eseguire lo script dopo il caricamento del documento. 
   Necessario per far trovare allo script gli elementi-->
-  <script
-  type="module"
-  src="assets/js/account.js"
-  defer
-  ></script>
+  <script type="module" src="assets/js/account.js" defer></script>
+  <link href="assets/css/common.css" rel="stylesheet" />
+  <link href="assets/css/inputFields.css" rel="stylesheet" />
 </head>
 <body>
-  <button id="logOutButton">Log out</button>
-  <a href="./index.html">Homepage</a>
+  <div class="notice"></div>
+  <div class="container">
+    <div class="sidebar hidden">
+      <button id="close_sidebar" class="btn">
+        <img src="assets/altro/arrow-left.svg" class="icon" />
+      </button>
+      <nav>
+        <ul id="sidebarList"></ul>
+      </nav>
+    </div>
+    <main id="indexMain" class="background">
+      <div class="notice"></div>
+      <button id="open_sidebar" class="btn">
+        <img src="assets/altro/arrow-right.svg" class="icon" />
+      </button>
+      <button id="logOutButton">Log out</button>
+    </main>
+  </div>
 </body>
 </html>

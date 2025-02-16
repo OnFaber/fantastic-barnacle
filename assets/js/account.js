@@ -1,4 +1,9 @@
+import HTMLGenerator from "./HTMLGenerator.js"
+
 //--Blocco eseguito al caricamento dello script
+HTMLGenerator.populateSidebar("account", true);
+
+//--Event listener
 document.getElementById("logOutButton").addEventListener("click", logOut);
 
 //--Funzioni legate a eventi

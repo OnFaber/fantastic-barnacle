@@ -35,6 +35,10 @@ class HTMLGenerator {
             if (isLoggedIn) this.generateLastChild(sidebarList, "li", "<a href='./library.html?user=me'>Library</a>");
             this.#showAccountLink(isLoggedIn);
         }
+        if (currentPage == "account") {
+            this.generateLastChild(sidebarList, "li", "<a href='./index.html'>Homepage</a>");
+            this.generateLastChild(sidebarList, "li", "<a href='./library.html?user=me'>Library</a>");
+        }
     }
     
     //Genera html per link a sign in e sign up oppure your account
