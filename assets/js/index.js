@@ -16,8 +16,6 @@ if (registeredUsers.length == 0) { //--Se non ci sono utenti registrati
   //Mostro l'header che indica mancanza di utenti
   HTMLGenerator.generateLastChild (indexMain, "h2", "There are no users yet...");
 } else { //--Se ci sono utenti registrati
-  //Nascondo l'immagine di sfondo
-  indexMain.classList.remove("background");
   //Ordino l'array degli utenti registrati
   //Secondo l'ordine discendente del numero di libri nella loro libreria
   registeredUsers.sort((a, b) => b.library.length - a.library.length);
