@@ -31,7 +31,7 @@ function checkFormInputs(event) {
     }
   }
   
-  /*if (isValid) {
+  if (isValid) {
     //Validazione password
     const passwordError = Validators.validatePassword(passwordValue);
     if (passwordError != "") {
@@ -57,7 +57,7 @@ function checkFormInputs(event) {
     } else {
       signUpForm.privacyPolicyCustomCheckbox.classList.remove("error");
     }
-  }*/
+  }
   //Se è tutto valido, registro l'utente
   if (isValid) {
     const date = new Date();
@@ -65,6 +65,7 @@ function checkFormInputs(event) {
     const resetCode = Math.round(Math.random() * (10000 - 1000) + 1000);
     const user = new User(usernameValue, emailValue, passwordValue, resetCode);
     localStorage.setItem(`user+${usernameValue}`,JSON.stringify(user));
+    //E lo reindirizzo al login con un parametro nell'URL che indica che si è appena registrato
     redirect(`/sign-in.html?newUser=${encodeURIComponent(usernameValue)}`);
   }
 }
