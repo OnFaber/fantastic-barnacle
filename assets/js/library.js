@@ -3,6 +3,7 @@ import User from "./User.js"
 import Book from "./Book.js"
 import NoticeHandler from "./NoticeHandler.js";
 import { AddBookForm } from "./Forms.js";
+import HTMLGenerator from "./HTMLGenerator.js";
 
 //--Parte di script che viene eseguita subito
 //Leggo dall'url quale libreria va mostrata
@@ -87,9 +88,7 @@ function updateBookList () { //Mostra la lista dei libri e ne ritorna la lunghez
             img = "";
         }
         //Creazione del li
-        bookListEntry = document.createElement('li');
-        bookListEntry.classList.add("bookListEntry")
-        bookListEntry.innerHTML =
+        let innerHTML =
         `<div class="bookContainer">
         <!-- Qui viene inserito il div per l'img di copertina se presente -->
         ${img}
@@ -99,10 +98,7 @@ function updateBookList () { //Mostra la lista dei libri e ne ritorna la lunghez
         </div>
         <button class="removeBookButton">Remove</button>
         </div>`;
-        //Aggiunta del li alla lista
-        booksList.appendChild(bookListEntry);
-        //Aggiunta di un id univoco al li appena creato
-        bookListEntry.id = user.library[i].uniqueID;
+        let bookListEntry = HTMLGenerator.generateLastChild (booksList, "li", innerHTML, user.library[i].uniqueID, "bookListEntry")
         if (showingOwnLibrary) { //Solo se la libreria visualizzata è quella dell'utente loggato
             //Assegno al bottone un id derivato da quello del li che indica il libro
             //In modo da poter recuperare l'id del li da event.target.id del bottone
