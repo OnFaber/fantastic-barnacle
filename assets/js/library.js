@@ -14,21 +14,23 @@ if (hasUserParam) { //Se l'url indica una libreria
     const userParam = urlParams.get("user");
     if (userParam == "me") { //user=me quando l'utente loggato va sulla sua libreria dalla homepage
         if (loggedInUser == null) { //Se non c'è nessun utente loggato (inatteso in questa situazione)
-            window.location.href = "./index.html" //Reindirizzo alla homepage
+            window.location.href = "./sign-in.html" //Reindirizzo al login
         } else { //Se è loggato carico i suoi dati
             var user = new User();
             user = JSON.parse(localStorage.getItem(`user+${loggedInUser}`));
         }
     } else { //Se user!=me devo controllare di quale utente devo mostrare la libreria
         if ((loggedInUser != null) && (userParam == loggedInUser)) { //Anche se il parametro user!=me la libreria potrebbe comunque essere la sua
-            window.location.href = "./library.html?user=me" //In questo caso lo reindirizzo alla sua con user=me
+            //In questo caso lo reindirizzo alla sua con user=me
+            window.location.href = "./library.html?user=me"
         } else { //Se la libreria non è dell'utente attuale
             showingOwnLibrary = false; //Flag che indica che la libreria da mostrare non è dell'utente attuale
-            const username = userParam;
+            var username = userParam;
             var user = new User();
             user = JSON.parse(localStorage.getItem(`user+${username}`));
             if (user == null) { //Se la libreria richiesta è di un utente che non esiste
-                window.location.href = "./library.html?user=me" //Lo reindirizzo alla sua libreria (questo lo riporta alla homepage se non loggato)
+                //Lo reindirizzo alla sua libreria (questo lo riporta al login se non loggato)
+                window.location.href = "./library.html?user=me"
             }
         }
     }
@@ -41,8 +43,12 @@ if (showingOwnLibrary) { //Se è la libreria dell'utente loggato
     updateBookList(); //Carico la lista dei libri
 } else { //Se sta visualizzando la libreria di qualcun'altro
     document.getElementById("addBookForm").classList.add("hidden"); //Nascondo il form di aggiunta libri
+    //Modifico l'header per mostrare il nome dell'utente
+    document.getElementById("libraryIdentifierHeader").innerText = `${username}'s library`;
+    //Mostro un messaggio che indica che si sta visualizzando una libreria altrui
     NoticeHandler.showMessage(null, "This is not your library", 0, true);
-    updateBookList(); //Carico la lista dei libri
+    //Carico la lista dei libri
+    updateBookList();
 }
 //Istanzio l'oggetto form
 const addBookForm = new AddBookForm(document.addBookForm);

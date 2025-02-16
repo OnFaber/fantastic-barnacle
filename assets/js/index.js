@@ -18,6 +18,10 @@ closeBtn.addEventListener("click", () => {
 });
 
 //--Funzioni eseguite subito
+//Carico la lista di tutti gli utenti registrati
+let registeredUsers = AccountHandler.loadUsers();
+console.log(registeredUsers);
+
 //Controllo se l'utente è loggato e con che account
 const loggedInUser = AccountHandler.whoIsLoggedIn();
 if (loggedInUser != null) { //Se è loggato

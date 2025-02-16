@@ -33,7 +33,7 @@ class NoticeHandler {
     notice.classList.add(messageType);
     notice.classList.add("fade_in");
     if (fixed) notice.classList.add("fixed");
-    notice.textContent = message;
+    notice.innerHTML = message;
     if (inputField != null) inputField.classList.add(messageType);
     // inputField.insertAdjacentElement("afterend", notice);
     
