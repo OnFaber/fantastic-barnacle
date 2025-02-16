@@ -21,8 +21,14 @@ closeBtn.addEventListener("click", () => {
 //Controllo se l'utente è loggato e con che account
 const loggedInUser = whoIsLoggedIn();
 if (loggedInUser != null) { //Se è loggato
+  //Carico i suoi dati dal local storage
   var user = new User();
   user = JSON.parse(localStorage.getItem(`user+${loggedInUser}`));
+  //Inserisco il link al suo account
+  document.getElementById("homepageYourAccountHref").innerHTML = "<a href='./account.html'>Your account<a>";
 } else { //Se non è loggato
-  document.getElementById("indexYourLibraryListItem").classList.add("hidden"); //Nascondo il link alla propria libreria
+  //Nascondo il link alla propria libreria
+  document.getElementById("indexYourLibraryListItem").classList.add("hidden");
+  //Inserisco il link alla pagina di sign in
+  document.getElementById("homepageYourAccountHref").innerHTML = "<a href='./sign-in.html'>Sign in<a>";
 }

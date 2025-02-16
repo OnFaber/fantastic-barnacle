@@ -8,6 +8,17 @@
   content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
   />
   <title>Your account</title>
+  <!-- Script per impedire di visualizzare questa pagina se non loggato -->
+  <script>
+    // Controllo se l'utente è loggato
+    let authenticatedUserLocal = JSON.parse(localStorage.getItem("authenticatedUser"));
+    let authenticatedUserSession = JSON.parse(sessionStorage.getItem("authenticatedUser"));
+    if (authenticatedUserSession == null) {
+      window.location.href = "./sign-in.html" //Se non è loggato lo reindirizzo al sign in
+    } else if (authenticatedUserLocal != null) {
+      window.location.href = "./sign-in.html" //Se è loggato lo reindirizzo al sign in
+    }
+  </script>
   <!-- Importazione script -->
   <!--L'attributo defer indica di eseguire lo script dopo il caricamento del documento. 
   Necessario per far trovare allo script gli elementi-->
