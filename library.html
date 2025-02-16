@@ -21,9 +21,10 @@
   </head>
   <body>
     <header>
-      <div id="homepageYourAccountHref"></div>
+      <div id="libraryYourAccountHref"></div>
     </header>
 
+    <div class="notice hidden"></div>
     <div class="container">
       <div class="sidebar hidden">
         <button id="close_sidebar" class="btn">
@@ -31,10 +32,8 @@
         </button>
         <nav>
           <ul>
-            <li><a href="#">Placeholder</a></li>
+            <li><a href="./index.html">Homepage</a>
             <li><a href="./debug.html">!!Debug!!</a></li>
-            <li id="indexYourLibraryListItem">
-              <a href="./library.html?user=me">Your library</a>
             </li>
           </ul>
         </nav>
@@ -42,7 +41,7 @@
       <!-- bg-image verrà tolta con js quando si avranno entries nella tabella
            per simulare la presenza di dati lato server -->
       <main id="indexMain" class="background noImage">
-        <div class="notice hidden"></div>
+        <div class="notice"></div>
         <button id="open_sidebar" class="btn">
           <img src="assets/altro/arrow-right.svg" class="icon" />
         </button>
@@ -64,7 +63,5 @@
         <ul id="booksList"></ul>
       </main>
     </div>
-
-    <script type="module" src="assets/js/index.js"></script>
   </body>
 </html>

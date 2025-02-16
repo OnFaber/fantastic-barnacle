@@ -82,7 +82,7 @@ header a {
 nav {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: top;
   height: 100%;
 }
 
@@ -134,9 +134,9 @@ nav ul li a:hover {
   background-color: rgba(0, 0, 0, 0.4);
 }
 
-.background.noImage {
+/* .background.noImage {
   background-image: none;
-}
+} */
 
 main {
   padding: 0 1rem;

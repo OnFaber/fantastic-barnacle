@@ -1,41 +1,30 @@
 import AccountHandler from "./AccountHandler.js";
 import User from "./User.js";
 import HTMLGenerator from "./HTMLGenerator.js";
+import Sidebar from "./Sidebar.js";
 
-//--Costanti
-const openBtn = document.getElementById("open_sidebar");
-const closeBtn = document.getElementById("close_sidebar");
-const sidebar = document.querySelector(".sidebar");
+//--Parte di script eseguita subito
+//Aggiunge event listener ai bottoni della sidebar
+Sidebar.createSidebar();
 
-//--Event listener
-openBtn.addEventListener("click", () => {
-  sidebar.classList.remove("hidden");
-  openBtn.classList.add("hidden");
-});
-
-closeBtn.addEventListener("click", () => {
-  sidebar.classList.add("hidden");
-  openBtn.classList.remove("hidden");
-});
-
-//--Funzioni eseguite subito
 //-Decido cosa mostrare in base allo stato di login
+//!!-Codice molto simile a quello su library.js-!!
 //Controllo se l'utente è loggato e con che account
-const loggedInUser = AccountHandler.whoIsLoggedIn();
+const loggedInUser = AccountHandler.whoIsLoggedIn(); //Restituisce l'username dell'utente loggato (null se nessuno)
 let user = null;
 if (loggedInUser != null) { //Se è loggato
   //Carico i suoi dati dal local storage
   user = new User();
   user = JSON.parse(localStorage.getItem(`user+${loggedInUser}`));
   //Inserisco il link al suo account
-  document.getElementById("homepageYourAccountHref").innerHTML =
+  document.getElementById("headerYourAccountHref").innerHTML =
     "<a href='./account.html'>Your account<a>";
 } else {
   //Se non è loggato
   //Nascondo il link alla propria libreria
   document.getElementById("indexYourLibraryListItem").classList.add("hidden");
   //Inserisco il link alla pagina di sign in
-  document.getElementById("homepageYourAccountHref").innerHTML =
+  document.getElementById("headerYourAccountHref").innerHTML =
     "<a href='./sign-in.html'>Sign in<a>";
 }
 
@@ -45,11 +34,11 @@ let indexMain = document.getElementById("indexMain")
 //Carico la lista di tutti gli utenti registrati
 let registeredUsers = AccountHandler.loadUsers();
 if (registeredUsers.length == 0) { //--Se non sono utenti registrati
-  //-Mostro l'immagine di sfondo
-  indexMain.classList.remove("noImage");
-  //-E l'header che indica mancanza di utenti
+  //Mostro l'header che indica mancanza di utenti
   HTMLGenerator.generateLastChild (indexMain, "h1", "There are no users yet...");
 } else { //--Se ci sono utenti registrati
+  //Nascondo l'immagine di sfondo
+  indexMain.classList.remove("background");
   //Ordino l'array degli utenti registrati
   //Secondo l'ordine discendente del numero di libri nella loro libreria
   registeredUsers.sort((a, b) => b.library.length - a.library.length);
