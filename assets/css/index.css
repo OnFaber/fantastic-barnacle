@@ -73,7 +73,7 @@ header a {
   object-fit: contain;
 }
 
-#toggle_sidebar {
+#open_sidebar {
   position: absolute;
   top: 10px;
   left: 10px;

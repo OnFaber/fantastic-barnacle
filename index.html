@@ -16,11 +16,7 @@
     <!-- Importazione script -->
     <!--L'attributo defer indica di eseguire lo script dopo il caricamento del documento. 
     Necessario per far trovare allo script gli elementi-->
-    <script 
-      type="module" 
-      src="assets/js/index.js" 
-      defer
-      ></script>
+    <script type="module" src="assets/js/index.js" defer></script>
   </head>
   <body>
     <header>
@@ -30,27 +26,23 @@
     <div class="container">
       <div class="sidebar hidden">
         <button id="close_sidebar" class="btn">
-          <img
-            src="assets/altro/arrow-left.svg"
-            class= "icon"
-          />
+          <img src="assets/altro/arrow-left.svg" class="icon" />
         </button>
         <nav>
           <ul>
             <li><a href="#">Placeholder</a></li>
             <li><a href="./debug.html">!!Debug!!</a></li>
-            <li id="indexYourLibraryListItem"><a href="./library.html?user=me">Your library</a></li>
+            <li id="indexYourLibraryListItem">
+              <a href="./library.html?user=me">Your library</a>
+            </li>
           </ul>
         </nav>
       </div>
       <!-- bg-image verrà tolta con js quando si avranno entries nella tabella
            per simulare la presenza di dati lato server -->
       <main id="indexMain" class="background noImage">
-        <button id="toggle_sidebar" class="btn">
-          <img
-            src="assets/altro/arrow-right.svg"
-            class="icon"
-          />
+        <button id="open_sidebar" class="btn">
+          <img src="assets/altro/arrow-right.svg" class="icon" />
         </button>
       </main>
     </div>
