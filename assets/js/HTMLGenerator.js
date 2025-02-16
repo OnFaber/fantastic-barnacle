@@ -16,6 +16,30 @@ class HTMLGenerator {
         //Restituisco il riferimento all'elemento creato
         return element;
     }
+    
+    //Metodo che genera gli elementi della sidebar
+    //Prende in input la pagina corrente e lo stato di login
+    static populateSidebar (currentPage, isLoggedIn) {
+        const sidebarList = document.getElementById("sidebarList");
+
+        if (currentPage == "library") {
+            this.generateLastChild(sidebarList, "li", "<a href='./index.html'>Homepage<a>");
+            this.#showAccountLink(isLoggedIn);
+        }
+        if (currentPage == "homepage") {
+            if (isLoggedIn) this.generateLastChild(sidebarList, "li", "<a href='./library.html?user=me'>Your library<a>");
+            this.#showAccountLink(isLoggedIn);
+        }
+    }
+
+    //Genera html per link a sign in o your account
+    static #showAccountLink (isLoggedIn) {
+        if (!isLoggedIn) {
+            this.generateLastChild(sidebarList, "li", "<a href='./sign-in.html'>Sign in<a>");
+        } else {
+            this.generateLastChild(sidebarList, "li", "<a href='./account.html'>Your account<a>");
+        }
+    }
 }
 
 export default HTMLGenerator;

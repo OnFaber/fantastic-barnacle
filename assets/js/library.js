@@ -10,23 +10,18 @@ import Sidebar from "./Sidebar.js";
 Sidebar.createSidebar();
 
 //--Parte di script eseguita subito
-//-Decido cosa mostrare in base allo stato di login
-//!!-Codice molto simile a quello su index.js-!!
 //Controllo se l'utente è loggato e con che account
 const loggedInUser = AccountHandler.whoIsLoggedIn(); //Restituisce l'username dell'utente loggato (null se nessuno)
 var user = null;
+var isLoggedIn = false;
 if (loggedInUser != null) { //Se è loggato
+    isLoggedIn = true;
     //Carico i suoi dati dal local storage
     user = new User();
     user = JSON.parse(localStorage.getItem(`user+${loggedInUser}`));
-    //Inserisco il link al suo account
-    document.getElementById("libraryYourAccountHref").innerHTML =
-    "<a href='./account.html'>Your account<a>";
-} else { //Se non è loggato
-    //Inserisco il link alla pagina di sign in
-    document.getElementById("libraryYourAccountHref").innerHTML =
-    "<a href='./sign-in.html'>Sign in<a>";
 }
+//Popolo la sidebar
+HTMLGenerator.populateSidebar("library", isLoggedIn);
 
 //-Leggo dall'url quale libreria va mostrata
 const urlParams = new URLSearchParams(window.location.search);
@@ -78,7 +73,7 @@ if (showingOwnLibrary) { //Se è la libreria dell'utente loggato
         document.getElementById("libraryIdentifierSecondaryHeader").innerText = `${username} doesn't have any book yet`;
     }
     //Mostro un messaggio che indica che si sta visualizzando una libreria altrui
-    //NoticeHandler.showMessage(null, "This is not <a href='./library.html?user=me'>your library<a>", 0, true);
+    NoticeHandler.showMessage(null, "This is not <a href='./library.html?user=me'>your library<a>", 0, true);
 }
 //Istanzio l'oggetto form
 const addBookForm = new AddBookForm(document.addBookForm);

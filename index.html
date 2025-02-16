@@ -19,9 +19,6 @@
     <script type="module" src="assets/js/index.js" defer></script>
   </head>
   <body>
-    <header>
-      <div id="headerYourAccountHref"></div>
-    </header>
 
     <div class="container">
       <div class="sidebar hidden">
@@ -29,13 +26,7 @@
           <img src="assets/altro/arrow-left.svg" class="icon" />
         </button>
         <nav>
-          <ul>
-            <li><a href="#">Placeholder</a></li>
-            <li><a href="./debug.html">!!Debug!!</a></li>
-            <li id="indexYourLibraryListItem">
-              <a href="./library.html?user=me">Your library</a>
-            </li>
-          </ul>
+          <ul id="sidebarList"></ul>
         </nav>
       </div>
       <!-- bg-image verrà tolta con js quando si avranno entries nella tabella

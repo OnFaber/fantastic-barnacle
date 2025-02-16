@@ -8,25 +8,18 @@ import Sidebar from "./Sidebar.js";
 Sidebar.createSidebar();
 
 //-Decido cosa mostrare in base allo stato di login
-//!!-Codice molto simile a quello su library.js-!!
 //Controllo se l'utente è loggato e con che account
 const loggedInUser = AccountHandler.whoIsLoggedIn(); //Restituisce l'username dell'utente loggato (null se nessuno)
-let user = null;
+var user = null;
+var isLoggedIn = false;
 if (loggedInUser != null) { //Se è loggato
-  //Carico i suoi dati dal local storage
-  user = new User();
-  user = JSON.parse(localStorage.getItem(`user+${loggedInUser}`));
-  //Inserisco il link al suo account
-  document.getElementById("headerYourAccountHref").innerHTML =
-    "<a href='./account.html'>Your account<a>";
-} else {
-  //Se non è loggato
-  //Nascondo il link alla propria libreria
-  document.getElementById("indexYourLibraryListItem").classList.add("hidden");
-  //Inserisco il link alla pagina di sign in
-  document.getElementById("headerYourAccountHref").innerHTML =
-    "<a href='./sign-in.html'>Sign in<a>";
+    isLoggedIn = true;
+    //Carico i suoi dati dal local storage
+    user = new User();
+    user = JSON.parse(localStorage.getItem(`user+${loggedInUser}`));
 }
+//Popolo la sidebar
+HTMLGenerator.populateSidebar("homepage", isLoggedIn);
 
 //-Mostro la lista degli utenti o l'avviso che non ce ne sono
 //Prendo l'elemento main della homepage
