@@ -42,6 +42,6 @@ if (registeredUsers.length == 0) { //--Se non ci sono utenti registrati
     //Genero la list entry con le informazioni sull'utente
     HTMLGenerator.generateLastChild(usersList, "li", userDisplayedInfo);
   }
-  //Popolo la sidebar e aggiungo gli event listener
-  HTMLGenerator.populateSidebar("homepage", isLoggedIn);
 }
+//Popolo la sidebar e aggiungo gli event listener
+HTMLGenerator.populateSidebar("homepage", isLoggedIn);
