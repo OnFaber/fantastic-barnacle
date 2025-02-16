@@ -1,3 +1,5 @@
+import Sidebar from "./Sidebar.js";
+
 class HTMLGenerator {
     //Metodo che genera un elemento HTML e lo appende
     //Come ultimo figlio del parent indicato
@@ -19,25 +21,29 @@ class HTMLGenerator {
     
     //Metodo che genera gli elementi della sidebar
     //Prende in input la pagina corrente e lo stato di login
-    static populateSidebar (currentPage, isLoggedIn) {
+    static populateSidebar (currentPage, isLoggedIn, showingOwnLibrary = false) {
+        //Aggiunge event listener ai bottoni della sidebar
+        Sidebar.addListeners();
         const sidebarList = document.getElementById("sidebarList");
-
+        
         if (currentPage == "library") {
             this.generateLastChild(sidebarList, "li", "<a href='./index.html'>Homepage<a>");
+            if (isLoggedIn && !showingOwnLibrary) this.generateLastChild(sidebarList, "li", "<a href='./library.html?user=me'>Library<a>");
             this.#showAccountLink(isLoggedIn);
         }
         if (currentPage == "homepage") {
-            if (isLoggedIn) this.generateLastChild(sidebarList, "li", "<a href='./library.html?user=me'>Your library<a>");
+            if (isLoggedIn) this.generateLastChild(sidebarList, "li", "<a href='./library.html?user=me'>Library<a>");
             this.#showAccountLink(isLoggedIn);
         }
     }
-
-    //Genera html per link a sign in o your account
+    
+    //Genera html per link a sign in e sign up oppure your account
     static #showAccountLink (isLoggedIn) {
         if (!isLoggedIn) {
             this.generateLastChild(sidebarList, "li", "<a href='./sign-in.html'>Sign in<a>");
+            this.generateLastChild(sidebarList, "li", "<a href='./sign-up.html'>Sign up<a>");
         } else {
-            this.generateLastChild(sidebarList, "li", "<a href='./account.html'>Your account<a>");
+            this.generateLastChild(sidebarList, "li", "<a href='./account.html'>Account<a>");
         }
     }
 }

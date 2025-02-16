@@ -1,5 +1,5 @@
 class Sidebar {
-    static createSidebar () {
+    static addListeners () {
         //--Costanti
         const openBtn = document.getElementById("open_sidebar");
         const closeBtn = document.getElementById("close_sidebar");

@@ -1,26 +1,12 @@
 import AccountHandler from "./AccountHandler.js";
 import User from "./User.js";
 import HTMLGenerator from "./HTMLGenerator.js";
-import Sidebar from "./Sidebar.js";
 
 //--Parte di script eseguita subito
-//Aggiunge event listener ai bottoni della sidebar
-Sidebar.createSidebar();
-
 //-Decido cosa mostrare in base allo stato di login
 //Controllo se l'utente è loggato e con che account
 const loggedInUser = AccountHandler.whoIsLoggedIn(); //Restituisce l'username dell'utente loggato (null se nessuno)
-var user = null;
-var isLoggedIn = false;
-if (loggedInUser != null) { //Se è loggato
-    isLoggedIn = true;
-    //Carico i suoi dati dal local storage
-    user = new User();
-    user = JSON.parse(localStorage.getItem(`user+${loggedInUser}`));
-}
-//Popolo la sidebar
-HTMLGenerator.populateSidebar("homepage", isLoggedIn);
-
+var isLoggedIn = (loggedInUser != null) //Se è loggato ho true
 //-Mostro la lista degli utenti o l'avviso che non ce ne sono
 //Prendo l'elemento main della homepage
 let indexMain = document.getElementById("indexMain")
@@ -44,7 +30,10 @@ if (registeredUsers.length == 0) { //--Se non sono utenti registrati
     let thisUserUsername = registeredUsers[i].credentials.username;
     const thisUserLibraryLength = registeredUsers[i].library.length
     let thisUserLibraryHref = `./library.html?user=${thisUserUsername}`;
-    if (user != null) { //Se c'è un utente loggato
+    if (isLoggedIn) { //Se c'è un utente loggato
+      let user = new User();
+      user = new User();
+      user = JSON.parse(localStorage.getItem(`user+${loggedInUser}`));
       if (user.credentials.username == thisUserUsername) { //Controllo se è questo utente
         thisUserUsername += " (you)"; //Se lo è appendo "(you)" all'username che mostrerò
         thisUserLibraryHref = `./library.html?user=me`; //E modifico il link per indirizzare alla sua libreria
@@ -55,4 +44,6 @@ if (registeredUsers.length == 0) { //--Se non sono utenti registrati
     //Genero la list entry con le informazioni sull'utente
     HTMLGenerator.generateLastChild(usersList, "li", userDisplayedInfo);
   }
+  //Popolo la sidebar e aggiungo gli event listener
+  HTMLGenerator.populateSidebar("homepage", isLoggedIn);
 }
