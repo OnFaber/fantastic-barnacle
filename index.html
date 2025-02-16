@@ -27,8 +27,6 @@
       <div id="homepageYourAccountHref"></div>
     </header>
 
-    <h1>See <a href="./library.html?user=a@b.c">this user's</a> library</h1>
-
     <div class="container">
       <div class="sidebar hidden">
         <button id="close_sidebar" class="btn">
@@ -47,8 +45,8 @@
       </div>
       <!-- bg-image verrà tolta con js quando si avranno entries nella tabella
            per simulare la presenza di dati lato server -->
-      <main class="bg-image">
-        <h1>There isn't any user yet...</h1>
+      <main class="background noImage">
+        <h1 id="mainHeader">There isn't any user yet...</h1>
         <button id="toggle_sidebar" class="btn">
           <img
             src="assets/altro/arrow-right.svg"

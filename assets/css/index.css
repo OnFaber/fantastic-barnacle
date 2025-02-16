@@ -116,14 +116,14 @@ nav ul li a:hover {
   transition: background 0.3s;
 }
 
-.bg-image {
+.background {
   background-image: url("../altro/hand-drawn-no-data-illustration_23-2150584271.avif");
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
 }
 
-.bg-image::before {
+.background::before {
   content: "";
   position: absolute;
   top: 0;
@@ -132,6 +132,10 @@ nav ul li a:hover {
   height: 100%;
   opacity: 0.5;
   background-color: rgba(0, 0, 0, 0.4);
+}
+
+.background.noImage {
+  background-image: none;
 }
 
 main {

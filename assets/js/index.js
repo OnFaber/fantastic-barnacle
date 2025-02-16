@@ -1,4 +1,4 @@
-import { whoIsLoggedIn } from "./account-handler.js";
+import AccountHandler from "./AccountHandler.js";
 import User from "./User.js";
 
 //--Costanti
@@ -19,7 +19,7 @@ closeBtn.addEventListener("click", () => {
 
 //--Funzioni eseguite subito
 //Controllo se l'utente è loggato e con che account
-const loggedInUser = whoIsLoggedIn();
+const loggedInUser = AccountHandler.whoIsLoggedIn();
 if (loggedInUser != null) { //Se è loggato
   //Carico i suoi dati dal local storage
   var user = new User();

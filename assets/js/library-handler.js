@@ -1,4 +1,4 @@
-import { whoIsLoggedIn } from "./account-handler.js";
+import AccountHandler from "./AccountHandler.js";
 import User from "./User.js"
 import Book from "./Book.js"
 import NoticeHandler from "./NoticeHandler.js";
@@ -9,7 +9,7 @@ import { AddBookForm } from "./Forms.js";
 const urlParams = new URLSearchParams(window.location.search);
 const hasUserParam = urlParams.has("user");
 var showingOwnLibrary = true;
-var loggedInUser = whoIsLoggedIn() //Restituisce l'username dell'utente loggato (null se nessuno)
+var loggedInUser = AccountHandler.whoIsLoggedIn() //Restituisce l'username dell'utente loggato (null se nessuno)
 if (hasUserParam) { //Se l'url indica una libreria
     const userParam = urlParams.get("user");
     if (userParam == "me") { //user=me quando l'utente loggato va sulla sua libreria dalla homepage
