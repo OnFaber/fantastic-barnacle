@@ -193,8 +193,8 @@ main {
 main h1 {
   text-align: center;
   text-wrap: stable;
-  color: #eee;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  color: #000000;
+  /*text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);*/
   font-size: clamp(20px, 3vw, 48px);
   z-index: 1;
 }

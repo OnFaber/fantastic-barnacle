@@ -14,7 +14,7 @@ let indexMain = document.getElementById("indexMain")
 let registeredUsers = AccountHandler.loadUsers();
 if (registeredUsers.length == 0) { //--Se non ci sono utenti registrati
   //Mostro l'header che indica mancanza di utenti
-  HTMLGenerator.generateLastChild (indexMain, "h1", "There are no users yet...");
+  HTMLGenerator.generateLastChild (indexMain, "h2", "There are no users yet...");
 } else { //--Se ci sono utenti registrati
   //Nascondo l'immagine di sfondo
   indexMain.classList.remove("background");
@@ -22,8 +22,8 @@ if (registeredUsers.length == 0) { //--Se non ci sono utenti registrati
   //Secondo l'ordine discendente del numero di libri nella loro libreria
   registeredUsers.sort((a, b) => b.library.length - a.library.length);
   //Genero una lista in cui mostrarli
-  const header = HTMLGenerator.generateLastChild (indexMain, "h1", "");
-  const usersList = HTMLGenerator.generateLastChild(header, "ul", `Top ${Math.min(10, registeredUsers.length)} users:`);
+  const header = HTMLGenerator.generateLastChild (indexMain, "h2");
+  const usersList = HTMLGenerator.generateLastChild(header, "ul", `Top ${Math.min(10, registeredUsers.length)} users:`, "homepageUserList");
   //Inserisco nella lista i primi 10
   for (let i=0; i<Math.min(10, registeredUsers.length); i++) {
     //Carico username e numero di libri in libreria di ogni utente
