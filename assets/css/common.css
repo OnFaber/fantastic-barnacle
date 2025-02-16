@@ -1,0 +1,158 @@
+:root {
+  --sidebar-width: 300px;
+  --sidebar-bg-color: rgba(0, 0, 0, 0.521);
+  --sidebar-bg-color-mobile: rgba(0, 0, 0, 0.849);
+  --background-gradient: linear-gradient(to bottom, #A7BFE8, #6190E8);
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100vh;
+  padding-bottom: 0.25rem;
+  overflow-x: hidden;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  margin-top: 0;
+  height: 100%;
+  font-family: sans-serif;
+}
+
+main {
+  padding: 0 1rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: var(--sidebar-width);
+  height: 100%;
+  background-color: var(--sidebar-bg-color);
+  z-index: 1000; /* Posiziono la sidebar sopra il resto */
+  transition: transform 0.3s ease; /* Transizione quando viene modificata la proprietà transform*/
+  overflow: hidden; /* Per non mostrare lo sbordamento degli elementi li quando si ingrandiscono su hover */
+}
+
+.sidebar.hidden {
+  transform: translateX(-100%); /* Quando è hidden è spostata fuori dallo schermo */
+}
+
+.sidebar:not(.hidden) {
+  transform: translateX(0); /* Quando non è hidden è all'interno dello schermo */
+}
+
+/*Bottoni sidebar */
+.btn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  width: 25px;
+  height: 25px;
+  padding: 0;
+}
+
+.sidebar .btn {
+  margin-left: 1rem;
+  margin-top: 0.7rem;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  width: 25px;
+  height: 25px;
+  padding: 0;
+}
+
+.icon {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+#open_sidebar {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+/* nav interna alla sidebar */
+nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: top;
+  height: 100%;
+}
+
+nav ul {
+  padding: 0;
+  font-size: 2rem;
+  text-align: center;
+  list-style: none;
+}
+
+nav ul li {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  transition: transform 0.2s ease-in-out;
+}
+
+nav ul li:hover {
+  transform: scale(1.1);
+  max-width: 100%;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+nav ul li a {
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  color: white;
+}
+
+nav ul li a:hover {
+  color: white;
+  display: block;
+  transition: background 0.3s;
+}
+
+ /* Sfondo */
+
+.background {
+  background: var(--background-gradient);
+  background-position: center;
+  background-size: contain;
+}
+
+ /* Responsiveness */
+@media screen and (max-width: 600px) {
+
+  
+  .sidebar {
+    width: 100%;
+    background-color: var(--sidebar-bg-color-mobile);
+  }
+}
+
+/* classe generica per nascondere elementi */
+.hidden:not(.sidebar) {
+  display: none;
+}
