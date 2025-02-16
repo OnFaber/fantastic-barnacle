@@ -166,21 +166,21 @@ toggle_sidebar {
   header {
     padding: 0.5rem;
   }
-  
+
   header a:last-of-type {
     margin-right: 0;
   }
-  
+
   .container {
     position: relative;
   }
-  
+
   .sidebar {
     position: absolute;
     width: 100%;
     z-index: 2;
   }
-  
+
   main {
     height: 100%;
   }
@@ -196,3 +196,12 @@ toggle_sidebar {
 .hidden {
   display: none;
 }
+
+/** local variables */
+/*
+   Local Variables:
+   outline-regexp: "^/\\*\\*+"
+   eval: (outline-minor-mode 1)
+   eval: (outline-hide-sublevels 3)
+   End:
+ */
