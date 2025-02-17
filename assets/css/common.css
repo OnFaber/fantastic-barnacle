@@ -12,8 +12,8 @@
 }
 
 *,
-*::after,
-*::before {
+*::after:not(.customCheckbox),
+*::before:not(.customCheckbox) {
   box-sizing: border-box;
 }
 
