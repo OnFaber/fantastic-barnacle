@@ -1,6 +1,6 @@
 import HTMLGenerator from "./HTMLGenerator.js"
 import AccountHandler from "./AccountHandler.js"
-import NoticeHandler from "./NoticeHandler.js";
+import User from "./User.js";
 
 //--Blocco eseguito al caricamento dello script
 //Popola la sidebar e aggiunge event listener ai suoi bottoni
@@ -10,12 +10,16 @@ const main = document.getElementById("accountMain")
 const username = AccountHandler.whoIsLoggedIn(); //Non posso aver e null perchè questa pagina non si carica se non loggato
 const h1InnerHtml = `${username}'s account`
 const h1 = HTMLGenerator.generateChildAtPosition(main, "h1", h1InnerHtml, 1);
-//Genero l'header h2 con la data di registrazione
+//Genero il div con la data di registrazione
 const registrationTime = AccountHandler.getRegistrationTime();
 const registrationDate =`${registrationTime.getDate()}/${registrationTime.getMonth()+1}/${registrationTime.getFullYear()}`;
-const h2InnerHtml = `Registered on ${registrationDate}`
-const h2 = HTMLGenerator.generateAdjacentElement(h1, "div", h2InnerHtml, "registrationDateDiv");
-
+const regDateDivInnerHtml = `Registered on ${registrationDate}`
+const regDateDiv = HTMLGenerator.generateAdjacentElement(h1, "div", regDateDivInnerHtml, "registrationDateDiv");
+//Genero il div con il numero di libri in libreria
+const user = JSON.parse(localStorage.getItem(`user+${username}`));
+const libraryLength = user.library.length;
+const libLengthDivInnerHtml = `You have ${libraryLength} boooks in your library`
+const libLengthDiv = HTMLGenerator.generateAdjacentElement(regDateDiv, "div", libLengthDivInnerHtml, "libraryLengthDiv");
 //--Event listener
 document.getElementById("logOutButton").addEventListener("click", AccountHandler.logout);
 document.getElementById("deleteAccountButton").addEventListener("click", showDeletionConfirmation);
