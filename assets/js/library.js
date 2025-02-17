@@ -92,7 +92,7 @@ function updateBookList () { //Mostra la lista dei libri e ne ritorna la lunghez
             <img src=${user.library[i].coverImageSrc} class="coverImage">
             </div>`
         } else {
-            img = "";
+            var img = "";
         }
         //Creazione del li
         let innerHTML =
@@ -127,8 +127,14 @@ function addBook (event) { //Ascolta l'evento submit del form addBookForm
     event.preventDefault();
     let titleField = addBookForm.titleField, title = titleField.value;
     let authorField = addBookForm.authorField, author = authorField.value;
+    //Controllo che titolo o autore non abbiano caratteri
+    //Invalidi per ridurre il rischio di injection
+    const allowedCharacters = /^[A-Za-z0-9 .,'-]+$/;
+    const isTitleValid = allowedCharacters.test(title);
+    const isAuthorValid = allowedCharacters.test(author);
+
     let coverImageSrcField = addBookForm.coverImageSrcField, coverImageSrc = coverImageSrcField.value;
-    if (title != "" && author != "") {
+    if (title != "" && author != "" && isTitleValid && isAuthorValid) {
         let newBook = new Book (title, author, coverImageSrc);
         let isNew = true;
         
@@ -151,6 +157,10 @@ function addBook (event) { //Ascolta l'evento submit del form addBookForm
         NoticeHandler.showError(addBookForm.titleField, "Empty title", 3000);
     } else if (author == "") {
         NoticeHandler.showError(addBookForm.authorField, "Empty author", 3000)
+    } else if (!isTitleValid) {
+        NoticeHandler.showError(addBookForm.titleField, "Invalid character inserted", 3000);
+    } else if (!isAuthorValid) {
+        NoticeHandler.showError(addBookForm.authorField, "Invalid character inserted", 3000);
     }
 }
 
