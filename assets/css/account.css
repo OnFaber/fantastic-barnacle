@@ -6,12 +6,13 @@ main {
     margin-bottom: 10px;
   }
 
+  #resetCodeButton {
+    margin-bottom: 5px;
+  }
+
   #deleteAccountButton {
-  border: none;
   background: rgb(185, 0, 0);
-  color: rgb(255, 255, 255);
-  cursor: pointer;
-  transition: background 0.3s;
+  margin-top: 5px;
 }
 
 #deleteAccountButton:hover {

@@ -32,8 +32,20 @@ class AccountHandler {
             if (key == userKey) {
                 this.logout();
                 localStorage.removeItem(key);
+                break;
             }
         }
+    }
+    
+    //Restituisce il codice di reset password dell'utente loggato
+    static getResetCode () {
+        const userKey = `user+${this.whoIsLoggedIn()}`;
+        for (let i=0; i<localStorage.length; i++) {
+            let key = localStorage.key(i);
+            if (key == userKey) {
+                return JSON.parse(localStorage.getItem(key)).credentials.resetCode
+            }
+        } 
     }
     
     //Carica la lista di tutti gli utenti registrati
