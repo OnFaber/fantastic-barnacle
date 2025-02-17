@@ -58,6 +58,16 @@ body {
   background-color: var(--login-bg-color);
 }
 
+.form__box a {
+  color: rgb(0, 0, 0);
+  text-decoration:underline;
+  transition: color 0.3s;
+}
+
+.form__box a:hover {
+  color: rgba(0, 0, 0, 0.562); 
+}
+
 .form__box p {
   margin: var(--space-s) 0;
 }
