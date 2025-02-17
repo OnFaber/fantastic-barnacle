@@ -1,5 +1,5 @@
 :root {
-  --sidebar-width: 300px;
+  --sidebar-width: clamp(100px, 33vw, 300px);
   --sidebar-bg-color: rgba(0, 0, 0, 0.521);
   --sidebar-bg-color-mobile: rgba(0, 0, 0, 0.849);
   --background-gradient: linear-gradient(to bottom, #A7BFE8, #6190E8);
@@ -41,6 +41,7 @@ main {
   justify-content: center;
   align-items: center;
   width: 100%;
+  flex: 1;
 }
 
 /* Sidebar */
@@ -51,7 +52,7 @@ main {
   width: var(--sidebar-width);
   height: 100%;
   background-color: var(--sidebar-bg-color);
-  z-index: 1000; /* Posiziono la sidebar sopra il resto */
+  z-index: 1; /* Posiziono la sidebar sopra il resto */
   transition: transform 0.3s ease; /* Transizione quando viene modificata la proprietà transform*/
   overflow: hidden; /* Per non mostrare lo sbordamento degli elementi li quando si ingrandiscono su hover */
 }
@@ -62,6 +63,15 @@ main {
 
 .sidebar:not(.hidden) {
   transform: translateX(0); /* Quando non è hidden è all'interno dello schermo */
+}
+
+/* Aggiungo margine al main quando la sidebar non è hidden */
+.sidebar:not(.hidden) ~ main {
+  margin-left: var(--sidebar-width); /* Il margine è grande quanto la sidebar */
+}
+
+main {
+  transition: margin-left 0.3s ease; /* Animazione alla modifica del margine del main */
 }
 
 /*Bottoni sidebar */
@@ -136,7 +146,7 @@ nav ul li a:hover {
   transition: background 0.3s;
 }
 
- /* Sfondo */
+/* Sfondo */
 
 .background {
   background: var(--background-gradient);
@@ -144,13 +154,18 @@ nav ul li a:hover {
   background-size: contain;
 }
 
- /* Responsiveness */
+/* Responsiveness */
 @media screen and (max-width: 600px) {
-
   
+  /* La sidebar deve coprire tutto lo schermo */
   .sidebar {
     width: 100%;
     background-color: var(--sidebar-bg-color-mobile);
+  }
+  
+  /* Sovrascrivo la regola che crea il margine all'apertura della sidebar */
+  .sidebar:not(.hidden) ~ main {
+    margin-left: 0 !important;
   }
 }
 
