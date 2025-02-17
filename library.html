@@ -1,59 +1,62 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <link
-      rel="icon"
-      type="image/xicon"
-      href="./assets/altro/Graphicloads-Colorful-Long-Shadow-Book.ico"
-    />
-    <meta charset="UTF-8" />
-    <link href="assets/css/notice.css" rel="stylesheet" />
-    <link href="assets/css/library.css" rel="stylesheet" />
-    <link href="assets/css/inputFields.css" rel="stylesheet" />
-    <link href="assets/css/common.css" rel="stylesheet" />
-    <meta
-      name="viewport"
-      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
-    />
-    <title id="libraryTitle">Your library</title>
-    <!-- Importazione script -->
-    <!--L'attributo defer indica di eseguire lo script dopo il caricamento del documento. 
-    Necessario per far trovare allo script gli elementi-->
-    <script type="module" src="assets/js/library.js" defer></script>
-  </head>
-  <body class="background">
-    <div class="notice"></div>
-    <div class="container">
-      <div class="sidebar hidden">
-        <button id="close_sidebar" class="btn">
-          <img src="assets/altro/arrow-left.svg" class="icon" />
-        </button>
-        <nav>
-          <ul id="sidebarList"></ul>
-        </nav>
-      </div>
-      <main id="indexMain">
-        <div class="notice"></div>
-        <button id="open_sidebar" class="btn">
-          <img src="assets/altro/arrow-right.svg" class="icon" />
-        </button>
-
-        <h1 id="libraryIdentifierPrimaryHeader">Your library</h1>
-
-        <form name="addBookForm" id="addBookForm">
-          <input type="text" name="title" placeholder="Title" />
-          <input type="text" name="author" placeholder="Author" />
-          <input
-            type="text"
-            name="coverImageSrc"
-            placeholder="Cover image URL"
-          />
-          <input type="submit" value="Add a book" />
-        </form>
-
-        <h2 id="libraryIdentifierSecondaryHeader">Your books:</h2>
-        <ul id="booksList"></ul>
-      </main>
+<head>
+  <link
+  rel="icon"
+  type="image/xicon"
+  href="./assets/altro/Graphicloads-Colorful-Long-Shadow-Book.ico"
+  />
+  <meta charset="UTF-8" />
+  <link href="assets/css/notice.css" rel="stylesheet" />
+  <link href="assets/css/library.css" rel="stylesheet" />
+  <link href="assets/css/inputFields.css" rel="stylesheet" />
+  <link href="assets/css/common.css" rel="stylesheet" />
+  <meta
+  name="viewport"
+  content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+  />
+  <title id="libraryTitle">Your library</title>
+  <!-- Importazione script -->
+  <!--L'attributo defer indica di eseguire lo script dopo il caricamento del documento. 
+  Necessario per far trovare allo script gli elementi-->
+  <script type="module" src="assets/js/library.js" defer></script>
+</head>
+<body class="background">
+  <div class="notice"></div>
+  <div class="container">
+    <div class="sidebar hidden">
+      <button id="close_sidebar" class="btn">
+        <img src="assets/altro/arrow-left.svg" class="icon" />
+      </button>
+      <nav>
+        <ul id="sidebarList"></ul>
+      </nav>
     </div>
-  </body>
+    <main id="indexMain">
+      <div class="notice"></div>
+      <button id="open_sidebar" class="btn">
+        <img src="assets/altro/arrow-right.svg" class="icon" />
+      </button>
+      
+      <h1 id="libraryIdentifierPrimaryHeader">Your library</h1>
+      
+      <form name="addBookForm" id="addBookForm">
+        <input type="text" name="title" placeholder="Title" />
+        <input type="text" name="author" placeholder="Author" />
+        <input
+        type="text"
+        name="coverImageSrc"
+        placeholder="Cover image URL"
+        />
+        <input type="submit" value="Add a book" />
+      </form>
+      
+      <h2 id="libraryIdentifierSecondaryHeader">Your books:</h2>
+      <ul id="booksList"></ul>
+    </main>
+  </div>
+  <footer>
+    <p>&copy; 2025 Website.com. All rights reserved.</p>
+  </footer>
+</body>
 </html>
