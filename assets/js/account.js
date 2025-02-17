@@ -5,11 +5,16 @@ import NoticeHandler from "./NoticeHandler.js";
 //--Blocco eseguito al caricamento dello script
 //Popola la sidebar e aggiunge event listener ai suoi bottoni
 HTMLGenerator.populateSidebar("account", true);
-
-let main = document.getElementById("accountMain")
-let username = AccountHandler.whoIsLoggedIn(); //Non posso aver e null perchè questa pagina non si carica se non loggato
-let h1InnerHtml = `${username}'s account`
-HTMLGenerator.generateChildAtPosition(main, "h1", h1InnerHtml, 1);
+//Genero l'header h1 con il nome dell'utente
+const main = document.getElementById("accountMain")
+const username = AccountHandler.whoIsLoggedIn(); //Non posso aver e null perchè questa pagina non si carica se non loggato
+const h1InnerHtml = `${username}'s account`
+const h1 = HTMLGenerator.generateChildAtPosition(main, "h1", h1InnerHtml, 1);
+//Genero l'header h2 con la data di registrazione
+const registrationTime = AccountHandler.getRegistrationTime();
+const registrationDate =`${registrationTime.getDate()}/${registrationTime.getMonth()+1}/${registrationTime.getFullYear()}`;
+const h2InnerHtml = `Registered on ${registrationDate}`
+const h2 = HTMLGenerator.generateAdjacentElement(h1, "div", h2InnerHtml, "registrationDateDiv");
 
 //--Event listener
 document.getElementById("logOutButton").addEventListener("click", AccountHandler.logout);

@@ -47,6 +47,13 @@ class AccountHandler {
             }
         } 
     }
+
+    //Restituisce la data di registrazione
+    static getRegistrationTime (username = this.whoIsLoggedIn()) { //Senza argomenti lavora sull'utente loggato
+        if (username == null) return null; //Se non si passa un utente e nessuno è loggato ritorna null
+        const user = JSON.parse(localStorage.getItem(`user+${username}`))
+        return new Date (user.registrationTime);
+    }
     
     //Carica la lista di tutti gli utenti registrati
     static loadUsers () {
