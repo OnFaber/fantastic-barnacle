@@ -9,12 +9,12 @@ if (redirectedSignUp) { //Se arriva dalla pagina di registrazione gli mostro un 
   const username = urlParams.get("newUser");
   const user = JSON.parse(localStorage.getItem(`user+${username}`));
   //const resetCode = user.credentials.resetCode; se volessi mostrargli il codice di reset password
-  NoticeHandler.showSuccess(null, `Signed up successfully.\nLog in now`, 5000);
+  NoticeHandler.showSuccess(null, `Signed up successfully.\nLog in now`, 3000);
 }
 //Controllo se l'utente arriva dalla pagina di reset password
 const redirectedPasswordReset = urlParams.has("changedPassword");
 if (redirectedPasswordReset) { //Se arriva dalla pagina di reset password gli mostro un messaggio
-  NoticeHandler.showSuccess(null, `Password reset successfully.\nLog in now`, 5000);
+  NoticeHandler.showSuccess(null, `Password reset successfully.\nLog in now`, 3000);
 }
 
 //--Event listener
