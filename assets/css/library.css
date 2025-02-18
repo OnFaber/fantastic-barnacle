@@ -92,8 +92,6 @@ form {
 /* immagine di copertina del singolo libro (primo figlio di .bookContainer) */
 
 .coverImageContainer {
-  display: flex;
-  align-items: center;
   max-width: 30%;
 }
 
@@ -105,9 +103,7 @@ form {
 
 /* informazioni testuali del singolo libro (secondo figlio di .bookContainer) */
 .bookInfoContainer {
-  display: flex;
   margin-left: 10px;
-  flex-shrink: 1;
 }
 
 /* bottone associato al singolo libro (terzo figlio di .bookContainer) */
