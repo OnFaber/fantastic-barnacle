@@ -2,7 +2,6 @@
   --sidebar-width: clamp(100px, 33vw, 300px);
   --sidebar-bg-color: rgba(0, 0, 0, 0.521);
   --sidebar-bg-color-mobile: rgba(0, 0, 0, 0.849);
-  --background-gradient: linear-gradient(to bottom, #A7BFE8, #6190E8);
 }
 
 .container {
@@ -149,10 +148,14 @@ nav ul li a:hover {
 /* Sfondo */
 
 .background {
-  background: var(--background-gradient);
   background-position: center;
   background-size: contain;
-}
+  
+  background-color: #a7a7ff;
+  background-image:  radial-gradient(#2934ff 0.9px, transparent 0.9px), radial-gradient(#2934ff 0.9px, #a7a7ff 0.9px);
+  background-size: 36px 36px;
+  background-position: 0 0,18px 18px;
+ }
 
 /* Responsiveness */
 @media screen and (max-width: 600px) {
