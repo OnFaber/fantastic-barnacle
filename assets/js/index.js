@@ -15,15 +15,17 @@ let registeredUsers = AccountHandler.loadUsers();
 if (registeredUsers.length == 0) { //--Se non ci sono utenti registrati
   //Mostro l'header che indica mancanza di utenti
   HTMLGenerator.generateLastChild (indexMain, "h2", "There are no users yet...");
+  //Genero il paragrafo finale
+  HTMLGenerator.generateLastChild(indexMain, "p", "Be the first! <a href='./sign-up.html'>Sign up</a>");
 } else { //--Se ci sono utenti registrati
   //Ordino l'array degli utenti registrati
   //Secondo l'ordine discendente del numero di libri nella loro libreria
   registeredUsers.sort((a, b) => b.library.length - a.library.length);
   //Genero una lista in cui mostrarli
   const header = HTMLGenerator.generateLastChild (indexMain, "h2");
-  const usersList = HTMLGenerator.generateLastChild(header, "ul", `Top ${Math.min(10, AccountHandler.countUsers())} users:`, "homepageUserList");
-  //Inserisco nella lista i primi 10
-  for (let i=0; i<Math.min(10, AccountHandler.countUsers()); i++) {
+  const usersList = HTMLGenerator.generateLastChild(header, "ul", `Top ${Math.min(5, AccountHandler.countUsers())} users:`, "homepageUserList");
+  //Inserisco nella lista i primi 5
+  for (let i=0; i<Math.min(5, AccountHandler.countUsers()); i++) {
     //Carico username e numero di libri in libreria di ogni utente
     let thisUserUsername = registeredUsers[i].credentials.username;
     const thisUserLibraryLength = registeredUsers[i].library.length
@@ -42,10 +44,9 @@ if (registeredUsers.length == 0) { //--Se non ci sono utenti registrati
     //Genero la list entry con le informazioni sull'utente
     HTMLGenerator.generateLastChild(usersList, "li", userDisplayedInfo);
   }
+  //Genero il paragrafo finale
+  HTMLGenerator.generateLastChild(indexMain, "p", "Or go to <a href='./library.html?user=me'>your own</a>");
 }
-
-//Genero il paragrafo finale
-HTMLGenerator.generateLastChild(indexMain, "p", "Or go to <a href='./library.html?user=me'>your own</a>");
 
 //Popolo la sidebar e aggiungo gli event listener
 HTMLGenerator.populateSidebar("homepage", isLoggedIn);

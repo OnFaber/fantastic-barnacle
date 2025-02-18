@@ -5,13 +5,13 @@
   --secondary-color: rgb(204, 204, 204);
   --background-color: rgb(248, 248, 248);
   --text-color: rgba(0, 0, 0, 0.8);
-
+  
   /* spaziatura */
   --space-s: 0.5rem;
   --space-m: 0.75rem;
   --space-l: 1rem;
   --space-xl: 1.5rem;
-
+  
   /* tipografia */
   --font-family: sans-serif;
   --font-size: 1.5rem;
@@ -65,7 +65,7 @@ form {
     align-content: center;
     justify-content: center;
   }
-
+  
   form input[type="submit"] {
     grid-column-start: 2;
     grid-column-end: 2;
@@ -81,7 +81,7 @@ form {
 /* singolo elemento della lista dei libri (figlio #booksList) */
 .bookListEntry {
   margin-bottom: 10px;
-
+  
 }
 
 .bookContainer /* singolo elemento contenuto nell'elemento della lista dei libri (figlio .bookListEntry) */ {
