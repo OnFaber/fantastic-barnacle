@@ -18,7 +18,7 @@ const regDateDiv = HTMLGenerator.generateAdjacentElement(h1, "div", regDateDivIn
 //Genero il div con il numero di libri in libreria
 const user = JSON.parse(localStorage.getItem(`user+${username}`));
 const libraryLength = user.library.length;
-const libLengthDivInnerHtml = `You have ${libraryLength} boooks in your library`
+const libLengthDivInnerHtml = `You have ${libraryLength} boooks`
 const libLengthDiv = HTMLGenerator.generateAdjacentElement(regDateDiv, "div", libLengthDivInnerHtml, "libraryLengthDiv");
 //--Event listener
 document.getElementById("logOutButton").addEventListener("click", AccountHandler.logout);

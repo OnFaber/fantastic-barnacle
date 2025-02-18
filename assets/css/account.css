@@ -2,17 +2,17 @@ main {
     justify-content:flex-start;
   }
 
-  #logOutButton {
+ /* #logOutButton {
     margin-bottom: 10px;
-  }
+  }*/
 
-  #resetCodeButton {
+ /* #resetCodeButton {
     margin-bottom: 5px;
-  }
+  }*/
 
   #deleteAccountButton {
   background: rgb(185, 0, 0);
-  margin-top: 5px;
+ /* margin-top: 5px;*/
 }
 
 #deleteAccountButton:hover {
@@ -22,23 +22,35 @@ main {
 #deletionConfirmationDiv {
     color: rgb(185, 0, 0);
     font-weight: bold;
-    margin-top: 5px;
+    margin-top: 2vh;
+    font-size: clamp(15px, 2vw, 20px);
+}
+
+#resetCodeDiv {
+  margin-top: 2vh;
 }
 
 h1 {
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
-  font-size: clamp(25px, 5vw, 50px);
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  font-size: clamp(25px, 5vw, 45px);
 }
 
 #registrationDateDiv {
   font-weight: bold;
-  margin-bottom: 0.5rem;
-  font-size: clamp(15px, 2vw, 25px);
+  margin-bottom: 1rem;
+  font-size: clamp(15px, 2vw, 20px);
 }
 
 #libraryLengthDiv {
   font-weight: bold;
-  margin-bottom: 0.5rem;
-  font-size: clamp(15px, 1vw, 30px);
+  margin-bottom: 5vh;
+  font-size: clamp(15px, 2vw, 20px);
+}
+
+.accountPageButton {
+  font-size: clamp(15px, 2vw, 20px);
+  margin-top: 5vh;
+  text-align: center;
+  line-height: clamp(20px, 6vh, 30px);
 }

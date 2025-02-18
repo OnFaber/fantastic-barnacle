@@ -15,14 +15,14 @@
   /** elementi */
 
   /* input */
-  --login-bg-color: rgb(255, 255, 255);
+  --login-bg-color: rgb(141, 137, 251);
   --box-shadow: 0 4px 10px rgba(255, 0, 0, 0.1);
   --border-radius: 5px;
 
   /* tipografia */
   --font-family: sans-serif;
-  --font-size: 1.5rem;
-  --input-font-size: 1.25rem;
+  --font-size: 1.2rem;
+  --input-font-size: 1.1rem;
 }
 
 * {
@@ -79,6 +79,10 @@ body {
   justify-content: space-between;
   align-items: stretch;
 }
+
+.checkBoxText {
+  font-size: 1rem;
+}
 /*** checkbox */
 
 /*Creazione checkbox personalizzata*/
@@ -100,19 +104,14 @@ body {
   position: relative;
   width: 20px;
   height: 20px;
-  background-color: var(--background-color);
+  background-color: rgb(141, 137, 251);;
   border: 2px solid var(--input-border-color);
   border-radius: 4px;
   margin-right: 10px;
 }
 /*Stile della checkbox attiva in errore*/
 .customCheckbox.error {
-  background-color: var(--background-color);
-  border: 2px solid var(--input-border-error-color);
-}
-/*Stile della checkbox attiva in errore*/
-.customCheckbox.error {
-  background-color: var(--background-color);
+  background-color: rgb(141, 137, 251);
   border: 2px solid var(--input-border-error-color);
 }
 /*Stile della checkbox disabilitata*/
@@ -128,7 +127,7 @@ body {
 
 /*Stile dello sfondo della checkbox selezionata*/
 .customCheckboxContainer input:checked + .customCheckbox {
-  background-color: var(--input-border-color);
+  background-color: rgb(141, 137, 251);
   border: 2px solid var(--input-border-color);
 }
 /*Segno di spunta*/
