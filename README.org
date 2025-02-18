@@ -1,6 +1,1 @@
 #+TITLE: Progetto programmazione web Itslaziodigital 24-26
-
-
-* TODO per il branch user-account
-
-- migliorare il messaggio usato per comunicare il codice di reset password (non usare alert)
