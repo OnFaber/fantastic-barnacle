@@ -56,9 +56,9 @@
 }
 
 /* .notice.success::before {
-    content: "!";
-    color: var(--message-color);
-  } */
+content: "!";
+color: var(--message-color);
+} */
 
 .notice.error::before {
   content: "❌";
@@ -67,4 +67,10 @@
 
 .notice.fade_in {
   transform: translateX(0);
+}
+
+@media screen and (max-width: 940px) {
+  .notice {
+    display: none !important;
+  }
 }
