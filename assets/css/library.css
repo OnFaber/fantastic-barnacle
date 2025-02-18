@@ -75,6 +75,7 @@ form {
 /* lista dei libri */
 #booksList {
   list-style-type: none;
+  font-weight: bolder;
 }
 
 /* singolo elemento della lista dei libri (figlio #booksList) */

@@ -152,7 +152,7 @@ nav ul li a:hover {
   background-size: contain;
   
   background-color: #a7a7ff;
-  background-image:  radial-gradient(#2934ff 0.9px, transparent 0.9px), radial-gradient(#2934ff 0.9px, #a7a7ff 0.9px);
+  background-image:  radial-gradient(#9095ff 0.9px, transparent 0.9px), radial-gradient(#9095ff 0.9px, #a7a7ff 0.9px);
   background-size: 36px 36px;
   background-position: 0 0,18px 18px;
  }
