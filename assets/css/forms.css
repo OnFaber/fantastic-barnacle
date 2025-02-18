@@ -47,7 +47,6 @@ body {
 
 .form__box {
   padding: var(--space-m) var(--space-l);
-  max-width: 30rem;
   width: 25rem;
   height: auto;
   font-size: var(--font-size);
