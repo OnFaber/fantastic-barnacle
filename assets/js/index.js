@@ -43,5 +43,9 @@ if (registeredUsers.length == 0) { //--Se non ci sono utenti registrati
     HTMLGenerator.generateLastChild(usersList, "li", userDisplayedInfo);
   }
 }
+
+//Genero il paragrafo finale
+HTMLGenerator.generateLastChild(indexMain, "p", "Or go to <a href='./library.html?user=me'>your own</a>");
+
 //Popolo la sidebar e aggiungo gli event listener
 HTMLGenerator.populateSidebar("homepage", isLoggedIn);

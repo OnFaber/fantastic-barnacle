@@ -1,6 +1,6 @@
 main h1 {
   margin-top: 20px;
-  margin-bottom: 0px;
+  margin-bottom: 20px;
   font-size: clamp(30px, 5vw, 45px);
   color: rgb(0, 0, 0);
 }
@@ -10,14 +10,32 @@ main h2 {
   display: flex;
   align-self: center;
   margin-top: 0px;
+  margin-bottom: 0px;
   text-wrap: stable;
   color: #000000;
   /*text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);*/
   font-size: clamp(3px, 4vw, 25px);
 }
 
+main p {
+  /*text-align: center;
+  display: flex;
+  align-self: center;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  text-wrap: stable;*/
+  color: #000000;
+  margin-top: 0;
+  font-weight:600;
+  font-size: clamp(3px, 4vw, 25px);
+}
+
 ul{
   list-style-type: none;
+  padding-left: 0px;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
 }
 
 #indexMain {
@@ -26,19 +44,12 @@ ul{
   align-content: center;
 }
 
-#homepageUserList a {
+a {
   color: rgb(0, 0, 0);
   text-decoration:underline;
   transition: color 0.3s;
 }
 
-#homepageUserList a:hover {
+a:hover {
   color: rgba(0, 0, 0, 0.562); 
-}
-
-@media screen and (max-width: 400px) {
-  main {
-    height: 100%;
-  }
-  
 }

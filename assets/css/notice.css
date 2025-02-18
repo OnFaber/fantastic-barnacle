@@ -1,8 +1,8 @@
 :root {
-  --success-color: rgb(19, 146, 19);
-  --error-color-accent: rgb(255, 68, 68);
-  --error-color: rgb(255, 174, 174);
-  --message-color: black;
+  --success-color: hsla(120, 77%, 32%, 0.9);
+  --error-color-accent: hsla(0, 100%, 63%, 0.9);
+  --error-color: hsla(0, 100%, 84%, 1);
+  --message-color: hsla(0, 0%, 0%, 0.9);
 }
 
 .notice {
@@ -15,7 +15,7 @@
   justify-content: space-between;
   width: 25rem;
   height: 4rem;
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.683);
   color: #000;
   border-style: solid;
   border-left-width: 0.75em;
